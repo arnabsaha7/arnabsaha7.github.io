@@ -35,6 +35,8 @@
         <div class="hero-kicker">
           <span class="status-dot" aria-hidden="true"></span>
           <span>PERSONAL ARCHIVE</span>
+          <span class="kicker-divider" aria-hidden="true">/</span>
+          <span class="kicker-system">001 // SYS.INIT</span>
           <span class="hero-index">PORTFOLIO — 2026 <b>01</b></span>
         </div>
 
@@ -64,11 +66,15 @@
               <div class="code-list"><span>02</span> Desktop &amp; web applications</div>
               <div class="code-list"><span>03</span> Systems that work offline</div>
               <div class="terminal-spacer"></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span> status --current</div>
+              <div class="terminal-status"><i aria-hidden="true"></i><span>Building useful, dependable software</span></div>
+              <div class="terminal-spacer"></div>
               <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="cursor-block" aria-hidden="true"></span></div>
             </div>
             <div class="dev-card-bottom">
-              <span>BUILD WITH INTENTION</span>
-              <span>ALWAYS LEARNING</span>
+              <span>BUFFER: TTY1</span>
+              <span>MODE: BUILD / REFINE</span>
+              <span>READY</span>
             </div>
             <span class="card-index" aria-hidden="true">AS / 01</span>
           </aside>
@@ -113,6 +119,7 @@
           </div>
           <div class="preview-footer">
             <span>OFFLINE-FIRST PRODUCTIVITY</span>
+            <span>OPEN PROJECT <b aria-hidden="true">↗</b></span>
           </div>
         </a>
 
@@ -139,35 +146,22 @@
 
           <div class="project-divider"></div>
 
-          <div class="project-facts">
-            <div><span class="fact-label">PLATFORM</span><strong>Windows desktop</strong></div>
-            <div><span class="fact-label">DATA</span><strong>Local-first · SQLite</strong></div>
-            <div><span class="fact-label">BUILT WITH</span><strong>React · TypeScript · Rust</strong></div>
-            <div>
-              <span class="fact-label">INSTALLS</span>
-              <span class="stat-metric">
-                <strong id="download-count">Loading…</strong>
-                <span class="trend-arrow" aria-hidden="true">↑</span>
-              </span>
-            </div>
+          <div class="spec-sheet" aria-label="DewTask project details">
+            <div class="spec-row"><span class="fact-label">PLATFORM</span><strong>Windows desktop</strong></div>
+            <div class="spec-row"><span class="fact-label">DATA</span><strong>Local-first · SQLite</strong></div>
+            <div class="spec-row"><span class="fact-label">BUILT WITH</span><strong>React · TypeScript · Rust</strong></div>
+            <div class="spec-row"><span class="fact-label">INSTALLS</span><strong id="download-count">Loading…</strong></div>
           </div>
 
-          <p class="download-footnote" id="download-footnote">Release information and Windows installer downloads are retrieved live from GitHub.</p>
-
-          <div class="tech-stack" aria-label="Technologies used">
-            <span>REACT</span>
-            <span>TYPESCRIPT</span>
-            <span>RUST</span>
-            <span>TAURI</span>
-          </div>
         </div>
       </article>
 
       <div class="more-work">
-        <span class="more-mark" aria-hidden="true">+</span>
-        <span>More experiments and projects are in the works.</span>
-        <span class="more-rule" aria-hidden="true"></span>
-        <span class="more-note">WATCH THIS SPACE</span>
+        <div class="more-work-copy">
+          <span class="more-mark" aria-hidden="true">+</span>
+          <div><strong>More work in progress.</strong><span>New projects and experiments will appear here as they take shape.</span></div>
+        </div>
+        <a href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer">FOLLOW ALONG ON GITHUB <span aria-hidden="true">↗</span></a>
       </div>
     </section>
 
@@ -178,6 +172,11 @@
       </div>
       <div class="about-copy">
         <p>I enjoy working across the stack, learning how things fit together, and turning rough ideas into polished, practical tools. My approach is simple: make it useful, make it understandable, and sweat the details that matter.</p>
+        <div class="about-principles" aria-label="Working principles">
+          <div><span>01</span><strong>Make it useful.</strong></div>
+          <div><span>02</span><strong>Keep it clear.</strong></div>
+          <div><span>03</span><strong>Sweat the details.</strong></div>
+        </div>
         <a href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer" class="about-github">More of what I'm building <span aria-hidden="true">↗</span></a>
       </div>
     </section>
@@ -197,7 +196,6 @@
     (async function loadDewTaskReleaseStats() {
       const versionEl = document.getElementById("release-version");
       const countEl = document.getElementById("download-count");
-      const footnoteEl = document.getElementById("download-footnote");
       const apiUrl = "https://api.github.com/repos/arnabsaha7/dewtask/releases?per_page=100";
       try {
         const response = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
@@ -215,11 +213,9 @@
         }, 0);
         countEl.textContent = windowsDownloads.toLocaleString() + " downloads";
         countEl.title = "Combined download count for .exe installer assets across published stable releases";
-        footnoteEl.textContent = "GitHub release data · Combined .exe installer downloads across published stable releases.";
       } catch (error) {
         versionEl.textContent = "LATEST RELEASE";
         countEl.textContent = "View releases on GitHub";
-        footnoteEl.textContent = "Live release statistics could not be loaded. Visit GitHub for current release information.";
         console.warn("Unable to load DewTask release statistics:", error);
       }
     })();
