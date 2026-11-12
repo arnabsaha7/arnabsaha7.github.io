@@ -571,3 +571,48 @@ button:focus-visible {
     line-height: 1.8;
   }
 }
+
+
+/* Mobile navigation override.
+   Keep the desktop links hidden until the desktop breakpoint; the base
+   .desktop-nav rule must not override Tailwind's responsive visibility. */
+@media (max-width: 1023px) {
+  .desktop-nav {
+    display: none !important;
+  }
+
+  .nav-grid {
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 0.75rem;
+  }
+
+  .nav-grid > * {
+    min-width: 0;
+  }
+}
+
+@media (min-width: 1024px) {
+  .desktop-nav {
+    display: flex;
+  }
+}
+
+@media (max-width: 639px) {
+  .nav-grid {
+    gap: 0.5rem;
+  }
+
+  .nav-grid > :first-child {
+    gap: 0.5rem;
+  }
+
+  .nav-grid > :last-child {
+    gap: 0.5rem;
+  }
+
+  .nav-grid [data-download-link] {
+    gap: 0.375rem;
+    padding-inline: 0.65rem;
+    white-space: nowrap;
+  }
+}
