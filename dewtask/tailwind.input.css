@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+/* Scan every page and shared partial used by the static site. */
+@source "./index.html";
+@source "./privacy.html";
+@source "./terms.html";
+@source "./partials";
+@source "./js";
+
+@theme {
+  --font-sans: Inter, sans-serif;
+  --font-display: "Space Grotesk", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+
+  --color-brand-300: #8bdcff;
+  --color-brand-400: #56c2ff;
+  --color-brand-500: #2693ff;
+  --color-brand-600: #1366e0;
+  --color-brand-teal: #1ad9a6;
+  --color-brand-emerald: #2ce074;
+
+  --color-surface-base: #06080c;
+  --color-surface-deep: #0a0e14;
+  --color-surface-elevated: #0f1520;
+  --color-surface-card: #121926;
+  --color-surface-highlight: #182232;
+  --color-surface-border: #1c2638;
+  --color-surface-borderBright: #2a3952;
+}

@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" width="100%" height="100%">
+  <defs>
+    <!-- Brightened & Lifted Gradients for High Contrast on Dark Surfaces -->
+    <linearGradient id="dropGradDark" x1="35%" y1="5%" x2="70%" y2="85%">
+      <stop offset="0%" stop-color="#5CE1FF" />
+      <stop offset="45%" stop-color="#2B99FF" />
+      <stop offset="100%" stop-color="#1463E0" />
+    </linearGradient>
+    <linearGradient id="dropHighlightDark" x1="20%" y1="15%" x2="60%" y2="75%">
+      <stop offset="0%" stop-color="#8CEBFF" stop-opacity="0.8" />
+      <stop offset="100%" stop-color="#2B99FF" stop-opacity="0" />
+    </linearGradient>
+    <linearGradient id="leftLeafGradDark" x1="15%" y1="20%" x2="75%" y2="95%">
+      <stop offset="0%" stop-color="#3DF5BE" />
+      <stop offset="55%" stop-color="#1AD9A6" />
+      <stop offset="100%" stop-color="#10A891" />
+    </linearGradient>
+    <linearGradient id="leafTopGradDark" x1="0%" y1="60%" x2="100%" y2="20%">
+      <stop offset="0%" stop-color="#57F790" />
+      <stop offset="100%" stop-color="#2CE074" />
+    </linearGradient>
+    <linearGradient id="leafBotGradDark" x1="10%" y1="90%" x2="95%" y2="25%">
+      <stop offset="0%" stop-color="#14B866" />
+      <stop offset="50%" stop-color="#1ED175" />
+      <stop offset="100%" stop-color="#28E382" />
+    </linearGradient>
+    <filter id="checkShadowDark" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="2" stdDeviation="2.5" flood-color="#021B4A" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <g transform="translate(-21, -15)">
+    <path d="M 65 65 C 51 86, 46 105, 49 124 C 52 142, 65 157, 79 164 C 82 155, 87 146, 94 139 C 71 128, 60 109, 60 87 C 60 79, 62 72, 65 65 Z" fill="url(#leftLeafGradDark)" />
+    <path d="M 65 65 C 60 85, 62 118, 94 139 C 96 137, 98 135, 100 133 C 68 114, 64 85, 68 61 Z" fill="#04384B" opacity="0.45" />
+    <path d="M 97 22 C 99 19.5, 101 19.5, 103 22 C 118 40, 152 77, 152 108 C 152 110, 151.8 111.5, 151.5 113 C 134 117, 108 124, 94 139 C 66 123, 59 97, 65 65 C 74 50, 87 34, 97 22 Z" fill="url(#dropGradDark)" />
+    <path d="M 98 25 C 85 42, 70 65, 69 91 C 68 110, 77 123, 91 132 C 81 120, 77 105, 79 88 C 81 66, 91 43, 100 25 Z" fill="url(#dropHighlightDark)" />
+    <path d="M 85 165 C 96 138, 120 123, 154 117 C 135 135, 112 153, 85 165 Z" fill="url(#leafTopGradDark)" />
+    <path d="M 85 165 C 112 153, 135 135, 154 117 C 152 146, 132 169, 103 169 C 96 169, 90 167.5, 85 165 Z" fill="url(#leafBotGradDark)" />
+    <path d="M 85 99 L 96.5 110.5 L 121.5 85.5" fill="none" stroke="#FFFFFF" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#checkShadowDark)" />
+  </g>
+</svg>
