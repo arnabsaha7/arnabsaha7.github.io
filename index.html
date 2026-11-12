@@ -1,41 +1,229 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website</title>
-
-    <style>
-        body {
-            background: #0d1117;
-            color: #ffffff;
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
-
-        .container {
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 42px;
-        }
-
-        p {
-            color: #8b949e;
-        }
-    </style>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#161714">
+  <meta name="description" content="Arnab Saha — developer building thoughtful software, useful tools, and digital experiences.">
+  <title>Arnab Saha — Developer &amp; Builder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%279%27 fill=%27%23181916%27/%3E%3Ctext x=%2720%27 y=%2728%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-size=%2723%27 font-weight=%27700%27 fill=%27%23F4F1E8%27%3EA%3C/text%3E%3C/svg%3E">
 </head>
-
-<body>
-    <div class="container">
-        <h1>Hello, World!</h1>
-        <p>Welcome to my GitHub Pages website.</p>
+<body id="top">
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="signature" href="./" aria-label="Arnab Saha — home">
+        <span class="signature-mark" aria-hidden="true">A</span>
+        <span class="signature-name">Arnab Saha</span>
+        <span class="signature-divider" aria-hidden="true"></span>
+        <span class="signature-tag">DEVELOPER</span>
+      </a>
+      <nav class="header-nav" aria-label="Main navigation">
+        <a class="nav-current" href="#work">Work <span>01</span></a>
+        <a href="#about">About</a>
+        <a href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer">GitHub <span class="external" aria-hidden="true">↗</span></a>
+      </nav>
     </div>
+  </header>
+
+  <main>
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-inner">
+        <div class="hero-kicker">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>PERSONAL ARCHIVE</span>
+          <span class="hero-index">PORTFOLIO — 2026 <b>01</b></span>
+        </div>
+
+        <div class="hero-layout">
+          <div class="hero-copy">
+            <h1 id="hero-title">I BUILD<br>THINGS THAT<br><span>MAKE SENSE.</span></h1>
+            <p class="hero-description">I turn ideas into useful software — thoughtful interfaces, dependable systems, and tools that make everyday work a little better.</p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
+              <span class="availability"><i aria-hidden="true"></i> OPEN TO GOOD IDEAS</span>
+            </div>
+          </div>
+
+          <aside class="dev-card" aria-label="Developer profile">
+            <div class="dev-card-top">
+              <span><i></i><i></i><i></i></span>
+              <span>arnab@workspace: ~</span>
+              <span class="card-menu">···</span>
+            </div>
+            <div class="dev-card-body">
+              <div class="terminal-line"><span class="terminal-prompt">$</span> whoami</div>
+              <div class="terminal-output profile-name">Arnab Saha</div>
+              <div class="terminal-output profile-role">Developer · Product-minded builder</div>
+              <div class="terminal-spacer"></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span> cat interests.txt</div>
+              <div class="code-list"><span>01</span> Thoughtful product design</div>
+              <div class="code-list"><span>02</span> Desktop &amp; web applications</div>
+              <div class="code-list"><span>03</span> Systems that work offline</div>
+              <div class="terminal-spacer"></div>
+              <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="cursor-block" aria-hidden="true"></span></div>
+            </div>
+            <div class="dev-card-bottom">
+              <span>BUILD WITH INTENTION</span>
+              <span>ALWAYS LEARNING</span>
+            </div>
+            <span class="card-index" aria-hidden="true">AS / 01</span>
+          </aside>
+        </div>
+
+        <div class="hero-baseline">
+          <span>DESIGN-MINDED ENGINEERING</span>
+          <span class="baseline-line" aria-hidden="true"></span>
+          <span>THINK CLEARLY. BUILD USEFULLY. SHIP WITH CARE.</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">01 — SELECTED WORK</p>
+          <h2 id="work-title">Things I've built<span>.</span></h2>
+        </div>
+        <p class="section-intro">A growing collection of useful software, shaped by curiosity and built with care.</p>
+      </div>
+
+      <article class="project-card" aria-labelledby="dewtask-title">
+        <a class="project-preview" href="./dewtask/" aria-label="Visit the DewTask project website">
+          <div class="preview-header">
+            <span>PRODUCT / 001</span>
+            <span class="preview-state"><i></i> SHIPPED</span>
+          </div>
+          <div class="preview-art">
+            <div class="monitor-mockup" aria-label="DewTask displayed on a desktop monitor">
+              <div class="monitor-frame">
+                <div class="monitor-camera" aria-hidden="true"></div>
+                <div class="monitor-screen">
+                  <img src="./dewtask/assets/dewtask-overview.png" alt="DewTask dashboard showing workspaces and task overview" loading="lazy" decoding="async">
+                </div>
+                <div class="monitor-chin" aria-hidden="true"><span></span></div>
+              </div>
+              <div class="monitor-neck" aria-hidden="true"></div>
+              <div class="monitor-base" aria-hidden="true"></div>
+            </div>
+            <span class="preview-coordinate" aria-hidden="true">23.8°N / 91.2°E</span>
+          </div>
+          <div class="preview-footer">
+            <span>OFFLINE-FIRST PRODUCTIVITY</span>
+            <span>OPEN PROJECT <b aria-hidden="true">↗</b></span>
+          </div>
+        </a>
+
+        <div class="project-details">
+          <div class="project-overline">
+            <span>DESKTOP APPLICATION</span>
+            <span class="project-number">01 / 01</span>
+          </div>
+
+          <div class="project-heading-row">
+            <div class="project-brand">
+              <img src="./dewtask/assets/dewtask-app-icon-dark.svg" alt="" class="app-icon" width="48" height="48" loading="lazy">
+              <h3 id="dewtask-title">DewTask</h3>
+            </div>
+            <span class="live-pill"><i aria-hidden="true"></i><span id="release-version">Checking version…</span></span>
+          </div>
+
+          <p class="project-description">A fast, offline-first task manager for people who think in projects, not just to-do lists. Organize workspaces, break work into manageable parts, and keep your day in focus.</p>
+
+          <a class="project-visit" href="./dewtask/">
+            <span>Explore DewTask</span>
+            <span aria-hidden="true">↗</span>
+          </a>
+
+          <div class="project-divider"></div>
+
+          <div class="project-facts">
+            <div><span class="fact-label">PLATFORM</span><strong>Windows desktop</strong></div>
+            <div><span class="fact-label">DATA</span><strong>Local-first · SQLite</strong></div>
+            <div><span class="fact-label">BUILT WITH</span><strong>React · TypeScript · Rust</strong></div>
+            <div>
+              <span class="fact-label">INSTALLS</span>
+              <span class="stat-metric">
+                <strong id="download-count">Loading…</strong>
+                <span class="trend-arrow" aria-hidden="true">↑</span>
+              </span>
+            </div>
+          </div>
+
+          <p class="download-footnote" id="download-footnote">Release information and Windows installer downloads are retrieved live from GitHub.</p>
+
+          <div class="tech-stack" aria-label="Technologies used">
+            <span>REACT</span>
+            <span>TYPESCRIPT</span>
+            <span>RUST</span>
+            <span>TAURI</span>
+          </div>
+        </div>
+      </article>
+
+      <div class="more-work">
+        <span class="more-mark" aria-hidden="true">+</span>
+        <span>More experiments and projects are in the works.</span>
+        <span class="more-rule" aria-hidden="true"></span>
+        <span class="more-note">WATCH THIS SPACE</span>
+      </div>
+    </section>
+
+    <section class="about-strip" id="about" aria-labelledby="about-title">
+      <div class="about-label">
+        <p class="eyebrow">02 — A LITTLE ABOUT ME</p>
+        <h2 id="about-title">Curious by default.<br><span>Intentional by design.</span></h2>
+      </div>
+      <div class="about-copy">
+        <p>I enjoy working across the stack, learning how things fit together, and turning rough ideas into polished, practical tools. My approach is simple: make it useful, make it understandable, and sweat the details that matter.</p>
+        <a href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer" class="about-github">More of what I'm building <span aria-hidden="true">↗</span></a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a class="footer-signature" href="./"><span>A</span> ARNAB SAHA</a>
+      <p>Designed &amp; built with care. <span>© <span id="current-year">2026</span></span></p>
+      <a class="footer-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">BACK TO TOP ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("current-year").textContent = new Date().getFullYear();
+
+    (async function loadDewTaskReleaseStats() {
+      const versionEl = document.getElementById("release-version");
+      const countEl = document.getElementById("download-count");
+      const footnoteEl = document.getElementById("download-footnote");
+      const apiUrl = "https://api.github.com/repos/arnabsaha7/dewtask/releases?per_page=100";
+      try {
+        const response = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
+        if (!response.ok) throw new Error("GitHub API returned " + response.status);
+        const releases = await response.json();
+        const stableReleases = releases.filter(release => !release.draft && !release.prerelease);
+        if (!stableReleases.length) throw new Error("No published stable releases found");
+        const latest = stableReleases[0];
+        const version = latest.tag_name || latest.name || "Latest";
+        versionEl.textContent = version + " · LIVE";
+        versionEl.title = "Latest published stable release: " + version;
+        const windowsDownloads = stableReleases.reduce((total, release) => {
+          const installers = (release.assets || []).filter(asset => asset.name && /\.exe$/i.test(asset.name));
+          return total + installers.reduce((sum, asset) => sum + (Number(asset.download_count) || 0), 0);
+        }, 0);
+        countEl.textContent = windowsDownloads.toLocaleString() + " downloads";
+        countEl.title = "Combined download count for .exe installer assets across published stable releases";
+        footnoteEl.textContent = "GitHub release data · Combined .exe installer downloads across published stable releases.";
+      } catch (error) {
+        versionEl.textContent = "LATEST RELEASE";
+        countEl.textContent = "View releases on GitHub";
+        footnoteEl.textContent = "Live release statistics could not be loaded. Visit GitHub for current release information.";
+        console.warn("Unable to load DewTask release statistics:", error);
+      }
+    })();
+  </script>
 </body>
 </html>
