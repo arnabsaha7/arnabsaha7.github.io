@@ -1,224 +1,464 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#161714">
-  <meta name="description" content="Arnab Saha — developer building thoughtful software, useful tools, and digital experiences.">
-  <title>Arnab Saha — Developer &amp; Builder</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Arnab Saha — Systems &amp; Product Engineer</title>
+  <meta name="description" content="Arnab Saha engineers local-first desktop apps and high-throughput FastAPI backends with Rust, Tauri, TypeScript, and Python.">
+  <meta name="color-scheme" content="dark light">
+  <meta name="theme-color" content="#090A0C">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <meta property="og:title" content="Arnab Saha — Systems &amp; Product Engineer">
+  <meta property="og:description" content="Local-first desktop software and resilient backend systems built for zero latency.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%23FF5A1F'/%3E%3Ctext x='12' y='18' font-family='monospace' font-size='16' font-weight='700' fill='%230A0B0D' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
+  <script>
+    /* Apply saved (or system) theme before first paint — no dark/light flash. */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      document.documentElement.dataset.theme = t;
+    })();
+  </script>
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"Person","name":"Arnab Saha","jobTitle":"Systems & Product Engineer","sameAs":["https://github.com/arnabsaha7"],"knowsAbout":["Rust","Tauri","TypeScript","React","FastAPI","Python","SQLite"]}
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@700;800&amp;display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+  <noscript><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=JetBrains+Mono:wght@400;500;600&amp;family=Space+Grotesk:wght@700;800&amp;display=swap" rel="stylesheet"></noscript>
   <link rel="stylesheet" href="./styles.css">
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 40 40%27%3E%3Crect width=%2740%27 height=%2740%27 rx=%279%27 fill=%27%23181916%27/%3E%3Ctext x=%2720%27 y=%2728%27 text-anchor=%27middle%27 font-family=%27Arial,sans-serif%27 font-size=%2723%27 font-weight=%27700%27 fill=%27%23F4F1E8%27%3EA%3C/text%3E%3C/svg%3E">
+  <script src="./script.js" defer></script>
 </head>
-<body id="top">
-  <header class="site-header">
-    <div class="header-inner">
-      <a class="signature" href="./" aria-label="Arnab Saha — home">
-        <span class="signature-mark" aria-hidden="true">A</span>
-        <span class="signature-name">Arnab Saha</span>
-        <span class="signature-divider" aria-hidden="true"></span>
-        <span class="signature-tag">DEVELOPER</span>
-      </a>
-      <nav class="header-nav" aria-label="Main navigation">
-        <a class="nav-current" href="#work">Work <span>01</span></a>
-        <a href="#about">About</a>
-        <a href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer">GitHub <span class="external" aria-hidden="true">↗</span></a>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="dewIcon" viewBox="0 0 512 512">
+    <defs>
+      <linearGradient id="bgSurfaceDark" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B3A63"/><stop offset="55%" stop-color="#0F2340"/><stop offset="100%" stop-color="#091527"/></linearGradient>
+      <radialGradient id="markGlow" cx="50%" cy="46%" r="52%"><stop offset="0%" stop-color="#2B99FF" stop-opacity="0.42"/><stop offset="55%" stop-color="#1463E0" stop-opacity="0.14"/><stop offset="100%" stop-color="#1463E0" stop-opacity="0"/></radialGradient>
+      <linearGradient id="sheen" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.10"/><stop offset="45%" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
+      <linearGradient id="rim" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.30"/><stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.04"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.10"/></linearGradient>
+      <linearGradient id="dropGradDark" x1="35%" y1="5%" x2="70%" y2="85%"><stop offset="0%" stop-color="#5CE1FF"/><stop offset="45%" stop-color="#2B99FF"/><stop offset="100%" stop-color="#1463E0"/></linearGradient>
+      <linearGradient id="dropHighlightDark" x1="20%" y1="15%" x2="60%" y2="75%"><stop offset="0%" stop-color="#8CEBFF" stop-opacity="0.8"/><stop offset="100%" stop-color="#2B99FF" stop-opacity="0"/></linearGradient>
+      <linearGradient id="leftLeafGradDark" x1="15%" y1="20%" x2="75%" y2="95%"><stop offset="0%" stop-color="#3DF5BE"/><stop offset="55%" stop-color="#1AD9A6"/><stop offset="100%" stop-color="#10A891"/></linearGradient>
+      <linearGradient id="leafTopGradDark" x1="0%" y1="60%" x2="100%" y2="20%"><stop offset="0%" stop-color="#57F790"/><stop offset="100%" stop-color="#2CE074"/></linearGradient>
+      <linearGradient id="leafBotGradDark" x1="10%" y1="90%" x2="95%" y2="25%"><stop offset="0%" stop-color="#14B866"/><stop offset="50%" stop-color="#1ED175"/><stop offset="100%" stop-color="#28E382"/></linearGradient>
+      <filter id="appDropShadowDark" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#020813" flood-opacity="0.5"/></filter>
+      <filter id="checkShadowDark" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.6" flood-color="#021B4A" flood-opacity="0.5"/></filter>
+    </defs>
+    <rect width="512" height="512" rx="112" fill="url(#bgSurfaceDark)"/>
+    <rect width="512" height="512" rx="112" fill="url(#markGlow)"/>
+    <rect width="512" height="512" rx="112" fill="url(#sheen)"/>
+    <rect x="1" y="1" width="510" height="510" rx="111" fill="none" stroke="url(#rim)" stroke-width="2"/>
+    <g transform="translate(-23.1, -9.2) scale(2.75)" filter="url(#appDropShadowDark)">
+      <path d="M 65 65 C 51 86, 46 105, 49 124 C 52 142, 65 157, 79 164 C 82 155, 87 146, 94 139 C 71 128, 60 109, 60 87 C 60 79, 62 72, 65 65 Z" fill="url(#leftLeafGradDark)"/>
+      <path d="M 65 65 C 60 85, 62 118, 94 139 C 96 137, 98 135, 100 133 C 68 114, 64 85, 68 61 Z" fill="#04384B" opacity="0.45"/>
+      <path d="M 97 22 C 99 19.5, 101 19.5, 103 22 C 118 40, 152 77, 152 108 C 152 110, 151.8 111.5, 151.5 113 C 134 117, 108 124, 94 139 C 66 123, 59 97, 65 65 C 74 50, 87 34, 97 22 Z" fill="url(#dropGradDark)"/>
+      <path d="M 98 25 C 85 42, 70 65, 69 91 C 68 110, 77 123, 91 132 C 81 120, 77 105, 79 88 C 81 66, 91 43, 100 25 Z" fill="url(#dropHighlightDark)"/>
+      <path d="M 85 165 C 96 138, 120 123, 154 117 C 135 135, 112 153, 85 165 Z" fill="url(#leafTopGradDark)"/>
+      <path d="M 85 165 C 112 153, 135 135, 154 117 C 152 146, 132 169, 103 169 C 96 169, 90 167.5, 85 165 Z" fill="url(#leafBotGradDark)"/>
+      <path d="M 85 99 L 96.5 110.5 L 121.5 85.5" fill="none" stroke="#FFFFFF" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#checkShadowDark)"/>
+    </g>
+  </symbol>
+</svg>
+
+<header class="bar">
+  <div class="wrap">
+    <a href="#top" class="brand" aria-label="Arnab Saha — Home">
+      <span class="mark" aria-hidden="true">A</span>
+      <b>ARNAB SAHA</b>
+      <span class="lbl brand-tag">SYSTEMS &amp; PRODUCT</span>
+    </a>
+    <div class="nav-cluster">
+      <nav class="top-nav" id="primaryNav" aria-label="Primary">
+        <a href="#work"><span>01</span>Work</a>
+        <a href="#stack"><span>02</span>Stack</a>
+        <a href="#about"><span>03</span>About</a>
+        <a href="#contact"><span>04</span>Contact</a>
       </nav>
-    </div>
-  </header>
-
-  <main>
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-inner">
-        <div class="hero-kicker">
-          <span class="status-dot" aria-hidden="true"></span>
-          <span>PERSONAL ARCHIVE</span>
-          <span class="kicker-divider" aria-hidden="true">/</span>
-          <span class="kicker-system">001 // SYS.INIT</span>
-          <span class="hero-index">PORTFOLIO — 2026 <b>01</b></span>
-        </div>
-
-        <div class="hero-layout">
-          <div class="hero-copy">
-            <h1 id="hero-title">I BUILD<br>THINGS THAT<br><span>MAKE SENSE.</span></h1>
-            <p class="hero-description">I turn ideas into useful software — thoughtful interfaces, dependable systems, and tools that make everyday work a little better.</p>
-            <div class="hero-actions">
-              <a class="primary-link" href="#work">Explore selected work <span aria-hidden="true">↗</span></a>
-              <span class="availability"><i aria-hidden="true"></i> OPEN TO GOOD IDEAS</span>
-            </div>
-          </div>
-
-          <aside class="dev-card" aria-label="Developer profile">
-            <div class="dev-card-top">
-              <span><i></i><i></i><i></i></span>
-              <span>arnab@workspace: ~</span>
-              <span class="card-menu">···</span>
-            </div>
-            <div class="dev-card-body">
-              <div class="terminal-line"><span class="terminal-prompt">$</span> whoami</div>
-              <div class="terminal-output profile-name">Arnab Saha</div>
-              <div class="terminal-output profile-role">Developer · Product-minded builder</div>
-              <div class="terminal-spacer"></div>
-              <div class="terminal-line"><span class="terminal-prompt">$</span> cat interests.txt</div>
-              <div class="code-list"><span>01</span> Thoughtful product design</div>
-              <div class="code-list"><span>02</span> Desktop &amp; web applications</div>
-              <div class="code-list"><span>03</span> Systems that work offline</div>
-              <div class="terminal-spacer"></div>
-              <div class="terminal-line"><span class="terminal-prompt">$</span> status --current</div>
-              <div class="terminal-status"><i aria-hidden="true"></i><span>Building useful, dependable software</span></div>
-              <div class="terminal-spacer"></div>
-              <div class="terminal-line"><span class="terminal-prompt">$</span> <span class="cursor-block" aria-hidden="true"></span></div>
-            </div>
-            <div class="dev-card-bottom">
-              <span>BUFFER: TTY1</span>
-              <span>MODE: BUILD / REFINE</span>
-              <span>READY</span>
-            </div>
-            <span class="card-index" aria-hidden="true">AS / 01</span>
-          </aside>
-        </div>
-
-        <div class="hero-baseline">
-          <span>DESIGN-MINDED ENGINEERING</span>
-          <span class="baseline-line" aria-hidden="true"></span>
-          <span>THINK CLEARLY. BUILD USEFULLY. SHIP WITH CARE.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="work-section" id="work" aria-labelledby="work-title">
-      <div class="section-heading">
-        <div>
-          <p class="eyebrow">01 — SELECTED WORK</p>
-          <h2 id="work-title">Things I've built<span>.</span></h2>
-        </div>
-        <p class="section-intro">A growing collection of useful software, shaped by curiosity and built with care.</p>
-      </div>
-
-      <article class="project-card" aria-labelledby="dewtask-title">
-        <a class="project-preview" href="./dewtask/" aria-label="Visit the DewTask project website">
-          <div class="preview-header">
-            <span>PRODUCT / 001</span>
-            <span class="preview-state"><i></i> SHIPPED</span>
-          </div>
-          <div class="preview-art">
-            <div class="monitor-mockup" aria-label="DewTask displayed on a desktop monitor">
-              <div class="monitor-frame">
-                <div class="monitor-camera" aria-hidden="true"></div>
-                <div class="monitor-screen">
-                  <img src="./dewtask/assets/dewtask-overview.png" alt="DewTask dashboard showing workspaces and task overview" loading="lazy" decoding="async">
-                </div>
-                <div class="monitor-chin" aria-hidden="true"><span></span></div>
-              </div>
-              <div class="monitor-neck" aria-hidden="true"></div>
-              <div class="monitor-base" aria-hidden="true"></div>
-            </div>
-            <span class="preview-coordinate" aria-hidden="true">23.8°N / 91.2°E</span>
-          </div>
-          <div class="preview-footer">
-            <span>OFFLINE-FIRST PRODUCTIVITY</span>
-            <span>OPEN PROJECT <b aria-hidden="true">↗</b></span>
-          </div>
+      <div class="bar-actions">
+        <a class="ico" href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer" aria-label="Arnab Saha on GitHub">
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
         </a>
+        <button id="navBtn" class="ico nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+        </button>
+        <button id="themeBtn" class="ico" type="button" aria-label="Switch theme">
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
 
-        <div class="project-details">
-          <div class="project-overline">
-            <span>DESKTOP APPLICATION</span>
-            <span class="project-number">01 / 01</span>
-          </div>
-
-          <div class="project-heading-row">
-            <div class="project-brand">
-              <img src="./dewtask/assets/dewtask-app-icon-dark.svg" alt="" class="app-icon" width="48" height="48" loading="lazy">
-              <h3 id="dewtask-title">DewTask</h3>
-            </div>
-            <span class="live-pill"><i aria-hidden="true"></i><span id="release-version">Checking version…</span></span>
-          </div>
-
-          <p class="project-description">A fast, offline-first task manager for people who think in projects, not just to-do lists. Organize workspaces, break work into manageable parts, and keep your day in focus.</p>
-
-          <a class="project-visit" href="./dewtask/">
-            <span>Explore DewTask</span>
-            <span aria-hidden="true">↗</span>
+<main id="main">
+  <!-- 00 // HERO -->
+  <section id="top" class="hero">
+    <div class="wrap grid">
+      <div class="c7">
+        <div class="hero-eyebrow">
+          <b>00</b><i>//</i><span>SYSTEMS &amp; PRODUCT ENGINEERING</span>
+        </div>
+        <h1>I engineer apps and backends built for <em>instant response</em> and <em>reliable execution</em>.</h1>
+        <p class="hero-sub">
+          Designing native desktop workspaces, resilient SQLite data layers, and high-throughput APIs with <strong>Rust, Tauri, TypeScript, and FastAPI</strong>.
+        </p>
+        <div class="row">
+          <a class="btn pri" href="#work">
+            <span>Explore selected work</span>
+            <span class="arr" aria-hidden="true">↓</span>
           </a>
+          <a class="btn gh" href="#contact">
+            <span>Get in touch</span>
+            <span class="arr" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
 
-          <div class="project-divider"></div>
+      <aside class="term c5" aria-label="Developer manifest and workflow terminal">
+        <div class="th">
+          <div class="term-tabs" role="tablist" aria-label="Terminal view">
+            <button class="term-tab on" role="tab" aria-selected="true" id="tab-manifest" aria-controls="pane-manifest" tabindex="0" data-tab="manifest">01 // MANIFEST</button>
+            <button class="term-tab" role="tab" aria-selected="false" id="tab-workflow" aria-controls="pane-workflow" tabindex="-1" data-tab="workflow">02 // WORKFLOW</button>
+          </div>
+          <span>UTF-8 · LF</span>
+        </div>
 
-          <div class="spec-sheet" aria-label="DewTask project details">
-            <div class="spec-row"><span class="fact-label">PLATFORM</span><strong>Windows desktop</strong></div>
-            <div class="spec-row"><span class="fact-label">DATA</span><strong>Local-first · SQLite</strong></div>
-            <div class="spec-row"><span class="fact-label">BUILT WITH</span><strong>React · TypeScript · Rust</strong></div>
-            <div class="spec-row"><span class="fact-label">INSTALLS</span><strong id="download-count">Loading…</strong></div>
+        <div class="tb">
+          <!-- Tab 1: Engineering Manifest -->
+          <div class="term-pane on" id="pane-manifest" role="tabpanel" aria-labelledby="tab-manifest">
+            <div class="t-block">
+              <div class="t-cmd"><b>$</b>arnab inspect --architecture</div>
+              <dl class="t-grid">
+                <dt>01 focus</dt><dd>Local-first desktop &amp; API systems</dd>
+                <dt>02 desktop</dt><dd>Rust · Tauri · TypeScript · React</dd>
+                <dt>03 backend</dt><dd>FastAPI · Python · SQLite · SQL</dd>
+                <dt>04 standard</dt><dd>Offline-capable, zero-bloat builds</dd>
+              </dl>
+            </div>
+            <div class="t-block">
+              <div class="t-cmd"><b>$</b>git status --short --branch</div>
+              <div class="t-out"><span class="t-branch">## main...origin/main</span> — shipping <strong>DewTask</strong></div>
+            </div>
+            <div class="t-block">
+              <div class="t-cmd"><b>$</b><i class="cur" aria-hidden="true"></i></div>
+            </div>
           </div>
 
+          <!-- Tab 2: Execution Workflow -->
+          <div class="term-pane" id="pane-workflow" role="tabpanel" aria-labelledby="tab-workflow">
+            <div class="t-block">
+              <div class="t-cmd"><b>$</b>project run --protocol</div>
+              <dl class="t-grid">
+                <dt>01 scope</dt><dd>Architecture &amp; edge cases defined upfront</dd>
+                <dt>02 estimate</dt><dd>Clear milestones, zero hidden unknowns</dd>
+                <dt>03 build</dt><dd>Iterative ships with plain-word updates</dd>
+                <dt>04 handover</dt><dd>Tested binaries, docs &amp; clean source</dd>
+              </dl>
+            </div>
+            <div class="t-block">
+              <div class="t-cmd"><b>$</b>status --availability</div>
+              <div class="t-out">Open for select engineering &amp; product builds</div>
+            </div>
+            <div class="t-block">
+              <div class="t-cmd"><b>$</b><i class="cur" aria-hidden="true"></i></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tf">
+          <span><i class="dot"></i>&nbsp; SYS.STATUS: NOMINAL · IST (UTC+5:30)</span>
+          <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 01 // SELECTED WORK -->
+  <section id="work" class="sec">
+    <div class="wrap">
+      <div class="head">
+        <h2><i>01</i>Selected work</h2>
+        <span class="lbl">1 featured project</span>
+      </div>
+
+      <article class="bento">
+        <div class="grid">
+          <div class="c7 stage">
+            <div class="stage-top">
+              <span class="lbl lbl-2">DewTask · interactive runtime preview</span>
+              <span class="lbl badge-accent">Interactive sandbox</span>
+            </div>
+
+            <div class="dw" id="dw" role="region" aria-label="DewTask interactive preview. Change task status, add up to 2 custom tasks, or delete tasks.">
+              <nav class="dwn" id="dwNav" aria-label="DewTask views">
+                <div class="dwl">
+                  <svg viewBox="0 0 512 512" aria-hidden="true"><use href="#dewIcon"/></svg>
+                  <span>Dew<i>Task</i></span>
+                </div>
+                <button type="button" data-v="overview" class="on" aria-pressed="true">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="1.5"/><rect x="13" y="3" width="8" height="5" rx="1.5"/><rect x="13" y="10" width="8" height="11" rx="1.5"/><rect x="3" y="13" width="8" height="8" rx="1.5"/></svg>
+                  <span>Overview</span>
+                </button>
+                <button type="button" data-v="all" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M8 6h13M8 12h13M8 18h13"/><circle cx="3.2" cy="6" r="1.3" fill="currentColor" stroke="none"/><circle cx="3.2" cy="12" r="1.3" fill="currentColor" stroke="none"/><circle cx="3.2" cy="18" r="1.3" fill="currentColor" stroke="none"/></svg>
+                  <span>All Tasks</span>
+                </button>
+                <button type="button" data-v="today" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4.5" width="18" height="16" rx="2"/><path d="M3 9.5h18M8 3v3M16 3v3"/><path d="m8.5 14.5 2 2 4-4.5"/></svg>
+                  <span>Today</span>
+                </button>
+                <button type="button" data-v="upcoming" aria-pressed="false">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>
+                  <span>Upcoming</span>
+                </button>
+                <div class="dwu"><b>A</b><span>Arnab</span></div>
+              </nav>
+
+              <div class="dwm">
+                <div class="dwt">
+                  <input id="dwq" type="text" placeholder="Filter tasks across views..." aria-label="Filter tasks" autocomplete="off">
+                  <button type="button" class="dwadd" id="dwAddBtn" aria-label="Open new task popup" aria-expanded="false" title="Create new task (Max 2 custom)">
+                    <span>+</span>
+                    <small id="dwQuota">0/2</small>
+                  </button>
+                </div>
+
+                <!-- Compact Popup Modal for Naming & Adding a Task -->
+                <div class="dw-pop" id="dwPop" hidden role="dialog" aria-modal="false" aria-label="Create new task">
+                  <form id="dwForm" class="dw-pop-box">
+                    <div class="dw-pop-head">
+                      <span>NEW TASK</span>
+                      <span class="dw-pop-lim" id="dwPopLim">2 slots left</span>
+                    </div>
+                    <input id="dwNewTitle" type="text" maxlength="48" placeholder="Enter task name (e.g. Benchmark SQLite WAL)" required autocomplete="off">
+                    <div class="dw-pop-row">
+                      <select id="dwNewTag" aria-label="Workspace tag">
+                        <option value="DewTask">Workspace: DewTask</option>
+                        <option value="Backend">Workspace: Backend</option>
+                        <option value="R&D">Workspace: R&amp;D</option>
+                      </select>
+                      <div class="dw-pop-actions">
+                        <button type="button" class="dw-btn-cancel" id="dwCancel">Cancel</button>
+                        <button type="submit" class="dw-btn-save">Create</button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+
+                <div id="dwBody"><noscript><small class="dw-hint">Enable JavaScript to try the interactive preview.</small></noscript></div>
+              </div>
+            </div>
+
+            <div class="stage-top">
+              <span class="pill"><span class="lbl">IST · WINDOWS NATIVE</span></span>
+              <span class="lbl">SIMULATED PREVIEW · IN-MEMORY DATA</span>
+            </div>
+          </div>
+
+          <div class="c5 dossier">
+            <div class="dossier-top">
+              <span class="lbl">Desktop application</span>
+              <span class="pill"><span class="dot"></span><span class="lbl lbl-strong" id="dewTag">Live release</span></span>
+            </div>
+
+            <h3>
+              <svg class="dwi" viewBox="0 0 512 512" aria-hidden="true"><use href="#dewIcon"/></svg>
+              <span>DewTask</span>
+            </h3>
+
+            <p>
+              An offline-first task and workspace manager engineered for people who think in structured projects rather than flat to-do lists. Built for instant startup, local data ownership, and distraction-free execution.
+            </p>
+
+            <div class="spec">
+              <div><div class="lbl">Platform</div><div class="mono">Windows desktop</div></div>
+              <div><div class="lbl">Storage</div><div class="mono">Local-first · SQLite</div></div>
+              <div><div class="lbl">Stack</div><div class="mono">Rust · Tauri</div></div>
+              <div><div class="lbl">Downloads</div><div class="mono accent" id="dl">—</div></div>
+            </div>
+
+            <div class="foot">
+              <a class="btn pri" href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer">Open project dossier ↗</a>
+              <a class="lbl under" href="https://github.com/arnabsaha7/dewtask/releases" target="_blank" rel="noopener noreferrer">View GitHub release notes</a>
+            </div>
+          </div>
         </div>
       </article>
 
-      <div class="more-work">
-        <div class="more-work-copy">
-          <span class="more-mark" aria-hidden="true">+</span>
-          <div><strong>More work in progress.</strong><span>New projects and experiments will appear here as they take shape.</span></div>
+      <div class="grid">
+        <div class="c6 card">
+          <div>
+            <span class="lbl lbl-accent">R&amp;D lab — in progress</span>
+            <h3>Open-source CLI tools &amp; local-first sync experiments</h3>
+            <p>Lightweight developer utilities, keyboard-driven desktop tooling, and conflict-free local-first sync prototypes developed in public.</p>
+            <div class="lab-tags">
+              <span>Rust Crates</span>
+              <span>Tauri Runtime</span>
+              <span>SQLite WAL</span>
+              <span>CLI Tooling</span>
+            </div>
+          </div>
+          <div>
+            <a class="lbl under lbl-strong" href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer">Follow active commits on GitHub ↗</a>
+          </div>
         </div>
-        <a href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer">FOLLOW ALONG ON GITHUB <span aria-hidden="true">↗</span></a>
-      </div>
-    </section>
 
-    <section class="about-strip" id="about" aria-labelledby="about-title">
-      <div class="about-label">
-        <p class="eyebrow">02 — A LITTLE ABOUT ME</p>
-        <h2 id="about-title">Curious by default.<br><span>Intentional by design.</span></h2>
-      </div>
-      <div class="about-copy">
-        <p>I enjoy working across the stack, learning how things fit together, and turning rough ideas into polished, practical tools. My approach is simple: make it useful, make it understandable, and sweat the details that matter.</p>
-        <div class="about-principles" aria-label="Working principles">
-          <div><span>01</span><strong>Make it useful.</strong></div>
-          <div><span>02</span><strong>Keep it clear.</strong></div>
-          <div><span>03</span><strong>Sweat the details.</strong></div>
+        <div class="c6 card">
+          <span class="lbl">Architecture principles</span>
+          <div class="pr-list">
+            <div class="pr">
+              <i>01</i>
+              <div>
+                <b>Offline by default</b>
+                <div class="pr-desc">Core workflows run locally on the machine without waiting on a network round-trip.</div>
+              </div>
+            </div>
+            <div class="pr">
+              <i>02</i>
+              <div>
+                <b>Instant interactions</b>
+                <div class="pr-desc">Indexed local reads, lean state management, and native OS windowing keep the UI responsive.</div>
+              </div>
+            </div>
+            <div class="pr">
+              <i>03</i>
+              <div>
+                <b>Minimal dependencies</b>
+                <div class="pr-desc">Fewer moving parts to audit, smaller installer binaries, and long-term maintainability.</div>
+              </div>
+            </div>
+          </div>
         </div>
-        <a href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer" class="about-github">More of what I'm building <span aria-hidden="true">↗</span></a>
       </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="footer-inner">
-      <a class="footer-signature" href="./"><span>A</span> ARNAB SAHA</a>
-      <p>Designed &amp; built with care. <span>© <span id="current-year">2026</span></span></p>
-      <a class="footer-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">BACK TO TOP ↑</a>
     </div>
-  </footer>
+  </section>
 
-  <script>
-    document.getElementById("current-year").textContent = new Date().getFullYear();
+  <!-- 02 // ENGINEERING STACK -->
+  <section id="stack" class="sec">
+    <div class="wrap">
+      <div class="head">
+        <h2><i>02</i>Engineering stack</h2>
+        <span class="lbl">PRODUCTION CAPABILITIES</span>
+      </div>
+      <div class="stack">
+        <div>
+          <div class="stack-col-head">
+            <span class="lbl">Systems &amp; desktop</span>
+            <span class="lbl">01</span>
+          </div>
+          <ul>
+            <li><span>Rust</span><span>Core / Native</span></li>
+            <li><span>Tauri</span><span>Desktop Runtime</span></li>
+            <li><span>TypeScript &amp; React</span><span>UI Layer</span></li>
+            <li><span>Windows packaging</span><span>MSI / EXE</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="stack-col-head">
+            <span class="lbl">Backend &amp; data</span>
+            <span class="lbl">02</span>
+          </div>
+          <ul>
+            <li><span>FastAPI</span><span>REST / Async APIs</span></li>
+            <li><span>Python</span><span>Services &amp; CLI</span></li>
+            <li><span>SQLite &amp; SQL</span><span>Local / Relational</span></li>
+            <li><span>Schema &amp; query tuning</span><span>Indexing</span></li>
+          </ul>
+        </div>
+        <div>
+          <div class="stack-col-head">
+            <span class="lbl">Engineering practice</span>
+            <span class="lbl">03</span>
+          </div>
+          <ul>
+            <li><span>Performance profiling</span><span>Latency</span></li>
+            <li><span>Data pipelines</span><span>ETL / Sync</span></li>
+            <li><span>Release automation</span><span>CI / CD</span></li>
+            <li><span>Offline-first architecture</span><span>State</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
 
-    (async function loadDewTaskReleaseStats() {
-      const versionEl = document.getElementById("release-version");
-      const countEl = document.getElementById("download-count");
-      const apiUrl = "https://api.github.com/repos/arnabsaha7/dewtask/releases?per_page=100";
-      try {
-        const response = await fetch(apiUrl, { headers: { "Accept": "application/vnd.github+json" } });
-        if (!response.ok) throw new Error("GitHub API returned " + response.status);
-        const releases = await response.json();
-        const stableReleases = releases.filter(release => !release.draft && !release.prerelease);
-        if (!stableReleases.length) throw new Error("No published stable releases found");
-        const latest = stableReleases[0];
-        const version = latest.tag_name || latest.name || "Latest";
-        versionEl.textContent = version + " · LIVE";
-        versionEl.title = "Latest published stable release: " + version;
-        const windowsDownloads = stableReleases.reduce((total, release) => {
-          const installers = (release.assets || []).filter(asset => asset.name && /\.exe$/i.test(asset.name));
-          return total + installers.reduce((sum, asset) => sum + (Number(asset.download_count) || 0), 0);
-        }, 0);
-        countEl.textContent = windowsDownloads.toLocaleString() + " downloads";
-        countEl.title = "Combined download count for .exe installer assets across published stable releases";
-      } catch (error) {
-        versionEl.textContent = "LATEST RELEASE";
-        countEl.textContent = "View releases on GitHub";
-        console.warn("Unable to load DewTask release statistics:", error);
-      }
-    })();
-  </script>
+  <!-- 03 // ABOUT -->
+  <section id="about" class="sec about">
+    <div class="wrap">
+      <div class="head">
+        <h2><i>03</i>About</h2>
+        <span class="lbl">BACKGROUND &amp; TELEMETRY</span>
+      </div>
+      <div class="grid grid-start">
+        <div class="c7">
+          <p class="about-lead">
+            I'm a software engineer with 3+ years of experience, including 2+ years in industry at Deloitte, focused on building fast FastAPI backends and native-feeling desktop applications.
+          </p>
+          <p class="about-sub">
+            I enjoy working across the boundary between systems and interface; structuring clean relational schemas, profiling slow queries, and shipping software that feels calm, predictable, and snappy in daily use.
+          </p>
+        </div>
+        <div class="c5 facts">
+          <div><span class="lbl">Role</span><span class="mono">Systems &amp; Product Engineer</span></div>
+          <div><span class="lbl">Experience</span><span class="mono">3+ Years (Deloitte &amp; Independent)</span></div>
+          <div><span class="lbl">Based in</span><span class="mono">Tripura, India</span></div>
+          <div><span class="lbl">Time zone</span><span class="mono">IST (UTC+5:30)</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 04 // CONTACT -->
+  <section id="contact" class="sec contact">
+    <div class="wrap">
+      <div class="head">
+        <h2><i>04</i>Contact</h2>
+        <span class="lbl">DIRECT CHANNEL</span>
+      </div>
+      <div class="grid contact-grid">
+        <div class="c7">
+          <h3>Have a system or desktop tool that needs to be fast and dependable?</h3>
+          <p class="contact-sub">
+            Whether you are scoping a local-first desktop app, a FastAPI backend, or want to talk shop about Rust and software architecture-reach out directly.
+          </p>
+          <div class="row">
+            <a id="mailBtn" class="btn pri" href="#contact" hidden>
+              <span>Email me</span>
+              <span class="arr" aria-hidden="true">→</span>
+            </a>
+            <button id="copyBtn" class="btn gh" type="button" hidden>Copy address</button>
+          </div>
+        </div>
+        <div class="c5 contact-box">
+          <div class="contact-box-head">
+            <span class="lbl">AVAILABILITY STATUS</span>
+            <span class="pill"><span class="dot"></span><span class="lbl lbl-strong">OPEN TO SELECT BUILDS</span></span>
+          </div>
+          <p class="contact-box-text">
+            Available for backend engineering, native desktop product development, and technical collaborations.
+          </p>
+          <div class="contact-box-row">
+            <span class="lbl">PREFERRED CHANNEL</span>
+            <a id="mailLink" class="under" href="#contact" hidden></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="lbl lbl-2">ARNAB SAHA © 2026</span>
+    <span class="lbl">BUILT WITH PRECISION — NO BLOAT</span>
+    <a class="lbl lbl-strong" id="toTop" href="#top">BACK TO TOP ↑</a>
+  </div>
+</footer>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
