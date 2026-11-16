@@ -30,13 +30,14 @@
               <a href="${resolveSiteUrl('privacy.html')}">Privacy</a>
               <a href="${resolveSiteUrl('terms.html')}">Terms</a>
             </nav>
+            <button id="themeBtn" type="button" class="theme-btn" aria-label="Switch theme">Theme</button>
           </div>
         </header>`;
     } else {
       mount.innerHTML = `
         <footer class="site-shell-fallback site-shell-fallback-footer">
           <div class="site-container">
-            <span>DewTask · Local-First Windows Task Manager</span>
+            <span>DewTask - Local-First Windows Task Manager</span>
             <a href="${resolveSiteUrl('index.html')}">Overview</a>
             <a href="${resolveSiteUrl('privacy.html')}">Privacy</a>
             <a href="${resolveSiteUrl('terms.html')}">Terms</a>
@@ -58,6 +59,45 @@
       console.error(`[DewTask] ${error.message}`);
       renderShellFallback(mount, fallbackType);
     }
+  };
+
+  const initializeThemeSwitch = () => {
+    const root = document.documentElement;
+    const themeBtn = document.getElementById('themeBtn');
+    const meta = document.querySelector('meta[name="theme-color"]');
+    const THEME_COLORS = { dark: '#06080c', light: '#F5F4F0' };
+
+    const applyTheme = mode => {
+      const light = mode === 'light';
+      root.dataset.theme = light ? 'light' : 'dark';
+      root.classList.toggle('light', light);
+      root.classList.toggle('dark', !light);
+      if (themeBtn) {
+        themeBtn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+      }
+      if (meta) {
+        meta.setAttribute('content', THEME_COLORS[light ? 'light' : 'dark']);
+      }
+    };
+
+    const initial = root.dataset.theme === 'light' || root.classList.contains('light') ? 'light' : 'dark';
+    applyTheme(initial);
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', () => {
+        const next = root.dataset.theme === 'light' ? 'dark' : 'light';
+        try { localStorage.setItem('dewtask-theme', next); } catch (_) {}
+        applyTheme(next);
+      });
+    }
+  };
+
+  const initializeHeroPause = () => {
+    const hero = document.querySelector('.hero-stage');
+    if (!hero || !('IntersectionObserver' in window)) return;
+    new IntersectionObserver(([entry]) => {
+      hero.classList.toggle('paused', !entry.isIntersecting);
+    }).observe(hero);
   };
 
   const initializeMobileMenu = () => {
@@ -121,7 +161,6 @@
       .filter(Boolean);
     if (!sections.length) return;
 
-    // Give the first section a selected state even before the first scroll event.
     setActive(sections[0].id);
 
     let scheduled = false;
@@ -261,7 +300,7 @@
         if (navigator.share) {
           try {
             await navigator.share({
-              title: 'DewTask — Offline-First Windows Task Manager',
+              title: 'DewTask - Offline-First Windows Task Manager',
               text: 'Check out DewTask on your Windows PC:',
               url
             });
@@ -346,6 +385,8 @@
     const year = document.getElementById('current-year');
     if (year) year.textContent = String(new Date().getFullYear());
 
+    initializeThemeSwitch();
+    initializeHeroPause();
     initializeMobileMenu();
     initializeActiveNavigation();
     initializeLegalToc();
@@ -358,7 +399,6 @@
     loadPartial('[data-site-header]', 'partials/navbar.html', 'header'),
     loadPartial('[data-site-footer]', 'partials/footer.html', 'footer')
   ]).then(initializeShell).catch(error => {
-    // A final guard keeps page content usable if shell initialization itself fails.
     console.error('[DewTask] Shared shell initialization failed.', error);
   });
 })();

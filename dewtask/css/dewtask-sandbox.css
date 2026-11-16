@@ -1,0 +1,752 @@
+/* ==========================================================================
+   DewTask Interactive Sandbox
+   Follows page theme automatically via:
+   - Default (dark): html.dark, html[data-theme="dark"], or unclassed root
+   - Light: html.light or html[data-theme="light"]
+   ========================================================================== */
+
+[data-dewtask-sandbox] {
+  display: block;
+  min-height: 360px;
+}
+
+.dw {
+  --dw-display: var(--font-display, var(--display, 'Space Grotesk', system-ui, -apple-system, sans-serif));
+  --dw-body: var(--font-sans, var(--body, 'Inter', system-ui, -apple-system, sans-serif));
+  --dw-mono: var(--font-mono, var(--mono, 'JetBrains Mono', ui-monospace, Consolas, monospace));
+
+  --dw-bg: #06070A;
+  --dw-border: #1F2229;
+  --dw-text: #E5E7EB;
+  --dw-strong: #F3F4F6;
+  --dw-muted: #9CA3AF;
+  --dw-dim: #8894A6;
+  --dw-side: #080A0E;
+  --dw-side-line: #161A21;
+  --dw-card: #0B0E14;
+  --dw-card-line: #1B2029;
+  --dw-input: #0B0D12;
+  --dw-track: #0A0C10;
+  --dw-accent: #2B7A8C;
+  --dw-accent-hover: #34899C;
+  --dw-on-accent: #FFFFFF;
+  --dw-nav-hover: rgba(255, 255, 255, 0.03);
+  --dw-nav-on-bg: #0E1A22;
+  --dw-nav-on-line: #1F4A58;
+  --dw-nav-on-icon: #7DD3FC;
+  --dw-brand-i: #2B99FF;
+  --dw-pop-bg: #0D1219;
+  --dw-pop-input: #07090D;
+  --dw-pop-line: #1F2937;
+  --dw-pop-head: #7DD3FC;
+  --dw-pop-focus: #38BDF8;
+  --dw-cancel-bg: #161B24;
+  --dw-full-bg: #1B222D;
+  --dw-full-line: #2C3545;
+  --dw-del-bg: rgba(239, 68, 68, 0.15);
+  --dw-del-fg: #F87171;
+  --dw-done: #6EE7B7;
+  --dw-progress: #7DD3FC;
+  --dw-todo: #FCD34D;
+  --dw-bar: #34D399;
+  --dw-chip-todo-fg: #FCD34D;   --dw-chip-todo-line: #5B4A14;   --dw-chip-todo-bg: #1B1707;
+  --dw-chip-prog-fg: #7DD3FC;   --dw-chip-prog-line: #1C4A63;   --dw-chip-prog-bg: #0B1A24;
+  --dw-chip-done-fg: #6EE7B7;   --dw-chip-done-line: #1B5A46;   --dw-chip-done-bg: #0A1D17;
+  --dw-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  --dw-pop-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+
+  flex: 1;
+  display: grid;
+  grid-template-columns: 168px minmax(0, 1fr);
+  background: var(--dw-bg);
+  border: 1px solid var(--dw-border);
+  color: var(--dw-text);
+  font: 12px/1.4 var(--dw-body);
+  min-height: 360px;
+  max-width: 100%;
+  overflow: hidden;
+  text-align: left;
+  box-shadow: var(--dw-shadow);
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+/* Flush desktop proportions when embedded inside a Windows 11 frame */
+.win11-window .dw {
+  border: 0;
+  box-shadow: none;
+  grid-template-columns: 230px minmax(0, 1fr);
+  min-height: 660px;
+  font-size: 13px;
+}
+
+.win11-window .dwn {
+  padding: 20px 14px;
+  gap: 6px;
+}
+
+.win11-window .dwl {
+  font-size: 17px;
+  padding: 2px 8px 16px;
+}
+
+.win11-window .dwl svg {
+  width: 24px;
+  height: 24px;
+}
+
+.win11-window .dwm {
+  padding: 24px 26px;
+  gap: 16px;
+}
+
+.win11-window .dwt input {
+  height: 46px;
+  font-size: 13px;
+}
+
+.win11-window .dwadd {
+  min-height: 46px;
+  padding: 0 14px;
+}
+
+.win11-window #dwBody {
+  gap: 16px;
+  min-height: 540px;
+}
+
+.win11-window .dwc {
+  padding: 18px 20px;
+}
+
+.win11-window .dwc h4 {
+  font-size: 13.5px;
+}
+
+.win11-window .dw-pct {
+  font-size: 22px;
+}
+
+.win11-window .dwg {
+  height: 9px;
+  margin: 12px 0 8px;
+}
+
+.win11-window .dws {
+  gap: 14px;
+}
+
+.win11-window .dws .dwc {
+  padding: 14px 16px;
+}
+
+.win11-window .dws b {
+  font-size: 24px;
+  margin-top: 4px;
+}
+
+.win11-window .dwch {
+  height: 185px;
+  gap: 10px;
+  margin-top: 14px;
+}
+
+.win11-window .dwd {
+  gap: 10px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.win11-window .dw-list {
+  max-height: 470px;
+  padding: 6px 14px;
+}
+
+.win11-window .dwr {
+  min-height: 50px;
+  gap: 12px;
+}
+
+html[data-theme="light"] .dw,
+html.light .dw {
+  --dw-bg: #FFFFFF;
+  --dw-border: #D5D3CB;
+  --dw-text: #232833;
+  --dw-strong: #121417;
+  --dw-muted: #49505E;
+  --dw-dim: #565E6B;
+  --dw-side: #F5F4F0;
+  --dw-side-line: #E3E1D9;
+  --dw-card: #F8F7F3;
+  --dw-card-line: #E3E1D9;
+  --dw-input: #FFFFFF;
+  --dw-track: #E4E2DA;
+  --dw-accent: #1F6B7C;
+  --dw-accent-hover: #185A69;
+  --dw-nav-hover: rgba(0, 0, 0, 0.04);
+  --dw-nav-on-bg: #E3F1F5;
+  --dw-nav-on-line: #9CC9D4;
+  --dw-nav-on-icon: #1F6B7C;
+  --dw-brand-i: #1463E0;
+  --dw-pop-bg: #FFFFFF;
+  --dw-pop-input: #F5F4F0;
+  --dw-pop-line: #D5D3CB;
+  --dw-pop-head: #1F6B7C;
+  --dw-pop-focus: #1F6B7C;
+  --dw-cancel-bg: #EAE8E1;
+  --dw-full-bg: #EAE8E1;
+  --dw-full-line: #C9C6BB;
+  --dw-del-bg: rgba(220, 38, 38, 0.1);
+  --dw-del-fg: #DC2626;
+  --dw-done: #10B981;
+  --dw-progress: #0EA5E9;
+  --dw-todo: #F59E0B;
+  --dw-bar: #10B981;
+  --dw-chip-todo-fg: #7A5D00;   --dw-chip-todo-line: #E5CF7A;   --dw-chip-todo-bg: #FFF7D6;
+  --dw-chip-prog-fg: #0B6593;   --dw-chip-prog-line: #9ED2EC;   --dw-chip-prog-bg: #E6F4FB;
+  --dw-chip-done-fg: #0F7A55;   --dw-chip-done-line: #9FD9BF;   --dw-chip-done-bg: #E4F6EE;
+  --dw-shadow: 0 16px 40px rgba(18, 20, 23, 0.12);
+  --dw-pop-shadow: 0 12px 28px rgba(18, 20, 23, 0.18);
+}
+
+.dwn {
+  background: var(--dw-side);
+  border-right: 1px solid var(--dw-side-line);
+  padding: 14px 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.dwl {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 8px;
+  font: 800 15px var(--dw-display);
+  letter-spacing: -0.02em;
+  padding: 0 6px 12px;
+  white-space: nowrap;
+  color: var(--dw-strong);
+}
+
+.dwl svg {
+  width: 22px;
+  height: 22px;
+  flex: none;
+}
+
+.dwl i {
+  font-style: normal;
+  color: var(--dw-brand-i);
+}
+
+.dwn > button {
+  width: 100%;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  text-align: left;
+  padding: 8px 10px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--dw-muted);
+  border: 1px solid transparent;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+
+.dwn > button svg {
+  width: 15px;
+  height: 15px;
+  flex: none;
+  opacity: 0.85;
+}
+
+.dwn > button:hover {
+  color: var(--dw-strong);
+  background: var(--dw-nav-hover);
+}
+
+.dwn > button.on {
+  background: var(--dw-nav-on-bg);
+  border-color: var(--dw-nav-on-line);
+  color: var(--dw-strong);
+}
+
+.dwn > button.on svg {
+  opacity: 1;
+  color: var(--dw-nav-on-icon);
+}
+
+.dwu {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 9px;
+  padding: 10px 6px 0;
+  color: var(--dw-text);
+  border-top: 1px solid var(--dw-side-line);
+  font-size: 11.5px;
+}
+
+.dwu b {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--dw-accent);
+  display: grid;
+  place-items: center;
+  font-size: 11px;
+  color: var(--dw-on-accent);
+  flex: none;
+}
+
+.dwm {
+  position: relative;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+
+.dwt {
+  display: flex;
+  gap: 8px;
+}
+
+.dwt input {
+  flex: 1;
+  min-width: 0;
+  height: 44px;
+  background: var(--dw-input);
+  border: 1px solid var(--dw-border);
+  border-radius: 6px;
+  color: var(--dw-text);
+  padding: 0 12px;
+  font: 12px var(--dw-body);
+}
+
+.dwt input::placeholder {
+  color: var(--dw-dim);
+}
+
+.dwt input:focus {
+  border-color: var(--dw-accent);
+}
+
+.dwt input:focus-visible {
+  outline: 2px solid var(--dw-accent);
+  outline-offset: 1px;
+}
+
+.dwadd {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 0 12px;
+  flex: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 6px;
+  background: var(--dw-accent);
+  color: var(--dw-on-accent);
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background-color 0.15s ease, opacity 0.15s ease;
+}
+
+.dwadd small {
+  font: 500 11px var(--dw-mono);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.dwadd:hover {
+  background: var(--dw-accent-hover);
+}
+
+.dwadd.full {
+  background: var(--dw-full-bg);
+  border: 1px solid var(--dw-full-line);
+  color: var(--dw-muted);
+}
+
+.dwadd.full small {
+  color: var(--dw-muted);
+}
+
+.dw-pop {
+  position: absolute;
+  top: 74px;
+  left: 26px;
+  right: 26px;
+  z-index: 5;
+  background: var(--dw-pop-bg);
+  border: 1px solid var(--dw-accent);
+  border-radius: 8px;
+  padding: 12px 14px;
+  box-shadow: var(--dw-pop-shadow);
+  animation: dwPopIn 0.16s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dw-pop[hidden] {
+  display: none !important;
+}
+
+@keyframes dwPopIn {
+  from { opacity: 0; transform: translateY(-4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.dw-pop-box {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dw-pop-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font: 600 11px var(--dw-mono);
+  letter-spacing: 0.08em;
+  color: var(--dw-pop-head);
+}
+
+.dw-pop-lim {
+  color: var(--dw-muted);
+  font-weight: 400;
+}
+
+.dw-pop-box input {
+  width: 100%;
+  height: 36px;
+  background: var(--dw-pop-input);
+  border: 1px solid var(--dw-pop-line);
+  border-radius: 5px;
+  color: var(--dw-strong);
+  padding: 0 9px;
+  font: 12px var(--dw-body);
+}
+
+.dw-pop-box input:focus {
+  border-color: var(--dw-pop-focus);
+}
+
+.dw-pop-box input:focus-visible,
+.dw-pop-row select:focus-visible {
+  outline: 2px solid var(--dw-pop-focus);
+  outline-offset: 1px;
+}
+
+.dw-pop-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.dw-pop-row select {
+  height: 34px;
+  background: var(--dw-pop-input);
+  border: 1px solid var(--dw-pop-line);
+  border-radius: 5px;
+  color: var(--dw-text);
+  padding: 0 8px;
+  font: 11px var(--dw-mono);
+}
+
+.dw-pop-actions {
+  display: flex;
+  gap: 6px;
+}
+
+.dw-btn-cancel,
+.dw-btn-save {
+  height: 34px;
+  padding: 0 12px;
+  border: 0;
+  border-radius: 5px;
+  font: 500 11px var(--dw-mono);
+  cursor: pointer;
+}
+
+.dw-btn-cancel {
+  background: var(--dw-cancel-bg);
+  color: var(--dw-muted);
+}
+
+.dw-btn-cancel:hover {
+  color: var(--dw-strong);
+}
+
+.dw-btn-save {
+  background: var(--dw-accent);
+  color: var(--dw-on-accent);
+}
+
+.dw-btn-save:hover {
+  background: var(--dw-accent-hover);
+}
+
+#dwBody {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 280px;
+}
+
+.dwc {
+  background: var(--dw-card);
+  border: 1px solid var(--dw-card-line);
+  border-radius: 8px;
+  padding: 11px 12px;
+}
+
+.dwc h4 {
+  font: 600 12px var(--dw-body);
+  color: var(--dw-strong);
+  margin: 0;
+}
+
+.dwc b {
+  color: var(--dw-strong);
+}
+
+.dw-pct {
+  font-size: 18px;
+}
+
+.dw-hint {
+  color: var(--dw-dim);
+  font-size: 11px;
+  margin-top: auto;
+  padding-top: 4px;
+}
+
+.dwc small {
+  color: var(--dw-dim);
+  font-size: 11px;
+}
+
+.dwh {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.dwg {
+  display: flex;
+  height: 7px;
+  border-radius: 4px;
+  background: var(--dw-track);
+  margin: 9px 0 6px;
+  overflow: hidden;
+}
+
+.dwg i {
+  transition: width 0.3s ease;
+}
+
+.dwg i.s-done { background: var(--dw-done); }
+.dwg i.s-progress { background: var(--dw-progress); }
+.dwg i.s-todo { background: var(--dw-todo); }
+
+.dws {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.dws .dwc {
+  padding: 8px 10px;
+}
+
+.dws b {
+  display: block;
+  font: 600 19px var(--dw-body);
+  margin-top: 2px;
+}
+
+.dwch {
+  display: flex;
+  gap: 5px;
+  height: 54px;
+  margin-top: 8px;
+}
+
+.dwch div {
+  flex: 1;
+  background: var(--dw-track);
+  border-radius: 3px;
+  position: relative;
+}
+
+.dwch div i {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--dw-bar);
+  border-radius: 3px;
+  transition: height 0.3s ease;
+}
+
+.dwd {
+  display: flex;
+  gap: 5px;
+  margin-top: 4px;
+  color: var(--dw-dim);
+  font-size: 11px;
+  text-align: center;
+}
+
+.dwd span {
+  flex: 1;
+}
+
+.dw-list {
+  display: flex;
+  flex-direction: column;
+  background: var(--dw-card);
+  border: 1px solid var(--dw-card-line);
+  border-radius: 8px;
+  padding: 4px 10px;
+  max-height: 260px;
+  overflow-y: auto;
+}
+
+.dwr {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  padding: 4px 2px;
+  border-bottom: 1px solid var(--dw-side-line);
+}
+
+.dwr:last-child {
+  border-bottom: 0;
+}
+
+.dwr span {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.dwr .x {
+  color: var(--dw-dim);
+  text-decoration: line-through;
+}
+
+.dwr small {
+  color: var(--dw-dim);
+  font-family: var(--dw-mono);
+  font-size: 11px;
+  flex: none;
+}
+
+.dw-del {
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  display: grid;
+  place-items: center;
+  color: var(--dw-dim);
+  font-size: 16px;
+  line-height: 1;
+  flex: none;
+  cursor: pointer;
+  transition: background-color 0.14s ease, color 0.14s ease;
+}
+
+.dw-del:hover {
+  background: var(--dw-del-bg);
+  color: var(--dw-del-fg);
+}
+
+.chip {
+  min-height: 32px;
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 11px;
+  border: 1px solid;
+  white-space: nowrap;
+  flex: none;
+  cursor: pointer;
+}
+
+.chip.todo { color: var(--dw-chip-todo-fg); border-color: var(--dw-chip-todo-line); background: var(--dw-chip-todo-bg); }
+.chip.progress { color: var(--dw-chip-prog-fg); border-color: var(--dw-chip-prog-line); background: var(--dw-chip-prog-bg); }
+.chip.done { color: var(--dw-chip-done-fg); border-color: var(--dw-chip-done-line); background: var(--dw-chip-done-bg); }
+
+.dw-toast {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 10;
+  background: var(--dw-pop-bg);
+  border: 1px solid var(--dw-accent);
+  color: var(--dw-strong);
+  border-radius: 6px;
+  padding: 7px 12px;
+  font: 11px var(--dw-mono);
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.16s ease, transform 0.16s ease;
+  pointer-events: none;
+}
+
+.dw-toast.show {
+  opacity: 1;
+  transform: none;
+}
+
+@media (max-width: 768px) {
+  .win11-window .dw {
+    grid-template-columns: 180px minmax(0, 1fr);
+    min-height: 520px;
+  }
+  .win11-window .dwm {
+    padding: 16px;
+  }
+  .win11-window .dwch {
+    height: 110px;
+  }
+}
+
+@media (max-width: 640px) {
+  .dw,
+  .win11-window .dw { grid-template-columns: minmax(0, 1fr); min-height: 390px; }
+  .dwn { flex-direction: row; overflow-x: auto; border-right: 0; border-bottom: 1px solid var(--dw-side-line); padding: 8px 10px; }
+  .dwn > button { width: auto; }
+  .dwl { padding: 0 8px 0 2px; }
+  .dwn .dwu { display: none; }
+  .dws { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .dw-pop { top: 64px; left: 14px; right: 14px; }
+  .dw-pop-row { flex-direction: column; align-items: stretch; }
+  .dw-pop-actions { justify-content: flex-end; }
+}
+
+@media (max-width: 400px) {
+  .dwr small { display: none; }
+}

@@ -5,20 +5,43 @@
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <meta content="#06080c" name="theme-color"/>
   <meta content="Read the DewTask Terms of Service, including application use, user content, optional Google Drive synchronization, and third-party services." name="description"/>
-  <title>Terms of Service — DewTask</title>
+  <meta property="og:type" content="website"/>
+  <meta property="og:url" content="https://arnabsaha7.github.io/dewtask/terms.html"/>
+  <meta property="og:title" content="Terms of Service - DewTask"/>
+  <meta property="og:description" content="Read the DewTask Terms of Service, including application use, user content, optional Google Drive synchronization, and third-party services."/>
+  <meta name="twitter:card" content="summary"/>
+  <meta name="twitter:title" content="Terms of Service - DewTask"/>
+  <meta name="twitter:description" content="Read the DewTask Terms of Service, including application use, user content, optional Google Drive synchronization, and third-party services."/>
+  <title>Terms of Service - DewTask</title>
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+  <meta name="color-scheme" content="dark light"/>
+  <script>
+    /* Apply saved (or system) theme before first paint (no dark/light flash). */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('dewtask-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      var r = document.documentElement;
+      r.dataset.theme = t;
+      r.classList.toggle('light', t === 'light');
+      r.classList.toggle('dark', t !== 'light');
+    })();
+  </script>
   <link href="assets/dewtask-icon-dark.svg" rel="icon"/>
   <link href="./assets/tailwind.css" rel="stylesheet"/>
   <link href="./styles.css" rel="stylesheet"/>
 </head>
 
 <body class="min-h-screen bg-surface-base font-sans text-slate-300 antialiased" data-page="terms" id="top">
+  <a href="#main" class="skip">Skip to content</a>
   <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 hairline-grid"></div>
   <div data-site-header></div>
 
-  <main class="page-main relative z-10">
+  <main id="main" class="page-main relative z-10">
     <!-- Top Page Banner -->
     <section class="w-full border-b section-rule bg-surface-deep/60 py-10 sm:py-14">
       <div class="site-container">
@@ -44,10 +67,10 @@
     <!-- Full-Width Multi-Column Architecture -->
     <div class="site-container py-10 sm:py-16">
       <div class="legal-grid items-start">
-        
+
         <!-- Left Column: Sticky Section Index -->
         <aside class="hidden lg:block lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
-          <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-3">Sections</div>
+          <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-3">Sections</div>
           <nav aria-label="Terms of Service sections" class="flex flex-col">
             <a data-toc-link href="#section-01" class="toc-link active"><span class="font-mono text-[11px]">01</span><span>Acceptance of Terms</span></a>
             <a data-toc-link href="#section-02" class="toc-link"><span class="font-mono text-[11px]">02</span><span>About DewTask</span></a>
@@ -122,7 +145,7 @@
               <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-400">
                 <p>DewTask is an offline-first desktop productivity and task management application that helps you organize workspaces, projects, tasks, and related information.</p>
                 <div class="rounded-lg border border-surface-border bg-surface-deep p-4 my-2 space-y-2">
-                  <span class="font-mono text-[11px] uppercase tracking-wider text-slate-500">Architectural Principles</span>
+                  <span class="font-mono text-[11px] uppercase tracking-wider text-slate-400">Architectural Principles</span>
                   <ul class="space-y-1.5 text-xs text-slate-200">
                     <li>• Hierarchical Workspace, Project, Section, and Task Organization.</li>
                     <li>• Local-first storage designed to keep your workspace data on your device.</li>
@@ -302,8 +325,8 @@
                 <span>Governing Law</span>
               </h2>
               <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-400">
-                <p>These Terms are governed by the laws of <code class="font-mono text-[11px] bg-surface-card px-1.5 py-0.5 rounded text-brand-400">[Insert governing jurisdiction]</code>, subject to any mandatory consumer protection laws that apply to you.</p>
-                <p>The courts with jurisdiction will be determined in accordance with applicable law. Do not publish this section until the governing jurisdiction and dispute-resolution wording have been reviewed for your circumstances.</p>
+                <p>These Terms are governed by the laws of India, subject to any mandatory consumer protection laws that apply to you.</p>
+                <p>The courts with jurisdiction will be determined in accordance with applicable law.</p>
               </div>
             </section>
 
@@ -316,7 +339,7 @@
                 <p>For questions about these Terms, contact DewTask using the official contact details published on the DewTask website.</p>
                 <div class="rounded-xl border border-surface-border bg-surface-deep p-5 flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center">
                   <div class="space-y-1">
-                    <div class="font-mono text-[11px] text-slate-500 uppercase">Official Contact Email</div>
+                    <div class="font-mono text-[11px] text-slate-400 uppercase">Official Contact Email</div>
                     <div class="font-mono text-xs text-brand-400">arnab.work.7@protonmail.com</div>
                     <div class="text-xs text-slate-400">Author: <span class="font-mono text-white">Arnab Saha</span></div>
                   </div>

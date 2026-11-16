@@ -5,72 +5,106 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="theme-color" content="#06080c">
   <meta name="description" content="DewTask is a fast, offline-first Windows task manager built with Rust, Tauri, and local SQLite for managing complex projects without cloud lock-in.">
-  <title>DewTask — Local-First Windows Task Manager</title>
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arnabsaha7.github.io/dewtask/">
+  <meta property="og:title" content="DewTask">
+  <meta property="og:description" content="Offline-first Windows task manager built with Rust, Tauri, and local SQLite for structured workspaces and zero-latency execution.">
+  <meta property="og:image" content="https://arnabsaha7.github.io/dewtask/assets/dewtask-dashboard.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="DewTask">
+  <meta name="twitter:description" content="Offline-first Windows task manager built with Rust, Tauri, and local SQLite for structured workspaces and zero-latency execution.">
+  <title>DewTask</title>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"DewTask","operatingSystem":"Windows 10, Windows 11","applicationCategory":"ProductivityApplication","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"author":{"@type":"Person","name":"Arnab Saha","url":"https://github.com/arnabsaha7"},"downloadUrl":"https://github.com/arnabsaha7/dewtask/releases/latest"}
+  </script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  <meta name="color-scheme" content="dark light">
+  <script>
+    /* Apply saved (or system) theme before first paint (no dark/light flash). */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('dewtask-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      var r = document.documentElement;
+      r.dataset.theme = t;
+      r.classList.toggle('light', t === 'light');
+      r.classList.toggle('dark', t !== 'light');
+    })();
+  </script>
   <link rel="icon" href="assets/dewtask-icon-dark.svg">
   <link rel="stylesheet" href="./assets/tailwind.css">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./css/dewtask-sandbox.css">
 </head>
 
 <body data-page="home" class="min-h-screen bg-surface-base font-sans text-slate-300 antialiased">
+  <a href="#main" class="skip">Skip to content</a>
   <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 hairline-grid"></div>
   <div aria-hidden="true" class="pointer-events-none fixed inset-x-0 top-0 z-0 h-[560px] hero-vignette"></div>
 
   <div data-site-header></div>
 
-  <main class="page-main relative z-10">
+  <main id="main" class="page-main relative z-10">
     <!-- FULL-WIDTH ARCHITECTURAL HERO -->
-    <section class="w-full border-b section-rule">
-      <div class="site-container pb-14 pt-10 sm:pt-16 lg:pb-24 lg:pt-20">
-        <!-- Hero: product message on the left, focused actions on the right -->
+    <section class="hero-stage w-full border-b section-rule">
+      <div class="site-container pb-12 pt-8 sm:pt-12 lg:pb-20 lg:pt-14">
+        <!-- Hero: badge, headline, benefit copy, then CTAs directly beneath -->
         <div class="hero-layout">
           <div class="hero-copy">
             <div class="mb-5 inline-flex items-center gap-2 rounded border border-surface-borderBright/80 bg-surface-elevated/90 px-3 py-1 font-mono text-[11px] text-slate-300">
-              <span class="h-1.5 w-1.5 rounded-full bg-brand-emerald"></span>
-              <span>NATIVE WINDOWS 10/11</span>
-              <span class="text-slate-600">·</span>
-              <span class="text-brand-300">TAURI + SQLITE</span>
+              <span class="h-1.5 w-1.5 rounded-full bg-brand-emerald" aria-hidden="true"></span>
+              <span>Offline-first</span>
+              <span class="text-slate-500">·</span>
+              <span>Windows 10/11</span>
             </div>
 
             <h1 class="font-display text-4xl font-bold leading-[1.04] tracking-tight text-white sm:text-6xl xl:text-[4.5rem]">
               Think in projects.<br>
-              <span class="text-slate-400">Own every task locally.</span>
+              <span class="text-brand-300">Own every task locally.</span>
             </h1>
 
             <p class="hero-description">
-              DewTask is an offline-first Windows task manager engineered for structured workspaces, instant keyboard navigation, and zero-latency local SQLite storage.
+              Organize work into projects, move around entirely by keyboard, and keep every task on your own machine. No account, no cloud.
             </p>
-          </div>
 
-          <div class="hero-actions">
-            <a href="https://github.com/arnabsaha7/dewtask/releases/latest" data-download-link class="focus-ring inline-flex w-full items-center justify-center gap-2.5 rounded-lg bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-brand-300">
-              <svg aria-hidden="true" class="h-4 w-4 shrink-0 fill-current" viewBox="0 0 24 24"><path d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
-              <span data-download-label>Download for Windows</span>
-            </a>
+            <div class="hero-actions">
+              <div class="hero-cta-row">
+                <a href="https://github.com/arnabsaha7/dewtask/releases/latest" data-download-link class="focus-ring inline-flex items-center justify-center gap-2.5 rounded-lg bg-white px-4 py-3 text-sm font-semibold text-slate-950 shadow-sm transition hover:bg-brand-300">
+                  <svg aria-hidden="true" class="h-4 w-4 shrink-0 fill-current" viewBox="0 0 24 24"><path d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
+                  <span data-download-label>Download for Windows</span>
+                </a>
 
-            <a href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex w-full items-center justify-center gap-2 rounded-lg border border-surface-borderBright bg-surface-elevated px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-surface-highlight hover:text-white">
-              <span>Inspect Source</span>
-              <span aria-hidden="true" class="font-mono text-xs text-slate-400">↗</span>
-            </a>
+                <a href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center justify-center gap-2 rounded-lg border border-surface-borderBright bg-surface-elevated px-4 py-3 text-sm font-medium text-slate-200 transition hover:bg-surface-highlight hover:text-white">
+                  <svg aria-hidden="true" class="h-4 w-4 shrink-0 fill-current" viewBox="0 0 16 16"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+                  <span>Inspect Source</span>
+                  <span aria-hidden="true" class="font-mono text-xs text-slate-400">↗</span>
+                </a>
+              </div>
 
-            <button type="button" data-share-desktop class="hero-share-link">
-              On your phone? Share link for your PC →
-            </button>
+              <p class="hero-microcopy">Free · Windows 10/11 · No account · Works offline</p>
+
+              <button type="button" data-share-desktop class="hero-share-link">
+                On your phone? Share link for your PC →
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- Framed Windows 11 Desktop Application Window -->
+        <!-- Framed Windows 11 Desktop Application Window with Interactive Sandbox -->
         <div class="mt-10 sm:mt-14">
           <div class="win11-window">
             <!-- Authentic Windows 11 Titlebar -->
             <div class="win11-titlebar">
-              <div class="flex items-center gap-2.5">
-                <img src="assets/dewtask-icon-dark.svg" alt="" class="h-4 w-4 rounded-sm">
-                <span class="font-mono text-[11px] text-slate-400">DewTask — %APPDATA%\DewTask\dewtask.db</span>
-                <span class="hidden rounded bg-brand-emerald/15 px-1.5 py-0.5 font-mono text-[10px] text-brand-emerald sm:inline-block">WAL MODE: ACTIVE</span>
+              <div class="flex items-center gap-2.5 min-w-0">
+                <img src="assets/dewtask-icon-dark.svg" alt="" class="h-4 w-4 shrink-0 rounded-sm">
+                <span class="truncate font-mono text-[11px] text-slate-400">DewTask - %APPDATA%\DewTask\dewtask.db</span>
+                <span class="hidden shrink-0 rounded bg-brand-emerald/15 px-1.5 py-0.5 font-mono text-[10px] text-brand-emerald sm:inline-block">WAL MODE: ACTIVE</span>
               </div>
               <div class="win11-controls" aria-hidden="true">
                 <span class="win11-control-btn">
@@ -85,77 +119,8 @@
               </div>
             </div>
 
-            <!-- Screenshot + Built-in Interactive Fallback -->
-            <div class="relative bg-surface-base">
-              <img
-                src="assets/dewtask-dashboard.png"
-                alt="DewTask Windows application interface showing workspaces, project folders, and task board"
-                class="block h-auto w-full object-cover"
-                onerror="this.style.display='none'; document.getElementById('app-ui-fallback').classList.remove('hidden'); document.getElementById('app-ui-fallback').classList.add('grid');"
-              >
-
-              <!-- Interactive Fallback UI if local image isn't present -->
-              <div id="app-ui-fallback" class="hidden grid-cols-1 md:grid-cols-[250px_1fr] min-h-[420px]">
-                <aside class="border-b border-surface-border bg-surface-deep p-4 md:border-b-0 md:border-r">
-                  <div class="mb-3 flex items-center justify-between">
-                    <span class="font-mono text-[11px] font-semibold tracking-wider text-slate-500">WORKSPACES</span>
-                    <span class="rounded border border-surface-border bg-surface-card px-1.5 py-0.5 font-mono text-[10px] text-slate-300">Ctrl+N</span>
-                  </div>
-                  <div class="space-y-1 text-xs">
-                    <div class="flex items-center justify-between rounded-md border border-brand-500/30 bg-brand-500/10 px-3 py-2 font-medium text-white">
-                      <span>▾ Core Product</span>
-                      <span class="font-mono text-[11px] text-brand-300">6</span>
-                    </div>
-                    <div class="ml-3 space-y-1 border-l border-surface-border pl-2.5 text-slate-400">
-                      <div class="rounded px-2.5 py-1.5 text-white bg-surface-card">Desktop v1.0</div>
-                      <div class="rounded px-2.5 py-1.5 hover:text-slate-200">SQLite Engine</div>
-                    </div>
-                    <div class="flex items-center justify-between rounded-md px-3 py-2 text-slate-400">
-                      <span>▸ Release Engineering</span>
-                      <span class="font-mono text-[11px]">4</span>
-                    </div>
-                  </div>
-                </aside>
-
-                <div class="p-4 sm:p-6">
-                  <div class="flex flex-wrap items-center justify-between gap-3 border-b border-surface-border pb-4">
-                    <div>
-                      <span class="font-mono text-[11px] text-slate-400">Core Product / Desktop v1.0</span>
-                      <h2 class="mt-0.5 font-display text-lg font-bold text-white">Active Sprint Milestones</h2>
-                    </div>
-                    <div class="flex items-center gap-1.5 font-mono text-[11px]">
-                      <span class="rounded border border-surface-borderBright bg-surface-card px-2.5 py-1 text-white">List</span>
-                      <span class="rounded border border-surface-border bg-surface-deep px-2.5 py-1 text-slate-400">Kanban</span>
-                      <span class="rounded border border-surface-border bg-surface-deep px-2.5 py-1 text-slate-400">Calendar</span>
-                    </div>
-                  </div>
-
-                  <div class="mt-4 divide-y divide-surface-border border border-surface-border rounded-lg bg-surface-deep">
-                    <div class="flex items-center justify-between px-4 py-3 text-xs sm:text-sm">
-                      <div class="flex items-center gap-3">
-                        <span class="flex h-4 w-4 shrink-0 items-center justify-center rounded border border-brand-emerald bg-brand-emerald/20 text-[10px] text-brand-emerald">✓</span>
-                        <span class="text-slate-500 line-through">Implement local SQLite WAL indexing for instant search</span>
-                      </div>
-                      <span class="hidden font-mono text-[11px] text-brand-emerald sm:inline">DONE</span>
-                    </div>
-                    <div class="flex items-center justify-between px-4 py-3 text-xs sm:text-sm bg-surface-card/60">
-                      <div class="flex items-center gap-3">
-                        <span class="h-4 w-4 shrink-0 rounded border border-brand-400"></span>
-                        <span class="font-medium text-white">Keyboard-first command palette &amp; quick capture</span>
-                      </div>
-                      <span class="hidden font-mono text-[11px] text-brand-300 sm:inline">IN PROGRESS</span>
-                    </div>
-                    <div class="flex items-center justify-between px-4 py-3 text-xs sm:text-sm">
-                      <div class="flex items-center gap-3">
-                        <span class="h-4 w-4 shrink-0 rounded border border-slate-600"></span>
-                        <span class="text-slate-300">Optional Google Drive appDataFolder encrypted sync</span>
-                      </div>
-                      <span class="hidden font-mono text-[11px] text-slate-400 sm:inline">PLANNED</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            <!-- Interactive Sandbox Mount -->
+            <div class="relative bg-surface-base" data-dewtask-sandbox></div>
           </div>
         </div>
       </div>
@@ -164,15 +129,13 @@
     <!-- FULL-WIDTH EXPOSED 1PX ARCHITECTURAL BENTO GRID -->
     <section id="features" class="w-full border-b section-rule py-16 md:py-24">
       <div class="site-container">
-        <div class="mb-10 flex flex-col justify-between gap-4 lg:mb-14 lg:flex-row lg:items-end">
-          <div>
-            <p class="font-mono text-xs font-medium uppercase tracking-widest text-brand-400">System Architecture</p>
-            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Engineered for local speed, not cloud bloat.
-            </h2>
-          </div>
-          <p class="max-w-md text-sm leading-relaxed text-slate-400">
-            Every action reads and writes directly to a local SQLite database on your machine—delivering sub-millisecond transitions even without Wi-Fi.
+        <div class="mb-10 flex flex-col gap-3 lg:mb-14">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-brand-400">System Architecture</p>
+          <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Engineered for local speed, not cloud bloat.
+          </h2>
+          <p class="max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-base">
+            Every action reads and writes directly to a local SQLite database on your machine, delivering sub-millisecond transitions even without Wi-Fi.
           </p>
         </div>
 
@@ -192,13 +155,13 @@
             </div>
 
             <div class="mt-8 rounded-lg border border-surface-border bg-surface-deep p-4 font-mono text-xs">
-              <div class="flex items-center justify-between text-[11px] text-slate-500 pb-2 border-b border-surface-border">
+              <div class="flex items-center justify-between text-[11px] text-slate-400 pb-2 border-b border-surface-border">
                 <span>LOCAL DATABASE PATH</span>
                 <span class="text-brand-emerald">● READ/WRITE LOCAL</span>
               </div>
               <div class="mt-2.5 flex flex-wrap items-center justify-between gap-2 text-slate-300">
-                <code class="text-brand-300 select-all">%APPDATA%\DewTask\dewtask.db</code>
-                <span class="text-[11px] text-slate-500">Optional sync → Google Drive appDataFolder</span>
+                <code class="text-brand-300 select-all break-all">%APPDATA%\DewTask\dewtask.db</code>
+                <span class="text-[11px] text-slate-400">Optional sync → Google Drive appDataFolder</span>
               </div>
             </div>
           </article>
@@ -208,7 +171,7 @@
             <div>
               <div class="flex items-center justify-between gap-2">
                 <span class="font-mono text-[11px] uppercase tracking-wider text-brand-teal">Native Runtime</span>
-                <span class="font-mono text-[11px] text-slate-500">Rust + Tauri</span>
+                <span class="font-mono text-[11px] text-slate-400">Rust + Tauri</span>
               </div>
               <h3 class="mt-4 font-display text-2xl font-bold text-white">Lightweight Windows footprint.</h3>
               <p class="mt-2.5 text-sm leading-relaxed text-slate-400">
@@ -227,7 +190,7 @@
                 </div>
               </div>
               <div class="rounded border border-surface-border bg-surface-deep/50 p-3">
-                <div class="flex justify-between text-[11px] text-slate-500">
+                <div class="flex justify-between text-[11px] text-slate-400">
                   <span>Typical Electron Task App</span>
                   <span>~450+ MB RAM</span>
                 </div>
@@ -262,7 +225,7 @@
               </p>
             </div>
             <div class="mt-6 border-t border-surface-border pt-4 font-mono text-xs text-slate-400">
-              OUTLINER <span class="mx-1.5 text-slate-600">/</span> KANBAN <span class="mx-1.5 text-slate-600">/</span> CALENDAR
+              OUTLINER <span class="mx-1.5 text-slate-500">/</span> KANBAN <span class="mx-1.5 text-slate-500">/</span> CALENDAR
             </div>
           </article>
 
@@ -276,24 +239,22 @@
               </p>
             </div>
             <div class="mt-6 border-t border-surface-border pt-4 font-mono text-xs text-slate-400">
-              TODAY QUEUE <span class="mx-1.5 text-slate-600">·</span> OVERDUE <span class="mx-1.5 text-slate-600">·</span> UPCOMING
+              TODAY QUEUE <span class="mx-1.5 text-slate-500">·</span> OVERDUE <span class="mx-1.5 text-slate-500">·</span> UPCOMING
             </div>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- INTERACTIVE WORKSPACE VIEWS (Replaces 6 repetitive static cards) -->
+    <!-- INTERACTIVE WORKSPACE VIEWS -->
     <section id="views" class="w-full border-b section-rule py-16 md:py-24">
       <div class="site-container">
-        <div class="mb-8 flex flex-col justify-between gap-4 lg:mb-12 lg:flex-row lg:items-end">
-          <div>
-            <p class="font-mono text-xs font-medium uppercase tracking-widest text-brand-400">Interface Architecture</p>
-            <h2 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Explore the six core views.
-            </h2>
-          </div>
-          <p class="max-w-md text-sm leading-relaxed text-slate-400">
+        <div class="mb-8 flex flex-col gap-3 lg:mb-12">
+          <p class="font-mono text-xs font-medium uppercase tracking-widest text-brand-400">Interface Architecture</p>
+          <h2 class="font-display text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            Explore the six core views.
+          </h2>
+          <p class="max-w-2xl text-sm leading-relaxed text-slate-400 sm:text-base">
             Select any view below to inspect how DewTask structures your daily focus, hierarchy, and data controls.
           </p>
         </div>
@@ -354,7 +315,7 @@
           <!-- Right Interactive Preview Stage -->
           <div class="lg:col-span-8">
             <div class="dot-matrix flex min-h-[340px] flex-col justify-between rounded-xl border border-surface-borderBright bg-surface-deep p-6 sm:p-8">
-              
+
               <!-- Panel 01: Today -->
               <div data-view-panel="today" class="space-y-6">
                 <div class="flex flex-wrap items-center justify-between gap-2 border-b border-surface-border pb-4">
@@ -365,26 +326,26 @@
                   <span class="rounded border border-surface-border bg-surface-card px-2.5 py-1 font-mono text-xs text-brand-emerald">3 Due Today</span>
                 </div>
                 <div class="space-y-2.5">
-                  <div class="flex items-center justify-between rounded-lg border border-surface-borderBright bg-surface-card px-4 py-3 text-xs sm:text-sm">
-                    <div class="flex items-center gap-3">
-                      <span class="h-3.5 w-3.5 rounded border border-brand-400"></span>
+                  <div class="flex items-center justify-between gap-3 rounded-lg border border-surface-borderBright bg-surface-card px-4 py-3 text-xs sm:text-sm">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <span class="h-3.5 w-3.5 shrink-0 rounded border border-brand-400"></span>
                       <span class="font-medium text-white">Finalize Windows MSI code-signing pipeline</span>
                     </div>
-                    <span class="font-mono text-[11px] text-brand-300">Core Product · 10:00 AM</span>
+                    <span class="shrink-0 font-mono text-[11px] text-brand-300">Core Product · 10:00 AM</span>
                   </div>
-                  <div class="flex items-center justify-between rounded-lg border border-surface-border bg-surface-card/70 px-4 py-3 text-xs sm:text-sm">
-                    <div class="flex items-center gap-3">
-                      <span class="h-3.5 w-3.5 rounded border border-slate-500"></span>
+                  <div class="flex items-center justify-between gap-3 rounded-lg border border-surface-border bg-surface-card/70 px-4 py-3 text-xs sm:text-sm">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <span class="h-3.5 w-3.5 shrink-0 rounded border border-slate-500"></span>
                       <span class="text-slate-200">Verify SQLite WAL checkpoint on app exit</span>
                     </div>
-                    <span class="font-mono text-[11px] text-brand-emerald">HIGH PRIORITY</span>
+                    <span class="shrink-0 font-mono text-[11px] text-brand-emerald">HIGH PRIORITY</span>
                   </div>
-                  <div class="flex items-center justify-between rounded-lg border border-surface-border bg-surface-card/70 px-4 py-3 text-xs sm:text-sm">
-                    <div class="flex items-center gap-3">
-                      <span class="h-3.5 w-3.5 rounded border border-slate-500"></span>
+                  <div class="flex items-center justify-between gap-3 rounded-lg border border-surface-border bg-surface-card/70 px-4 py-3 text-xs sm:text-sm">
+                    <div class="flex items-center gap-3 min-w-0">
+                      <span class="h-3.5 w-3.5 shrink-0 rounded border border-slate-500"></span>
                       <span class="text-slate-300">Draft release changelog for v1.2</span>
                     </div>
-                    <span class="font-mono text-[11px] text-slate-400">Docs · 4:30 PM</span>
+                    <span class="shrink-0 font-mono text-[11px] text-slate-400">Docs · 4:30 PM</span>
                   </div>
                 </div>
                 <p class="text-xs leading-relaxed text-slate-400 sm:text-sm">
@@ -429,14 +390,14 @@
                   <span class="rounded border border-surface-border bg-surface-card px-2.5 py-1 font-mono text-xs text-slate-300">Instant Filter</span>
                 </div>
                 <div class="space-y-2 text-xs sm:text-sm">
-                  <div class="flex items-center justify-between rounded-lg border border-surface-border bg-surface-card px-4 py-2.5">
+                  <div class="flex items-center justify-between gap-3 rounded-lg border border-surface-border bg-surface-card px-4 py-2.5">
                     <span class="text-slate-400 line-through">✓ Configure Tauri Windows installer icons</span>
-                    <span class="font-mono text-[11px] text-brand-emerald">COMPLETED</span>
+                    <span class="shrink-0 font-mono text-[11px] text-brand-emerald">COMPLETED</span>
                   </div>
                   <div class="rounded-lg border border-surface-borderBright bg-surface-card px-4 py-3">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between gap-3">
                       <span class="font-medium text-white">▾ Build Google Drive appDataFolder sync adapter</span>
-                      <span class="font-mono text-[11px] text-brand-400">2 SUBTASKS</span>
+                      <span class="shrink-0 font-mono text-[11px] text-brand-400">2 SUBTASKS</span>
                     </div>
                     <div class="mt-2.5 ml-4 space-y-1.5 border-l border-surface-border pl-3 text-xs text-slate-300">
                       <div>✓ OAuth2 PKCE loopback flow on desktop</div>
@@ -473,7 +434,7 @@
                   </div>
                 </div>
                 <p class="text-xs leading-relaxed text-slate-400 sm:text-sm">
-                  Move tasks across workflow stages without duplicating data—changes reflect immediately in List and Calendar views.
+                  Move tasks across workflow stages without duplicating data; changes reflect immediately in List and Calendar views.
                 </p>
               </div>
 
@@ -488,7 +449,7 @@
                 </div>
                 <div class="grid grid-cols-2 gap-2 sm:grid-cols-4 font-mono text-xs">
                   <div class="rounded-lg border border-surface-border bg-surface-card p-3">
-                    <span class="text-slate-500">MON 10</span>
+                    <span class="text-slate-400">MON 10</span>
                     <div class="mt-2 rounded bg-surface-deep p-1.5 text-[11px] text-slate-300">Schema review</div>
                   </div>
                   <div class="rounded-lg border border-brand-500/40 bg-surface-card p-3">
@@ -496,11 +457,11 @@
                     <div class="mt-2 rounded bg-brand-500/20 p-1.5 text-[11px] text-white">v1.0 RC build</div>
                   </div>
                   <div class="rounded-lg border border-surface-border bg-surface-card p-3">
-                    <span class="text-slate-500">WED 12</span>
+                    <span class="text-slate-400">WED 12</span>
                     <div class="mt-2 rounded bg-surface-deep p-1.5 text-[11px] text-slate-400">Installer QA</div>
                   </div>
                   <div class="rounded-lg border border-surface-border bg-surface-card p-3">
-                    <span class="text-slate-500">THU 13</span>
+                    <span class="text-slate-400">THU 13</span>
                     <div class="mt-2 rounded bg-brand-emerald/15 p-1.5 text-[11px] text-brand-emerald">Public Release</div>
                   </div>
                 </div>
@@ -519,15 +480,15 @@
                   <span class="rounded border border-surface-border bg-surface-card px-2.5 py-1 font-mono text-xs text-brand-emerald">Telemetry: Off</span>
                 </div>
                 <div class="space-y-2.5 font-mono text-xs">
-                  <div class="flex items-center justify-between rounded-lg border border-surface-border bg-surface-card px-4 py-3">
+                  <div class="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-surface-border bg-surface-card px-4 py-3">
                     <span class="text-slate-300">SQLite Database File</span>
-                    <span class="text-brand-300">%APPDATA%\DewTask\dewtask.db</span>
+                    <span class="text-brand-300 break-all">%APPDATA%\DewTask\dewtask.db</span>
                   </div>
-                  <div class="flex items-center justify-between rounded-lg border border-surface-border bg-surface-card px-4 py-3">
+                  <div class="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-surface-border bg-surface-card px-4 py-3">
                     <span class="text-slate-300">Google Drive Sync (Optional)</span>
                     <span class="text-slate-400">Sandboxed appDataFolder</span>
                   </div>
-                  <div class="flex items-center justify-between rounded-lg border border-surface-border bg-surface-card px-4 py-3">
+                  <div class="flex flex-wrap items-center justify-between gap-2 rounded-lg border border-surface-border bg-surface-card px-4 py-3">
                     <span class="text-slate-300">Background Analytics / Tracking</span>
                     <span class="text-brand-emerald">None Compiled</span>
                   </div>
@@ -566,7 +527,7 @@
             <div class="rounded-xl border border-surface-border bg-surface-deep p-5">
               <div class="font-mono text-xs text-brand-teal">02 / BRING YOUR OWN CLOUD</div>
               <h3 class="mt-2 text-sm font-semibold text-white">Direct Google Drive sync</h3>
-              <p class="mt-1 text-xs leading-relaxed text-slate-400">Optional sync connects straight to your personal Google Drive <code class="text-slate-300">appDataFolder</code>—no middleman servers.</p>
+              <p class="mt-1 text-xs leading-relaxed text-slate-400">Optional sync connects straight to your personal Google Drive <code class="text-slate-300">appDataFolder</code>, with no middleman servers.</p>
             </div>
             <div class="rounded-xl border border-surface-border bg-surface-deep p-5">
               <div class="font-mono text-xs text-brand-emerald">03 / OPEN FORMAT</div>
@@ -601,11 +562,11 @@
           </div>
 
           <div class="flex w-full flex-col gap-3 sm:w-auto sm:flex-row">
-            <a href="https://github.com/arnabsaha7/dewtask/releases/latest" data-download-link class="focus-ring inline-flex items-center justify-center gap-3 rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-brand-300">
+            <a href="https://github.com/arnabsaha7/dewtask/releases/latest" data-download-link class="focus-ring inline-flex min-h-[44px] items-center justify-center gap-3 rounded-lg bg-white px-6 py-3.5 text-sm font-semibold text-slate-950 transition hover:bg-brand-300">
               <svg aria-hidden="true" class="h-4 w-4 fill-current" viewBox="0 0 24 24"><path d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
               <span data-download-label>Download for Windows</span>
             </a>
-            <a href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex items-center justify-center gap-2 rounded-lg border border-surface-borderBright bg-surface-elevated px-5 py-3.5 text-sm font-medium text-slate-200 transition hover:bg-surface-highlight hover:text-white">
+            <a href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer" class="focus-ring inline-flex min-h-[44px] items-center justify-center gap-2 rounded-lg border border-surface-borderBright bg-surface-elevated px-5 py-3.5 text-sm font-medium text-slate-200 transition hover:bg-surface-highlight hover:text-white">
               <span>View on GitHub</span>
               <span aria-hidden="true">↗</span>
             </a>
@@ -618,5 +579,6 @@
   <div data-site-footer></div>
 
   <script src="./js/site-shell.js" defer></script>
+  <script src="./js/dewtask-sandbox.js" defer></script>
 </body>
 </html>

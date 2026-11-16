@@ -3,22 +3,45 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <title>Privacy Policy — DewTask</title>
+  <title>Privacy Policy - DewTask</title>
   <meta name="theme-color" content="#06080c">
-  <meta name="description" content="Learn how DewTask handles local SQLite task data, optional Google sign-in, and direct Google Drive appDataFolder synchronisation.">
+  <meta name="description" content="Learn how DewTask handles local SQLite task data, optional Google sign-in, and direct Google Drive appDataFolder synchronization.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://arnabsaha7.github.io/dewtask/privacy.html">
+  <meta property="og:title" content="Privacy Policy - DewTask">
+  <meta property="og:description" content="Learn how DewTask handles local SQLite task data, optional Google sign-in, and direct Google Drive appDataFolder synchronization.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Privacy Policy - DewTask">
+  <meta name="twitter:description" content="Learn how DewTask handles local SQLite task data, optional Google sign-in, and direct Google Drive appDataFolder synchronization.">
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
+  <meta name="color-scheme" content="dark light">
+  <script>
+    /* Apply saved (or system) theme before first paint (no dark/light flash). */
+    (function () {
+      var t = null;
+      try { t = localStorage.getItem('dewtask-theme'); } catch (e) {}
+      if (t !== 'light' && t !== 'dark') {
+        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+      }
+      var r = document.documentElement;
+      r.dataset.theme = t;
+      r.classList.toggle('light', t === 'light');
+      r.classList.toggle('dark', t !== 'light');
+    })();
+  </script>
   <link rel="icon" href="assets/dewtask-icon-dark.svg">
   <link rel="stylesheet" href="./assets/tailwind.css">
   <link rel="stylesheet" href="./styles.css">
 </head>
 
 <body id="top" data-page="privacy" class="min-h-screen bg-surface-base font-sans text-slate-300 antialiased">
+  <a href="#main" class="skip">Skip to content</a>
   <div aria-hidden="true" class="pointer-events-none fixed inset-0 z-0 hairline-grid"></div>
   <div data-site-header></div>
 
-  <main class="page-main relative z-10">
+  <main id="main" class="page-main relative z-10">
     <!-- Top Page Banner -->
     <section class="w-full border-b section-rule bg-surface-deep/60 py-10 sm:py-14">
       <div class="site-container">
@@ -43,10 +66,10 @@
     <!-- Full-Width Multi-Column Architecture -->
     <div class="site-container py-10 sm:py-16">
       <div class="legal-grid items-start">
-        
+
         <!-- Left Column: Sticky Table of Contents (Desktop) -->
         <aside class="hidden lg:block lg:sticky lg:top-24">
-          <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-500 mb-3">On this page</div>
+          <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-3">On this page</div>
           <nav aria-label="Privacy policy sections" class="flex flex-col">
             <a data-toc-link href="#privacy-essentials" class="toc-link active"><span class="font-mono text-[11px]">00</span><span>The Essentials</span></a>
             <a data-toc-link href="#privacy-01" class="toc-link"><span class="font-mono text-[11px]">01</span><span>Information We Handle</span></a>
@@ -66,8 +89,8 @@
         </aside>
 
         <!-- Center Column: Primary Editorial Reading Column -->
-        <div class="max-w-[78ch] space-y-12">
-          <p class="text-base leading-relaxed text-slate-300 sm:text-lg">
+        <div class="legal-reading">
+          <p class="legal-intro text-base leading-relaxed text-slate-300 sm:text-lg">
             DewTask is built on a straightforward principle: your tasks and projects belong to you. This policy explains what happens on your device by default and what happens when you optionally connect your own Google account for synchronization.
           </p>
 
@@ -94,16 +117,16 @@
           </section>
 
           <!-- Detailed Policy Sections -->
-          <div class="divide-y divide-surface-border space-y-10">
-            <article id="privacy-01" class="pt-10 first:pt-0 space-y-3">
+          <div class="legal-sections divide-y divide-surface-border">
+            <section class="legal-section" id="privacy-01">
               <h2 class="font-display text-xl font-bold text-white flex items-baseline gap-3">
                 <span class="font-mono text-xs text-brand-400">01</span>
                 <span>Information We Handle</span>
               </h2>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-300">
-                We distinguish categorically between your local content and optional remote account details:
-              </p>
-              <div class="space-y-3 pt-1 text-sm sm:text-base leading-relaxed text-slate-400">
+              <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-400">
+                <p class="text-slate-300">
+                  We distinguish categorically between your local content and optional remote account details:
+                </p>
                 <p>
                   <strong class="text-white">Client-side task data:</strong> All workspaces, folders, tasks, notes, checklists, subtask trees, and local configurations are stored solely on your machine. This data is never sent to us or any remote server without your deliberate activation of cloud features.
                 </p>
@@ -111,43 +134,47 @@
                   <strong class="text-white">Google account information:</strong> If you choose to sign in with Google, DewTask receives the basic account information Google provides for authentication, such as your email address and account identifier. This information is used by the application on your device; DewTask does not operate an account server or transmit it to a DewTask-managed backend.
                 </p>
               </div>
-            </article>
+            </section>
 
-            <article id="privacy-02" class="pt-10 space-y-3">
+            <section class="legal-section" id="privacy-02">
               <h2 class="font-display text-xl font-bold text-white flex items-baseline gap-3">
                 <span class="font-mono text-xs text-brand-400">02</span>
                 <span>Local Storage and Offline Use</span>
               </h2>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-300">
-                DewTask operates by default as a standalone local Windows desktop application. All database records live in an open SQLite database directly within your user profile directory (<code class="px-1.5 py-0.5 rounded bg-surface-card border border-surface-border text-xs font-mono text-brand-300 select-all">%APPDATA%\DewTask\dewtask.db</code>).
-              </p>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-400">
-                You retain sovereign control of this database file. You can back it up, move it, or inspect it at any time. The desktop client contains no background telemetry beacons, silent analytic scripts, or tracking services.
-              </p>
-            </article>
+              <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-400">
+                <p class="text-slate-300">
+                  DewTask operates by default as a standalone local Windows desktop application. All database records live in an open SQLite database directly within your user profile directory (<code class="px-1.5 py-0.5 rounded bg-surface-card border border-surface-border text-xs font-mono text-brand-300 select-all break-all">%APPDATA%\DewTask\dewtask.db</code>).
+                </p>
+                <p>
+                  You retain sovereign control of this database file. You can back it up, move it, or inspect it at any time. The desktop client contains no background telemetry beacons, silent analytic scripts, or tracking services.
+                </p>
+              </div>
+            </section>
 
-            <article id="privacy-03" class="pt-10 space-y-3">
+            <section class="legal-section" id="privacy-03">
               <h2 class="font-display text-xl font-bold text-white flex items-baseline gap-3">
                 <span class="font-mono text-xs text-brand-400">03</span>
-                <span>Google Sign-In and Synchronisation</span>
+                <span>Google Sign-In and Synchronization</span>
               </h2>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-300">
-                Using an account is entirely optional. When you choose to authenticate via Google, we access only the minimal basic profile information (your email address and basic profile identifier) required to authenticate your account and confirm device ownership.
-              </p>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-400">
-                If you enable synchronization, DewTask requests access to the hidden <code class="px-1.5 py-0.5 rounded bg-surface-card border border-surface-border text-xs font-mono text-brand-300">appDataFolder</code> area of your own Google Drive. This area is reserved for application-specific data and is not displayed among your regular Drive files. DewTask does not request access to your Gmail, contacts, or calendar. Sync data is transferred directly between the DewTask application and Google Drive; DewTask does not operate cloud servers or store your workspace contents on its own infrastructure.
-              </p>
-            </article>
+              <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-400">
+                <p class="text-slate-300">
+                  Using an account is entirely optional. When you choose to authenticate via Google, we access only the minimal basic profile information (your email address and basic profile identifier) required to authenticate your account and confirm device ownership.
+                </p>
+                <p>
+                  If you enable synchronization, DewTask requests access to the hidden <code class="px-1.5 py-0.5 rounded bg-surface-card border border-surface-border text-xs font-mono text-brand-300">appDataFolder</code> area of your own Google Drive. This area is reserved for application-specific data and is not displayed among your regular Drive files. DewTask does not request access to your Gmail, contacts, or calendar. Sync data is transferred directly between the DewTask application and Google Drive; DewTask does not operate cloud servers or store your workspace contents on its own infrastructure.
+                </p>
+              </div>
+            </section>
 
-            <article id="privacy-04" class="pt-10 space-y-3">
+            <section class="legal-section" id="privacy-04">
               <h2 class="font-display text-xl font-bold text-white flex items-baseline gap-3">
                 <span class="font-mono text-xs text-brand-400">04</span>
                 <span>Data Sharing, Security and Retention</span>
               </h2>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-300">
-                <strong class="text-white">DewTask does not sell, rent, or trade your personal data.</strong> We do not run third-party advertising trackers or behavioral targeting platforms.
-              </p>
-              <div class="space-y-3 pt-1 text-sm sm:text-base leading-relaxed text-slate-400">
+              <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-400">
+                <p class="text-slate-300">
+                  <strong class="text-white">DewTask does not sell, rent, or trade your personal data.</strong> We do not run third-party advertising trackers or behavioral targeting platforms.
+                </p>
                 <p>
                   <strong class="text-white">Storage and security:</strong> When synchronization is enabled, DewTask stores its application data in the hidden <code class="text-xs font-mono text-slate-300">appDataFolder</code> area of your own Google Drive. Data is transferred directly between the application and Google using Google's Drive API over encrypted HTTPS connections. DewTask does not operate cloud storage servers, and your workspace contents are not uploaded to or stored on DewTask-managed servers. Google stores this data under your Google account and handles it under its own terms and privacy policies.
                 </p>
@@ -158,17 +185,19 @@
                   <strong class="text-white">Third-party services:</strong> Google provides the authentication and Drive storage used for optional synchronization. DewTask does not receive or retain your workspace contents on its own servers.
                 </p>
               </div>
-            </article>
+            </section>
 
-            <article id="privacy-05" class="pt-10 space-y-3">
+            <section class="legal-section" id="privacy-05">
               <h2 class="font-display text-xl font-bold text-white flex items-baseline gap-3">
                 <span class="font-mono text-xs text-brand-400">05</span>
                 <span>Your Choices</span>
               </h2>
-              <p class="text-sm sm:text-base leading-relaxed text-slate-300">
-                You can use DewTask offline without connecting a Google account, inspect and back up your local SQLite database, and disconnect your Google account. You can also delete DewTask's application data from your Google Drive. Disconnecting your account or uninstalling DewTask does not necessarily delete the data already stored in Drive; remove the synchronized data separately if you no longer want it retained there.
-              </p>
-            </article>
+              <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-300">
+                <p>
+                  You can use DewTask offline without connecting a Google account, inspect and back up your local SQLite database, and disconnect your Google account. You can also delete DewTask's application data from your Google Drive. Disconnecting your account or uninstalling DewTask does not necessarily delete the data already stored in Drive; remove the synchronized data separately if you no longer want it retained there.
+                </p>
+              </div>
+            </section>
           </div>
 
           <div class="flex items-center justify-between border-t border-surface-border pt-8 font-mono text-xs text-slate-400">
@@ -176,27 +205,6 @@
             <a class="hover:text-white transition-colors" href="#top">Back to top ↑</a>
           </div>
         </div>
-
-        <!-- Right Column: Architectural Audit Summary (Wide Screens) -->
-        <aside class="hidden 2xl:block 2xl:sticky 2xl:top-24">
-          <div class="rounded-xl border border-surface-border bg-surface-deep p-5 space-y-4">
-            <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-brand-emerald">Technical Audit</div>
-            <div class="space-y-3 text-xs">
-              <div>
-                <div class="text-slate-500 font-mono text-[11px]">LOCAL PATH</div>
-                <div class="mt-0.5 font-mono text-slate-200">%APPDATA%\DewTask</div>
-              </div>
-              <div>
-                <div class="text-slate-500 font-mono text-[11px]">OAUTH SCOPE (OPT-IN)</div>
-                <div class="mt-0.5 font-mono text-brand-300">drive.appdata</div>
-              </div>
-              <div>
-                <div class="text-slate-500 font-mono text-[11px]">PROPRIETARY SERVERS</div>
-                <div class="mt-0.5 font-mono text-slate-200">Zero / None</div>
-              </div>
-            </div>
-          </div>
-        </aside>
 
       </div>
     </div>
