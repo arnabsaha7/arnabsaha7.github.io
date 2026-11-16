@@ -104,7 +104,7 @@
         $$('.term-pane').forEach(pane => {
           const match = pane.id === 'pane-' + btn.dataset.tab;
           pane.classList.toggle('on', match);
-          if (match) {
+          if (match && !REDUCED.matches) {
             // Restart the boot-in animation for the newly shown pane.
             pane.querySelectorAll('.t-block').forEach(blk => {
               blk.style.animation = 'none';
