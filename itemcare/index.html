@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>ItemCare · Your home. Your assets. Your control.</title>
+  <meta name="description" content="ItemCare is a fast, offline-first desktop workspace for home inventory, warranties, preventive maintenance, property specs, and AES-256 encrypted insurance packs.">
+  <meta property="og:title" content="ItemCare · Your home. Your assets. Your control.">
+  <meta property="og:description" content="Appliances, warranties, maintenance schedules, property specs, and encrypted insurance vaults stored 100% on your device.">
+  <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="assets/app-icon.svg">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body class="home">
+  <a class="skip-link" href="#top">Skip to main content</a>
+
+  <header class="nav-shell">
+    <nav aria-label="Primary">
+      <a href="#top" class="logo">
+        <img src="assets/logo-mark.svg" width="24" height="24" alt="">
+        <span>ItemCare</span>
+      </a>
+      <div class="links" id="lk">
+        <a href="#preview">Workspace</a>
+        <a href="#features">Features</a>
+        <a href="#deep-dive">Workflows</a>
+        <a href="#privacy">Security</a>
+        <a href="#faq">FAQ</a>
+      </div>
+      <div class="nav-actions">
+        <a class="btn icon-btn sm" href="https://github.com/arnabsaha7/ItemCare" target="_blank" rel="noopener noreferrer" aria-label="View ItemCare on GitHub" title="GitHub">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.58.11.79-.25.79-.56 0-.28-.01-1.02-.02-2-3.2.7-3.88-1.54-3.88-1.54-.52-1.33-1.28-1.69-1.28-1.69-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.16 1.18a10.96 10.96 0 0 1 5.76 0c2.2-1.49 3.16-1.18 3.16-1.18.62 1.58.23 2.75.11 3.04.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.39-5.25 5.67.41.36.78 1.06.78 2.14 0 1.55-.01 2.79-.01 3.17 0 .31.21.68.8.56A11.51 11.51 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        </a>
+        <button class="btn icon-btn sm" id="tt" type="button" aria-label="Toggle light or dark theme"></button>
+        <a class="btn p sm nd" href="https://github.com/arnabsaha7/ItemCare/releases/download/v1.0.0/ItemCare_1.0.0_x64-setup.exe" download>Download</a>
+        <button class="btn sm mb" id="mb" type="button" aria-expanded="false" aria-controls="lk">Menu</button>
+      </div>
+      <div class="prog" id="prog" aria-hidden="true"></div>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero" id="heroStage">
+      <div class="hero-bg" aria-hidden="true">
+        <div class="hero-aurora"></div>
+        <div class="hero-grid"></div>
+      </div>
+
+      <div class="wrap hero-wrap">
+        <div class="hero-stage">
+          <!-- Left Floating Glass Lane -->
+          <div class="hero-lane left">
+            <div class="glass-float gf-offset-1" id="carebotCard" role="button" tabindex="0" aria-label="Click CareBot to run a local vault pulse scan">
+              <div class="gf-head">
+                <span class="gf-label">Vault Sentinel</span>
+                <span class="gf-dot cyan" aria-hidden="true"></span>
+              </div>
+              <div class="bot-row">
+                <div class="bot-avatar" id="botAvatar">
+                  <svg class="bot-svg" viewBox="0 0 64 64" fill="none" aria-hidden="true">
+                    <defs>
+                      <linearGradient id="botShell" x1="10" y1="14" x2="54" y2="56" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#e4e4e7" stop-opacity="0.35"/>
+                        <stop offset="100%" stop-color="#18181b" stop-opacity="0.95"/>
+                      </linearGradient>
+                      <linearGradient id="botVisor" x1="16" y1="24" x2="48" y2="42" gradientUnits="userSpaceOnUse">
+                        <stop offset="0%" stop-color="#09090b"/>
+                        <stop offset="100%" stop-color="#18181b"/>
+                      </linearGradient>
+                    </defs>
+                    <g class="bot-antenna">
+                      <line x1="32" y1="15" x2="32" y2="8" stroke="#fafafa" stroke-width="2.2" stroke-linecap="round"/>
+                      <circle cx="32" cy="6.5" r="3" fill="#e4e4e7"/>
+                    </g>
+                    <rect x="10" y="15" width="44" height="36" rx="14" fill="url(#botShell)" stroke="#fafafa" stroke-opacity="0.55" stroke-width="1.6"/>
+                    <rect x="16" y="23" width="32" height="19" rx="8.5" fill="url(#botVisor)" stroke="#e4e4e7" stroke-opacity="0.4" stroke-width="1.2"/>
+                    <g class="bot-eyelid" id="botEyes">
+                      <circle class="bot-pupil" cx="25.5" cy="32.5" r="3.4" fill="#e4e4e7"/>
+                      <circle class="bot-pupil" cx="38.5" cy="32.5" r="3.4" fill="#e4e4e7"/>
+                      <circle cx="24.5" cy="31.3" r="1.1" fill="#ffffff"/>
+                      <circle cx="37.5" cy="31.3" r="1.1" fill="#ffffff"/>
+                    </g>
+                    <path d="M27 46.5h10" stroke="#fafafa" stroke-opacity="0.6" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="gf-title">CareBot Local</div>
+                  <div class="gf-sub">Offline integrity guard</div>
+                </div>
+              </div>
+              <div class="bot-speech" id="botSpeech">SQLite local · 0 bytes sent</div>
+              <div class="gf-hint">Click to run pulse scan</div>
+            </div>
+
+            <div class="glass-float gf-offset-2" id="cardTco" role="button" tabindex="0" aria-label="Toggle TCO breakdown">
+              <div class="gf-head">
+                <span class="gf-label">Insured Portfolio</span>
+                <span class="gf-chip ok">4 Assets</span>
+              </div>
+              <div class="gf-val" id="tcoVal">₹5,44,380</div>
+              <div class="gf-sub" id="tcoSub">Purchase ₹5,41,380 + Service ₹3,000</div>
+              <svg class="sparkline" viewBox="0 0 240 34" fill="none" aria-hidden="true">
+                <defs>
+                  <linearGradient id="sparkGrad" x1="0" y1="0" x2="240" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stop-color="#e4e4e7"/>
+                    <stop offset="100%" stop-color="#a1a1aa"/>
+                  </linearGradient>
+                </defs>
+                <path d="M2 28 C 36 26, 54 18, 84 20 C 118 22, 140 9, 174 12 C 202 14, 218 5, 238 4" stroke="url(#sparkGrad)" stroke-width="2.4" stroke-linecap="round"/>
+                <circle cx="238" cy="4" r="3.5" fill="#a1a1aa"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Center Focal Hero -->
+          <div class="hero-center">
+            <h1 class="hero-title">
+              <span>Your</span>
+              <span class="word-slot" id="wordSlot" aria-live="polite">
+                <span class="rot-word active" data-tone="cyan">home.</span>
+                <span class="rot-word" data-tone="indigo">assets.</span>
+                <span class="rot-word" data-tone="emerald">control.</span>
+              </span>
+            </h1>
+
+            <p class="sub">One private workspace for your appliances, warranties, maintenance and insurance records. <b>Everything stays on your PC</b>: no account, no cloud, no tracking.</p>
+
+            <div class="row">
+              <a class="btn p lg" href="https://github.com/arnabsaha7/ItemCare/releases/download/v1.0.0/ItemCare_1.0.0_x64-setup.exe" download>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+                Download for Windows
+              </a>
+              <a class="btn glass lg" href="#preview">Try Live Workspace</a>
+            </div>
+          </div>
+
+          <!-- Right Floating Glass Lane -->
+          <div class="hero-lane right">
+            <div class="glass-float gf-offset-3" id="cardWarranty" role="button" tabindex="0" aria-label="Cycle tracked warranty item">
+              <div class="gf-head">
+                <span class="gf-label">Warranty Radar</span>
+                <span class="gf-dot warn" id="warDot" aria-hidden="true"></span>
+              </div>
+              <div class="ring-row">
+                <svg class="ring-svg" viewBox="0 0 54 54" aria-hidden="true">
+                  <circle class="ring-track" cx="27" cy="27" r="22"/>
+                  <circle class="ring-fill" id="warRing" cx="27" cy="27" r="22" stroke-dasharray="138.2" stroke-dashoffset="106"/>
+                </svg>
+                <div>
+                  <div class="gf-title" id="warTitle">Daikin 1.5T AC</div>
+                  <div class="gf-sub" id="warSub">Expiring soon · 12 mo plan</div>
+                </div>
+              </div>
+              <div class="gf-hint">Click to cycle asset</div>
+            </div>
+
+            <div class="glass-float gf-offset-4" id="cardHash" role="button" tabindex="0" aria-label="Verify document SHA-256 checksum">
+              <div class="gf-head">
+                <span class="gf-label">SHA-256 Vault</span>
+                <span class="gf-chip ok" id="hashBadge">Verified</span>
+              </div>
+              <div class="gf-title">LG_C3_Manual.pdf</div>
+              <div class="hash-box">
+                <span id="hashText">8e41…c90a</span>
+                <span style="color:var(--ok)">✓</span>
+              </div>
+              <div class="gf-hint">Click to re-verify hash</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Full-Width Workspace Preview -->
+      <div class="wrap">
+        <div class="card win" id="preview" aria-label="Interactive ItemCare workspace preview">
+          <div class="bar">
+            <div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span class="mono">ItemCare · Local Workspace</span>
+            <span class="bar-pill"><i aria-hidden="true"></i>Live Demo</span>
+          </div>
+          <div class="panes">
+            <div class="side" id="rooms" aria-label="Filter by room"></div>
+            <div class="grid" id="grid"></div>
+            <div class="insp" id="insp" aria-live="polite"></div>
+          </div>
+          <div class="status mono">
+            <span><i aria-hidden="true"></i>Offline SQLite Engine</span>
+            <span>%APPDATA%\com.itemcare.desktop\ItemCare\itemcare.db</span>
+            <span>SHA-256 Verified</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="features" class="surface-alt">
+      <div class="wrap">
+        <div class="eyebrow">Capabilities</div>
+        <h2>Everything your home needs.</h2>
+        <p class="sub">Assets, warranties, preventive maintenance, verified documents, property specifications, and insurance exports in one cohesive workspace.</p>
+        <div class="bento" id="bento"></div>
+      </div>
+    </section>
+
+    <section id="deep-dive">
+      <div class="wrap">
+        <div class="eyebrow">Workflows</div>
+        <h2>Engineered for the details.</h2>
+        <p class="sub">Select a workflow to inspect how ItemCare organizes and verifies your records.</p>
+        <div class="tabs" id="tabs" role="tablist" aria-label="Feature workflows"></div>
+        <div class="split card" id="tabbody" role="tabpanel"></div>
+      </div>
+    </section>
+
+
+    <section id="privacy">
+      <div class="wrap">
+        <div class="eyebrow">Privacy &amp; Architecture</div>
+        <h2>Private by design.<br>Local by default.</h2>
+        <p class="sub">Zero telemetry, zero accounts, zero subscriptions. Your home inventory never leaves your PC unless you explicitly export it.</p>
+        <div class="arch">
+          <div class="card spotlight">
+            <span class="arch-tag muted">Cloud Dependency</span>
+            <h3>Typical cloud apps</h3>
+            <div class="stack">
+              <div>Your device</div>
+              <em>↓ upload</em>
+              <div>Vendor servers</div>
+              <em>↓ account + subscription</em>
+              <div>Third-party analytics</div>
+            </div>
+          </div>
+          <div class="card spotlight accent">
+            <span class="arch-tag">Local Native Stack</span>
+            <h3>ItemCare</h3>
+            <div class="stack">
+              <div class="t">React + TypeScript UI</div>
+              <em>↓</em>
+              <div class="t">Typed Tauri 2 bridge</div>
+              <em>↓</em>
+              <div class="t">Native Rust services</div>
+              <em>↓</em>
+              <div class="t">Local SQLite DB &amp; local vault folder</div>
+            </div>
+          </div>
+        </div>
+        <div class="stats">
+          <span>No telemetry</span>
+          <span>No accounts</span>
+          <span>No subscriptions</span>
+          <span>Portable .hvbackup archives</span>
+          <span>SHA-256 verification</span>
+        </div>
+        <p class="mono path-note">%APPDATA%\com.itemcare.desktop\ItemCare\itemcare.db, or any custom folder you choose.</p>
+      </div>
+    </section>
+
+    <section id="download" class="surface-alt">
+      <div class="wrap">
+        <div class="eyebrow">Download</div>
+        <h2>Get ItemCare for Windows.</h2>
+        <p class="sub">Lightweight native installer. Your database and vault stay strictly on your machine.</p>
+        <div class="card spotlight rel">
+          <div class="relcol">
+            <div class="prod">
+              <img src="assets/app-icon.svg" width="60" height="60" alt="">
+              <div>
+                <h3>Windows Installer</h3>
+                <p class="mono">v1.0.0 · NSIS · x64</p>
+              </div>
+            </div>
+            <div class="dl">
+              <div>
+                <b class="mono">ItemCare_1.0.0_x64-setup.exe</b><br>
+                <small>Per-user install · no admin rights required</small>
+              </div>
+              <a class="btn p" href="https://github.com/arnabsaha7/ItemCare/releases/download/v1.0.0/ItemCare_1.0.0_x64-setup.exe" download>
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
+                Download .exe
+              </a>
+            </div>
+            <p class="fine"><a href="https://github.com/arnabsaha7/ItemCare/releases/latest">View release notes on GitHub →</a></p>
+          </div>
+          <div class="relcol">
+            <h3>System requirements</h3>
+            <ul class="chk">
+              <li>Windows 10 or 11 (64-bit)</li>
+              <li>Approximately 15 MB installer footprint</li>
+              <li>Microsoft WebView2 runtime (preinstalled on modern Windows)</li>
+            </ul>
+            <details class="note">
+              <summary><b>Windows SmartScreen warning?</b></summary>
+              <p>Early open-source releases are unsigned. Click <b>More info → Run anyway</b> after verifying the download came from GitHub.</p>
+            </details>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="wrap">
+        <div class="eyebrow">FAQ</div>
+        <h2>Questions, answered.</h2>
+        <p class="sub">Everything you need to know about privacy, local storage, and installation.</p>
+        <div id="faqs"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="fg">
+        <div>
+          <div class="logo">
+            <img src="assets/logo-mark.svg" width="24" height="24" alt="">
+            <span>ItemCare</span>
+          </div>
+          <p>Your home. Your assets. Your control.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="#features">Features</a>
+          <a href="#preview">Interactive Preview</a>
+          <a href="#privacy">Privacy &amp; Security</a>
+            <a href="#faq">FAQ</a>
+        </div>
+        <div>
+          <h4>Project</h4>
+          <a href="https://github.com/arnabsaha7/ItemCare">GitHub Repository</a>
+          <a href="https://github.com/arnabsaha7/ItemCare/releases">Releases</a>
+          <a href="https://github.com/arnabsaha7/ItemCare/issues">Report an Issue</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="fb">Built by Arnab Saha · Copyright © 2026 ItemCare</div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js" defer></script>
+</body>
+</html>

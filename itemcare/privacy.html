@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Privacy Policy · ItemCare</title>
+  <meta name="description" content="How ItemCare and this website handle information.">
+  <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#fafafa" media="(prefers-color-scheme: light)">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..600&family=JetBrains+Mono:wght@400;500;600&display=swap">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#content">Skip to main content</a>
+
+  <header class="nav-shell">
+    <nav aria-label="Primary">
+      <a href="index.html" class="logo">
+        <img src="assets/logo-mark.svg" width="24" height="24" alt="">
+        <span>ItemCare</span>
+      </a>
+      <div class="nav-actions">
+        <a class="btn sm" href="index.html">Back to site</a>
+        <button class="btn icon-btn sm" id="tt" type="button" aria-label="Toggle light or dark theme"></button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="lp" id="content">
+    <div class="wrap">
+      <header class="lp-head">
+        <div class="eyebrow">Legal</div>
+        <h1>Privacy Policy</h1>
+        <p>Last updated 19 November 2026. How ItemCare and this website handle information.</p>
+      </header>
+      <div class="lp-grid">
+        <aside class="toc" aria-label="Table of contents">
+          <h2>On this page</h2>
+          <a href="#who">1. Who this policy covers</a>
+          <a href="#collect">2. What we collect</a>
+          <a href="#local">3. How the Software handles your data on your device</a>
+          <a href="#exports">4. Exports, backups and integrity checks</a>
+          <a href="#web">5. The Website and third parties</a>
+          <a href="#cookies">6. Cookies and local storage</a>
+          <a href="#rights">7. Your rights</a>
+          <a href="#retention">8. Retention and deletion</a>
+          <a href="#security">9. Security</a>
+          <a href="#children">10. Children</a>
+          <a href="#transfers">11. International transfers and automated decisions</a>
+          <a href="#changes">12. Changes to this policy</a>
+          <a href="#contact">13. Contact</a>
+          <a href="terms.html">Terms of Use →</a>
+        </aside>
+        <article class="prose">
+          <div class="callout"><strong>In short:</strong> ItemCare runs on your PC and keeps your data there. It has no accounts, no cloud sync, no analytics and no telemetry, and we never receive what you enter. The only third parties involved are the ones needed to serve this website and the installer (section 5).</div>
+          <h2 id="who">1. Who this policy covers</h2>
+          <p>This policy applies to the ItemCare desktop application for Windows (the “Software”) and to this website (the “Website”). ItemCare is published by Arnab Saha, an individual developer (“we”, “us”), through the project repository at <a href="https://github.com/arnabsaha7/ItemCare">github.com/arnabsaha7/ItemCare</a>. Contact details are in section 13.</p>
+          <h2 id="collect">2. What we collect</h2>
+          <p><strong>Through the Software: nothing.</strong> ItemCare has no accounts, no cloud sync, no analytics, no crash reporting and no telemetry. We operate no server that receives data from the Software, and we keep no user database.</p>
+          <p>In particular, we do not receive or store:</p>
+          <ul>
+            <li>your inventory, receipts, invoices, warranty certificates, manuals, photos or any other document;</li>
+            <li>serial numbers, purchase prices, property details, paint, breaker, network or contact records, or insurance details;</li>
+            <li>usage statistics, device identifiers, crash logs or IP addresses from the Software;</li>
+            <li>your name, email address or payment details. The Software is free and has no sign-up.</li>
+          </ul>
+          <p>What the Website and its third-party services may see is described in section 5.</p>
+          <h2 id="local">3. How the Software handles your data on your device</h2>
+          <p>Everything you enter stays on your computer. Typical content includes assets and purchase details, warranties, maintenance logs, attachments (PDFs and images) and property specifications. These can contain personal or sensitive information such as addresses, policy numbers and network details.</p>
+          <ul>
+            <li><strong>Where it is stored.</strong> By default in a SQLite database at <span class="mono">%APPDATA%\com.itemcare.desktop\ItemCare\itemcare.db</span>, with attachments in a local vault folder. You can choose a different folder.</li>
+            <li><strong>How it is processed.</strong> Searching PDF text, calculating costs and warranty status, SHA-256 hashing and generating reports all happen locally. The Software does not need an internet connection to work.</li>
+            <li><strong>Interface runtime.</strong> The interface runs in the Microsoft Edge WebView2 runtime, which Windows and Microsoft provide and govern. The application’s interface is bundled with the installer.</li>
+            <li><strong>Who can read the files.</strong> Anyone or any program with access to your Windows account, your disk or your backups can read them. We cannot.</li>
+          </ul>
+          <h2 id="exports">4. Exports, backups and integrity checks</h2>
+          <ul>
+            <li><strong>Insurance packs.</strong> A pack is a password-protected .zip (AES-256) that bundles a CSV inventory, maintenance history, attachments and a PDF valuation report. You choose the password. We never see or store it and cannot recover it. If you lose it, the pack cannot be opened.</li>
+            <li><strong>Backups (.hvbackup).</strong> A backup is a portable copy of your vault. SHA-256 checksums are verified on restore to detect corruption or tampering. Checksums do not hide content, so keep backups somewhere you trust, and treat them as readable by whoever holds them unless the Software states otherwise when you export.</li>
+            <li><strong>Document vault.</strong> SHA-256 hashes are used only to detect changes to files. They are not encryption.</li>
+            <li><strong>Sharing.</strong> When you send an export to an insurer, family member or anyone else, you decide to share it. How the recipient handles it is outside this policy.</li>
+          </ul>
+          <h2 id="web">5. The Website and third parties</h2>
+          <p>The Website is a static page. It has no accounts, forms, cookies, analytics, advertising or tracking scripts. Your theme (light or dark) follows your device setting and is not stored.</p>
+          <ul>
+            <li><strong>Hosting.</strong> The provider that serves these pages may keep standard server logs (IP address, time, requested page, browser type). We do not use them to identify you. The provider’s own policy applies.</li>
+            <li><strong>Google Fonts.</strong> The Website loads the fonts Inter and JetBrains Mono from Google Fonts. Your browser requests them from Google’s servers, which receive your IP address and browser details. See Google’s privacy policy.</li>
+            <li><strong>GitHub.</strong> The installer, source code and issue tracker are hosted on GitHub. When you download from or visit GitHub, GitHub processes your data under its own privacy statement. Anything you post in an issue is public and tied to your GitHub account.</li>
+            <li><strong>Windows SmartScreen.</strong> When you run the installer, Windows may check its reputation with Microsoft. This is Windows behaviour, not ItemCare’s.</li>
+          </ul>
+          <p>We do not sell personal information, do not share it for advertising, and have no advertising partners.</p>
+          <h2 id="cookies">6. Cookies and local storage</h2>
+          <p>The Website sets no cookies and writes nothing to your browser’s storage. The Software keeps its database, vault files and settings in files on your device. These are not used for tracking.</p>
+          <h2 id="rights">7. Your rights</h2>
+          <p>Because we hold no personal data about you from the Software, there is nothing for us to access, correct, export or delete. You control your data directly: you can view, edit, export and delete it inside the Software and on your disk.</p>
+          <p>Depending on where you live (for example under the EU or UK GDPR, India’s Digital Personal Data Protection Act 2023 or California privacy law), you may have rights to access, correct or delete personal data, to object to processing, and to complain to a data protection authority. For data held by hosting, Google or GitHub, contact those providers. For anything we hold ourselves, such as a message you send us through the issue tracker, contact us (section 13); we process it on the basis of our legitimate interest in supporting the project and answering you.</p>
+          <h2 id="retention">8. Retention and deletion</h2>
+          <p>Your data stays on your device until you delete it. Uninstalling the Software may not remove your data folder. To erase everything, close ItemCare, then delete the database and vault folder (the default path in section 3, or the folder you chose) and any exports or backups you made. Files removed from a disk can sometimes be recovered until overwritten, so use secure erase if that matters to you.</p>
+          <h2 id="security">9. Security</h2>
+          <p>Keeping data local reduces exposure, but we cannot protect your device. We recommend a Windows account password, full-disk encryption such as BitLocker, regular Windows updates, and independent backups. Download the installer only from the official <a href="https://github.com/arnabsaha7/ItemCare/releases/latest">GitHub Releases page</a>. Early releases may be unsigned, so check the address before running them.</p>
+          <p>Do not assume the database or attachments are encrypted. Only insurance packs are password-protected. To report a vulnerability, see section 13.</p>
+          <h2 id="children">10. Children</h2>
+          <p>The Software and Website are not directed at children, and we do not knowingly collect personal information from anyone. If a child uses ItemCare, their data stays on the device it is installed on.</p>
+          <h2 id="transfers">11. International transfers and automated decisions</h2>
+          <p>We do not transfer data from the Software to anyone. Hosting, Google and GitHub may process data in other countries under their own terms. We do not use profiling or automated decision-making.</p>
+          <h2 id="changes">12. Changes to this policy</h2>
+          <p>We will post any revised policy here with a new “last updated” date. If a future release changes how the Software handles data, for example by adding any network feature, we will update this policy at or before that release and say so in the release notes.</p>
+          <h2 id="contact">13. Contact</h2>
+          <p>Open an issue at <a href="https://github.com/arnabsaha7/ItemCare/issues">github.com/arnabsaha7/ItemCare/issues</a>. Issues are public, so do not post passwords, documents or personal data. For a privacy or security matter, describe it in general terms and ask for a private way to continue.</p>
+        </article>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <div class="fg">
+        <div>
+          <div class="logo">
+            <img src="assets/logo-mark.svg" width="24" height="24" alt="">
+            <span>ItemCare</span>
+          </div>
+          <p>Your home. Your assets. Your control.</p>
+        </div>
+        <div>
+          <h4>Explore</h4>
+          <a href="index.html#features">Features</a>
+          <a href="index.html#preview">Interactive Preview</a>
+          <a href="index.html#privacy">Privacy &amp; Security</a>
+          <a href="index.html#faq">FAQ</a>
+        </div>
+        <div>
+          <h4>Project</h4>
+          <a href="https://github.com/arnabsaha7/ItemCare">GitHub Repository</a>
+          <a href="https://github.com/arnabsaha7/ItemCare/releases">Releases</a>
+          <a href="https://github.com/arnabsaha7/ItemCare/issues">Report an Issue</a>
+        </div>
+        <div>
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="terms.html">Terms of Use</a>
+        </div>
+      </div>
+      <div class="fb">Built by Arnab Saha · Copyright © 2026 ItemCare</div>
+    </div>
+  </footer>
+
+  <script src="legal.js" defer></script>
+</body>
+</html>
