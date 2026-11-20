@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>Arnab Saha - Portfolio 2026</title>
+  <title>Arnab Saha, Systems &amp; Data Engineer (Rust, Tauri, FastAPI)</title>
   <meta name="description" content="Arnab Saha is a Systems &amp; Data Engineer building local-first desktop apps and high-throughput FastAPI backends with Rust, Tauri, TypeScript, and Python.">
   <link rel="canonical" href="https://arnabsaha7.github.io/">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0A0E12">
 
-  <!-- Open Graph (Facebook, LinkedIn, WhatsApp, Slack, Discord, iMessage) -->
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Arnab Saha">
   <meta property="og:url" content="https://arnabsaha7.github.io/">
-  <meta property="og:title" content="Arnab Saha - Portfolio 2026">
+  <meta property="og:title" content="Arnab Saha, Systems &amp; Data Engineer (Rust, Tauri, FastAPI)">
   <meta property="og:description" content="Systems &amp; Data Engineer building local-first desktop software and resilient backend systems for zero latency.">
   <meta property="og:image" content="https://arnabsaha7.github.io/assets/portfolio-card.png">
   <meta property="og:image:type" content="image/png">
@@ -21,16 +20,14 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="Arnab Saha, Systems &amp; Data Engineer. Apps and backends built for instant response.">
 
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Arnab Saha - Portfolio 2026">
+  <meta name="twitter:title" content="Arnab Saha, Systems &amp; Data Engineer (Rust, Tauri, FastAPI)">
   <meta name="twitter:description" content="Systems &amp; Data Engineer building local-first desktop software and resilient backend systems for zero latency.">
   <meta name="twitter:image" content="https://arnabsaha7.github.io/assets/portfolio-card.png">
   <meta name="twitter:image:alt" content="Arnab Saha, Systems &amp; Data Engineer. Apps and backends built for instant response.">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%2355D6E8'/%3E%3Ctext x='12' y='18' font-family='monospace' font-size='16' font-weight='700' fill='%2306151A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
   <script>
-    /* Apply saved (or system) theme before first paint (no dark/light flash). */
     (function () {
       var t = null;
       try { t = localStorage.getItem('theme'); } catch (e) {}
@@ -52,51 +49,95 @@
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
+
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="dewIcon" viewBox="0 0 512 512">
     <defs>
-      <linearGradient id="bgSurfaceDark" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#1B3A63"/><stop offset="55%" stop-color="#0F2340"/><stop offset="100%" stop-color="#091527"/></linearGradient>
-      <radialGradient id="markGlow" cx="50%" cy="46%" r="52%"><stop offset="0%" stop-color="#2B99FF" stop-opacity="0.42"/><stop offset="55%" stop-color="#1463E0" stop-opacity="0.14"/><stop offset="100%" stop-color="#1463E0" stop-opacity="0"/></radialGradient>
-      <linearGradient id="sheen" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.10"/><stop offset="45%" stop-color="#FFFFFF" stop-opacity="0"/></linearGradient>
-      <linearGradient id="rim" x1="0%" y1="0%" x2="0%" y2="100%"><stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.30"/><stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.04"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.10"/></linearGradient>
-      <linearGradient id="dropGradDark" x1="35%" y1="5%" x2="70%" y2="85%"><stop offset="0%" stop-color="#5CE1FF"/><stop offset="45%" stop-color="#2B99FF"/><stop offset="100%" stop-color="#1463E0"/></linearGradient>
-      <linearGradient id="dropHighlightDark" x1="20%" y1="15%" x2="60%" y2="75%"><stop offset="0%" stop-color="#8CEBFF" stop-opacity="0.8"/><stop offset="100%" stop-color="#2B99FF" stop-opacity="0"/></linearGradient>
-      <linearGradient id="leftLeafGradDark" x1="15%" y1="20%" x2="75%" y2="95%"><stop offset="0%" stop-color="#3DF5BE"/><stop offset="55%" stop-color="#1AD9A6"/><stop offset="100%" stop-color="#10A891"/></linearGradient>
-      <linearGradient id="leafTopGradDark" x1="0%" y1="60%" x2="100%" y2="20%"><stop offset="0%" stop-color="#57F790"/><stop offset="100%" stop-color="#2CE074"/></linearGradient>
-      <linearGradient id="leafBotGradDark" x1="10%" y1="90%" x2="95%" y2="25%"><stop offset="0%" stop-color="#14B866"/><stop offset="50%" stop-color="#1ED175"/><stop offset="100%" stop-color="#28E382"/></linearGradient>
-      <filter id="appDropShadowDark" x="-25%" y="-25%" width="150%" height="150%"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#020813" flood-opacity="0.5"/></filter>
-      <filter id="checkShadowDark" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="1.5" stdDeviation="1.6" flood-color="#021B4A" flood-opacity="0.5"/></filter>
+      <linearGradient id="bgSurfaceDark" x1="0%" y1="0%" x2="100%" y2="100%">
+        <stop offset="0%" stop-color="#1B3A63"/><stop offset="55%" stop-color="#0F2340"/><stop offset="100%" stop-color="#091527"/>
+      </linearGradient>
+      <radialGradient id="markGlow" cx="50%" cy="46%" r="52%">
+        <stop offset="0%" stop-color="#2B99FF" stop-opacity="0.42"/><stop offset="55%" stop-color="#1463E0" stop-opacity="0.14"/><stop offset="100%" stop-color="#1463E0" stop-opacity="0"/>
+      </radialGradient>
+      <linearGradient id="sheen" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.10"/><stop offset="45%" stop-color="#FFFFFF" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="rim" x1="0%" y1="0%" x2="0%" y2="100%">
+        <stop offset="0%" stop-color="#FFFFFF" stop-opacity="0.30"/><stop offset="50%" stop-color="#FFFFFF" stop-opacity="0.04"/><stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.10"/>
+      </linearGradient>
+      <linearGradient id="dropGradDark" x1="35%" y1="5%" x2="70%" y2="85%">
+        <stop offset="0%" stop-color="#5CE1FF"/><stop offset="45%" stop-color="#2B99FF"/><stop offset="100%" stop-color="#1463E0"/>
+      </linearGradient>
+      <linearGradient id="dropHighlightDark" x1="20%" y1="15%" x2="60%" y2="75%">
+        <stop offset="0%" stop-color="#8CEBFF" stop-opacity="0.8"/><stop offset="100%" stop-color="#2B99FF" stop-opacity="0"/>
+      </linearGradient>
+      <linearGradient id="leftLeafGradDark" x1="15%" y1="20%" x2="75%" y2="95%">
+        <stop offset="0%" stop-color="#3DF5BE"/><stop offset="55%" stop-color="#1AD9A6"/><stop offset="100%" stop-color="#10A891"/>
+      </linearGradient>
+      <linearGradient id="leafTopGradDark" x1="0%" y1="60%" x2="100%" y2="20%">
+        <stop offset="0%" stop-color="#57F790"/><stop offset="100%" stop-color="#2CE074"/>
+      </linearGradient>
+      <linearGradient id="leafBotGradDark" x1="10%" y1="90%" x2="95%" y2="25%">
+        <stop offset="0%" stop-color="#14B866"/><stop offset="50%" stop-color="#1ED175"/><stop offset="100%" stop-color="#28E382"/>
+      </linearGradient>
+      <filter id="appDropShadowDark" x="-25%" y="-25%" width="150%" height="150%">
+        <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#020813" flood-opacity="0.5"/>
+      </filter>
+      <filter id="checkShadowDark" x="-20%" y="-20%" width="140%" height="140%">
+        <feDropShadow dx="0" dy="1.5" stdDeviation="1.6" flood-color="#021B4A" flood-opacity="0.5"/>
+      </filter>
     </defs>
     <rect width="512" height="512" rx="112" fill="url(#bgSurfaceDark)"/>
     <rect width="512" height="512" rx="112" fill="url(#markGlow)"/>
     <rect width="512" height="512" rx="112" fill="url(#sheen)"/>
     <rect x="1" y="1" width="510" height="510" rx="111" fill="none" stroke="url(#rim)" stroke-width="2"/>
     <g transform="translate(-23.1, -9.2) scale(2.75)" filter="url(#appDropShadowDark)">
-      <path d="M 65 65 C 51 86, 46 105, 49 124 C 52 142, 65 157, 79 164 C 82 155, 87 146, 94 139 C 71 128, 60 109, 60 87 C 60 79, 62 72, 65 65 Z" fill="url(#leftLeafGradDark)"/>
-      <path d="M 65 65 C 60 85, 62 118, 94 139 C 96 137, 98 135, 100 133 C 68 114, 64 85, 68 61 Z" fill="#04384B" opacity="0.45"/>
-      <path d="M 97 22 C 99 19.5, 101 19.5, 103 22 C 118 40, 152 77, 152 108 C 152 110, 151.8 111.5, 151.5 113 C 134 117, 108 124, 94 139 C 66 123, 59 97, 65 65 C 74 50, 87 34, 97 22 Z" fill="url(#dropGradDark)"/>
-      <path d="M 98 25 C 85 42, 70 65, 69 91 C 68 110, 77 123, 91 132 C 81 120, 77 105, 79 88 C 81 66, 91 43, 100 25 Z" fill="url(#dropHighlightDark)"/>
-      <path d="M 85 165 C 96 138, 120 123, 154 117 C 135 135, 112 153, 85 165 Z" fill="url(#leafTopGradDark)"/>
-      <path d="M 85 165 C 112 153, 135 135, 154 117 C 152 146, 132 169, 103 169 C 96 169, 90 167.5, 85 165 Z" fill="url(#leafBotGradDark)"/>
-      <path d="M 85 99 L 96.5 110.5 L 121.5 85.5" fill="none" stroke="#FFFFFF" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#checkShadowDark)"/>
+      <path d="M65 65C51 86 46 105 49 124C52 142 65 157 79 164C82 155 87 146 94 139C71 128 60 109 60 87C60 79 62 72 65 65Z" fill="url(#leftLeafGradDark)"/>
+      <path d="M65 65C60 85 62 118 94 139C96 137 98 135 100 133C68 114 64 85 68 61Z" fill="#04384B" opacity="0.45"/>
+      <path d="M97 22C99 19.5 101 19.5 103 22C118 40 152 77 152 108C152 110 151.8 111.5 151.5 113C134 117 108 124 94 139C66 123 59 97 65 65C74 50 87 34 97 22Z" fill="url(#dropGradDark)"/>
+      <path d="M98 25C85 42 70 65 69 91C68 110 77 123 91 132C81 120 77 105 79 88C81 66 91 43 100 25Z" fill="url(#dropHighlightDark)"/>
+      <path d="M85 165C96 138 120 123 154 117C135 135 112 153 85 165Z" fill="url(#leafTopGradDark)"/>
+      <path d="M85 165C112 153 135 135 154 117C152 146 132 169 103 169C96 169 90 167.5 85 165Z" fill="url(#leafBotGradDark)"/>
+      <path d="M85 99 96.5 110.5 121.5 85.5" fill="none" stroke="#FFFFFF" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round" filter="url(#checkShadowDark)"/>
     </g>
   </symbol>
+
   <symbol id="icIcon" viewBox="0 0 512 512">
-<defs>
-<linearGradient id="ic-bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1F6A82"/><stop offset="1" stop-color="#0A2636"/></linearGradient>
-<linearGradient id="ic-box" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C9D6E0"/></linearGradient>
-<linearGradient id="ic-sh" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#4ADE9B"/><stop offset="1" stop-color="#0B9A62"/></linearGradient>
-<radialGradient id="ic-glow" cx=".5" cy="0" r=".9"><stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/></radialGradient>
-</defs>
-<rect width="512" height="512" rx="112" fill="url(#ic-bg)"/>
-<rect width="512" height="512" rx="112" fill="url(#ic-glow)"/>
-<g transform="rotate(-26 256 250)"><rect x="210" y="112" width="92" height="140" rx="9" fill="#A9C6D2"/><path d="M224 140h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 160h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 180h34" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/></g><g transform="rotate(26 256 250)"><rect x="210" y="112" width="92" height="140" rx="9" fill="#A9C6D2"/><path d="M224 140h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 160h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 180h34" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/></g><g transform="rotate(-13 256 250)"><rect x="210" y="112" width="92" height="140" rx="9" fill="#D3E3EA"/><path d="M224 140h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 160h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 180h34" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/></g><g transform="rotate(13 256 250)"><rect x="210" y="112" width="92" height="140" rx="9" fill="#D3E3EA"/><path d="M224 140h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 160h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 180h34" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/></g><g transform="rotate(0 256 250)"><rect x="210" y="112" width="92" height="140" rx="9" fill="#FFFFFF"/><path d="M224 140h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 160h56" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/><path d="M224 180h34" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/></g>
-<rect x="116" y="252" width="280" height="172" rx="24" fill="url(#ic-box)"/>
-<rect x="116" y="252" width="280" height="14" fill="#0A2636" opacity=".16"/>
-<rect x="96" y="208" width="320" height="52" rx="18" fill="#FFFFFF"/>
-<rect x="96" y="250" width="320" height="10" rx="5" fill="#0A2636" opacity=".12"/>
-<g transform="translate(256 346)"><path d="M0-54-44-37V4C-44 33-22 50 0 60 22 50 44 33 44 4V-37z" fill="url(#ic-sh)"/><path d="M-20 2-5 18 22-14" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/></g>
-</symbol>
+    <defs>
+      <linearGradient id="ic-bg" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#1F6A82"/><stop offset="1" stop-color="#0A2636"/>
+      </linearGradient>
+      <linearGradient id="ic-box" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="#FFFFFF"/><stop offset="1" stop-color="#C9D6E0"/>
+      </linearGradient>
+      <linearGradient id="ic-sh" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stop-color="#4ADE9B"/><stop offset="1" stop-color="#0B9A62"/>
+      </linearGradient>
+      <radialGradient id="ic-glow" cx=".5" cy="0" r=".9">
+        <stop offset="0" stop-color="#fff" stop-opacity=".16"/><stop offset="1" stop-color="#fff" stop-opacity="0"/>
+      </radialGradient>
+      <g id="ic-paper">
+        <rect x="210" y="112" width="92" height="140" rx="9"/>
+        <path d="M224 140h56m-56 20h56m-56 20h34" fill="none" stroke="#2A7A8D" stroke-width="7" stroke-linecap="round"/>
+      </g>
+    </defs>
+    <rect width="512" height="512" rx="112" fill="url(#ic-bg)"/>
+    <rect width="512" height="512" rx="112" fill="url(#ic-glow)"/>
+    <use href="#ic-paper" transform="rotate(-26 256 250)" fill="#A9C6D2"/>
+    <use href="#ic-paper" transform="rotate(26 256 250)" fill="#A9C6D2"/>
+    <use href="#ic-paper" transform="rotate(-13 256 250)" fill="#D3E3EA"/>
+    <use href="#ic-paper" transform="rotate(13 256 250)" fill="#D3E3EA"/>
+    <use href="#ic-paper" fill="#FFFFFF"/>
+    <rect x="116" y="252" width="280" height="172" rx="24" fill="url(#ic-box)"/>
+    <rect x="116" y="252" width="280" height="14" fill="#0A2636" opacity=".16"/>
+    <rect x="96" y="208" width="320" height="52" rx="18" fill="#FFFFFF"/>
+    <rect x="96" y="250" width="320" height="10" rx="5" fill="#0A2636" opacity=".12"/>
+    <g transform="translate(256 346)">
+      <path d="M0-54-44-37V4C-44 33-22 50 0 60 22 50 44 33 44 4V-37z" fill="url(#ic-sh)"/>
+      <path d="M-20 2-5 18 22-14" fill="none" stroke="#fff" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+  </symbol>
+
   <symbol id="labIcon" viewBox="0 0 512 512">
     <rect width="512" height="512" rx="112" fill="#0F1A24"/>
     <path d="m196 164-92 92 92 92M316 164l92 92-92 92M284 140l-56 232" fill="none" stroke="#55D6E8" stroke-width="30" stroke-linecap="round" stroke-linejoin="round"/>
@@ -107,25 +148,31 @@
   <div class="wrap">
     <a href="#top" class="brand" aria-label="Arnab Saha - Home">
       <span class="mark" aria-hidden="true">A</span>
-      <b>ARNAB SAHA</b>
-      <span class="lbl brand-tag">SYSTEMS &amp; DATA ENGINEER</span>
+      <b>Arnab Saha</b>
+      <span class="lbl brand-tag">Systems &amp; data engineer</span>
     </a>
     <div class="nav-cluster">
       <nav class="top-nav" id="primaryNav" aria-label="Primary">
-        <a href="#work"><span>01</span>Work</a>
-        <a href="#stack"><span>02</span>Stack</a>
-        <a href="#about"><span>03</span>About</a>
-        <a href="#contact"><span>04</span>Contact</a>
+        <a href="#work">Work</a>
+        <a href="#stack">Stack</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
       </nav>
       <div class="bar-actions">
         <a class="ico" href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer" aria-label="Arnab Saha on GitHub">
-          <svg width="17" height="17" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>
+          <svg width="17" height="17" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/>
+          </svg>
         </a>
         <button id="navBtn" class="ico nav-toggle" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="primaryNav">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M2 4h12M2 8h12M2 12h12"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true">
+            <path d="M2 4h12M2 8h12M2 12h12"/>
+          </svg>
         </button>
         <button id="themeBtn" class="ico" type="button" aria-label="Switch theme">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor"/></svg>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor"/>
+          </svg>
         </button>
       </div>
     </div>
@@ -133,17 +180,11 @@
 </header>
 
 <main id="main">
-  <!-- 00 // HERO -->
   <section id="top" class="hero">
     <div class="wrap grid">
       <div class="c7">
-        <div class="hero-eyebrow">
-          <b>00</b><i>//</i><span>SYSTEMS &amp; DATA ENGINEER</span>
-        </div>
-        <h1>I engineer apps and backends built for <em>instant response</em> and <em>reliable execution</em>.</h1>
-        <p class="hero-sub">
-          Designing native desktop workspaces, resilient SQLite data layers, and high-throughput APIs with <strong>Rust, Tauri, TypeScript, and FastAPI</strong>.
-        </p>
+        <h1>Hi, I am <span class="nw">Arnab Saha.</span></h1>
+        <p class="hero-lead">I’m a systems and data engineer building responsive desktop apps and reliable APIs with <strong>Rust, Tauri, TypeScript, and FastAPI</strong>.</p>
         <div class="row">
           <a class="btn pri" href="#work">
             <span>Explore selected work</span>
@@ -153,200 +194,190 @@
             <span>Get in touch</span>
             <span class="arr" aria-hidden="true">→</span>
           </a>
+          <a class="btn gh resume-link" href="#" hidden download>Résumé</a>
         </div>
       </div>
 
-      <aside class="term c5" aria-label="Developer manifest and workflow terminal">
-        <div class="th">
-          <div class="th-l">
-            <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
-            <div class="term-tabs" role="tablist" aria-label="Terminal view">
-              <button class="term-tab on" type="button" role="tab" aria-selected="true" id="tab-manifest" aria-controls="pane-manifest" tabindex="0" data-tab="manifest">manifest.md</button>
-              <button class="term-tab" type="button" role="tab" aria-selected="false" id="tab-workflow" aria-controls="pane-workflow" tabindex="-1" data-tab="workflow">workflow.md</button>
+      <details class="engineering-notes c5" id="engineeringNotes">
+        <summary>View engineering notes</summary>
+        <div class="term">
+          <div class="th">
+            <div class="th-l">
+              <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <div class="term-tabs" role="tablist" aria-label="Terminal view">
+                <button class="term-tab on" type="button" role="tab" aria-selected="true" id="tab-manifest" aria-controls="pane-manifest" tabindex="0" data-tab="manifest">manifest.md</button>
+                <button class="term-tab" type="button" role="tab" aria-selected="false" id="tab-workflow" aria-controls="pane-workflow" tabindex="-1" data-tab="workflow">workflow.md</button>
+              </div>
             </div>
-          </div>
-          <span>UTF-8 · LF</span>
-        </div>
-
-        <div class="tb">
-          <!-- Tab 1: Engineering Manifest -->
-          <div class="term-pane on" id="pane-manifest" role="tabpanel" aria-labelledby="tab-manifest">
-            <div class="t-block" style="--n:28">
-              <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><span class="t-type"><span class="prog">arnab</span> inspect <span class="flag">--architecture</span></span></div>
-              <dl class="t-grid t-res">
-                <dt>focus</dt><dd>Local-first desktop &amp; API systems</dd>
-                <dt>desktop</dt><dd><span class="tk">Rust</span> · <span class="tk">Tauri</span> · <span class="tk">TypeScript</span> · <span class="tk">React</span></dd>
-                <dt>backend</dt><dd><span class="tk">FastAPI</span> · <span class="tk">Python</span> · <span class="tk">SQLite</span> · <span class="tk">SQL</span></dd>
-                <dt>standard</dt><dd>Offline-capable, zero-bloat builds</dd>
-              </dl>
-            </div>
-            <div class="t-block" style="--n:27">
-              <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><span class="t-type"><span class="prog">git</span> status <span class="flag">--short</span> <span class="flag">--branch</span></span></div>
-              <div class="t-out t-res"><span class="t-branch">## main...origin/main</span> · shipping <strong>DewTask</strong></div>
-            </div>
-            <div class="t-block">
-              <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
-            </div>
+            <span>UTF-8 · LF</span>
           </div>
 
-          <!-- Tab 2: Execution Workflow -->
-          <div class="term-pane" id="pane-workflow" role="tabpanel" aria-labelledby="tab-workflow">
-            <div class="t-block" style="--n:22">
-              <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><span class="t-type"><span class="prog">project</span> run <span class="flag">--protocol</span></span></div>
-              <dl class="t-grid t-res">
-                <dt><span class="n">01</span> scope</dt><dd>Architecture &amp; edge cases defined upfront</dd>
-                <dt><span class="n">02</span> estimate</dt><dd>Clear milestones, zero hidden unknowns</dd>
-                <dt><span class="n">03</span> build</dt><dd>Iterative ships with plain-word updates</dd>
-                <dt><span class="n">04</span> handover</dt><dd>Tested binaries, docs &amp; clean source</dd>
-              </dl>
+          <div class="tb">
+            <div class="term-pane on" id="pane-manifest" role="tabpanel" aria-labelledby="tab-manifest">
+              <div class="t-block">
+                <div class="t-cmd">
+                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
+                  <span class="t-type"><span class="prog">arnab</span> inspect <span class="flag">--architecture</span></span>
+                </div>
+                <dl class="t-grid t-res">
+                  <dt>focus</dt><dd>Local-first desktop &amp; API systems</dd>
+                  <dt>desktop</dt><dd><span class="tk">Rust</span> · <span class="tk">Tauri</span> · <span class="tk">TypeScript</span> · <span class="tk">React</span></dd>
+                  <dt>backend</dt><dd><span class="tk">FastAPI</span> · <span class="tk">Python</span> · <span class="tk">SQLite</span> · <span class="tk">SQL</span></dd>
+                  <dt>standard</dt><dd>Offline-capable, zero-bloat builds</dd>
+                </dl>
+              </div>
+              <div class="t-block">
+                <div class="t-cmd">
+                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
+                  <span class="t-type"><span class="prog">git</span> status <span class="flag">--short</span> <span class="flag">--branch</span></span>
+                </div>
+                <div class="t-out t-res"><span class="t-branch">## main...origin/main</span> · shipping <strong>DewTask</strong></div>
+              </div>
+              <div class="t-block">
+                <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
+              </div>
             </div>
-            <div class="t-block" style="--n:21">
-              <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><span class="t-type"><span class="prog">status</span> <span class="flag">--availability</span></span></div>
-              <div class="t-out t-res">Open for select engineering &amp; product builds</div>
-            </div>
-            <div class="t-block">
-              <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
+
+            <div class="term-pane" id="pane-workflow" role="tabpanel" aria-labelledby="tab-workflow">
+              <div class="t-block">
+                <div class="t-cmd">
+                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
+                  <span class="t-type"><span class="prog">project</span> run <span class="flag">--protocol</span></span>
+                </div>
+                <dl class="t-grid t-res">
+                  <dt><span class="n">01</span> scope</dt><dd>Architecture &amp; edge cases defined upfront</dd>
+                  <dt><span class="n">02</span> estimate</dt><dd>Clear milestones, zero hidden unknowns</dd>
+                  <dt><span class="n">03</span> build</dt><dd>Iterative ships with plain-word updates</dd>
+                  <dt><span class="n">04</span> handover</dt><dd>Tested binaries, docs &amp; clean source</dd>
+                </dl>
+              </div>
+              <div class="t-block">
+                <div class="t-cmd">
+                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
+                  <span class="t-type"><span class="prog">status</span> <span class="flag">--availability</span></span>
+                </div>
+                <div class="t-out t-res">Open for select engineering &amp; product builds</div>
+              </div>
+              <div class="t-block">
+                <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="tf">
-          <span class="tf-l"><i class="dot" aria-hidden="true"></i>status: nominal</span>
-          <span class="tf-r">
-            <span>IST <time id="termClock">--:--</time></span>
-            <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
-          </span>
+          <div class="tf">
+            <span class="tf-l"><i class="dot" aria-hidden="true"></i>status: nominal</span>
+            <span class="tf-r">
+              <span>IST <time id="termClock">--:--</time></span>
+              <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+            </span>
+          </div>
         </div>
-      </aside>
+      </details>
     </div>
   </section>
 
-  <!-- 01 // SELECTED WORK -->
   <section id="work" class="sec">
     <div class="wrap">
-      <div class="head">
-        <h2><i>01</i>Selected work</h2>
-        <span class="lbl">2 shipped · 1 in progress</span>
-      </div>
+      <div class="head"><h2>Selected work</h2></div>
 
       <div class="pcards">
         <article class="pc">
           <div class="pc-top">
-            <span class="pill pc-status"><span class="dot" aria-hidden="true"></span><span class="lbl lbl-strong" id="dewTag">Live release</span></span>
             <svg class="pc-logo" viewBox="0 0 512 512" aria-hidden="true"><use href="#dewIcon"/></svg>
-            <h3>DewTask</h3>
-          </div>
-          <div class="pc-body">
-            <p>An offline-first task and workspace manager for people who think in projects, not flat to-do lists.</p>
-            <div class="lab-tags"><span>Rust</span><span>Tauri</span><span>SQLite</span></div>
-            <div class="pc-foot">
-              <a class="btn pri" href="https://arnabsaha7.github.io/dewtask/" target="_blank" rel="noopener noreferrer">Open project page ↗</a>
-              <a class="lbl under" href="https://github.com/arnabsaha7/dewtask/releases" target="_blank" rel="noopener noreferrer">View release notes</a>
+            <div>
+              <h3>DewTask</h3>
+              <span class="pc-status"><span class="dot" aria-hidden="true"></span><span id="dewTag">Live</span></span>
             </div>
           </div>
+          <p>An offline-first workspace for organizing tasks by project.</p>
+          <p class="pc-detail">SQLite keeps project data on-device so the app works without a connection.</p>
+          <div class="lab-tags"><span>Rust</span><span>Tauri</span><span>SQLite</span></div>
+          <a class="btn pri" href="https://arnabsaha7.github.io/dewtask/" target="_blank" rel="noopener noreferrer">View DewTask <span aria-hidden="true">↗</span></a>
         </article>
+
         <article class="pc">
           <div class="pc-top">
-            <span class="pill pc-status"><span class="dot" aria-hidden="true"></span><span class="lbl lbl-strong">v1.0.0 · live release</span></span>
             <svg class="pc-logo" viewBox="0 0 512 512" aria-hidden="true"><use href="#icIcon"/></svg>
-            <h3>ItemCare</h3>
-          </div>
-          <div class="pc-body">
-            <p>A private, offline tracker for home inventory, warranties and maintenance, with encrypted insurance packs.</p>
-            <div class="lab-tags"><span>Rust</span><span>Tauri 2</span><span>AES-256</span></div>
-            <div class="pc-foot">
-              <a class="btn pri" href="https://arnabsaha7.github.io/itemcare/" target="_blank" rel="noopener noreferrer">Open project page ↗</a>
-              <a class="lbl under" href="https://github.com/arnabsaha7/ItemCare/releases" target="_blank" rel="noopener noreferrer">View release notes</a>
+            <div>
+              <h3>ItemCare</h3>
+              <span class="pc-status"><span class="dot" aria-hidden="true"></span>Live</span>
             </div>
           </div>
+          <p>A private tracker for home inventory, warranties, and maintenance.</p>
+          <p class="pc-detail">Records stay on-device, and insurance exports are protected with AES-256.</p>
+          <div class="lab-tags"><span>Rust</span><span>Tauri 2</span><span>AES-256</span></div>
+          <a class="btn pri" href="https://arnabsaha7.github.io/itemcare/" target="_blank" rel="noopener noreferrer">View ItemCare <span aria-hidden="true">↗</span></a>
         </article>
-        <article class="pc">
+
+        <article class="pc pc--lab">
           <div class="pc-top">
-            <span class="pill pc-status"><span class="dot wip" aria-hidden="true"></span><span class="lbl lbl-strong">In progress</span></span>
             <svg class="pc-logo" viewBox="0 0 512 512" aria-hidden="true"><use href="#labIcon"/></svg>
-            <h3>R&amp;D lab</h3>
-          </div>
-          <div class="pc-body">
-            <p>Open-source CLI tools, keyboard-driven desktop utilities and local-first sync experiments, built in public.</p>
-            <div class="lab-tags"><span>Rust crates</span><span>CLI tooling</span><span>SQLite WAL</span></div>
-            <div class="pc-foot">
-              <a class="btn pri" href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer">Follow on GitHub ↗</a>
-              <a class="lbl under" href="https://github.com/arnabsaha7?tab=repositories" target="_blank" rel="noopener noreferrer">View repositories</a>
+            <div>
+              <h3>R&amp;D lab</h3>
+              <span class="pc-status"><span class="dot wip" aria-hidden="true"></span>In progress</span>
             </div>
           </div>
+          <p>Open-source command-line tools, keyboard-driven utilities, and local-first experiments.</p>
+          <p class="pc-detail">I use SQLite’s write-ahead log to explore local-first sync.</p>
+          <div class="lab-tags"><span>Rust</span><span>CLI</span><span>SQLite WAL</span></div>
+          <a class="under" href="https://github.com/arnabsaha7?tab=repositories" target="_blank" rel="noopener noreferrer">Explore experiments <span aria-hidden="true">↗</span></a>
         </article>
       </div>
 
       <div class="card principles">
         <span class="lbl">Architecture principles</span>
         <div class="pr-list">
-          <div class="pr"><i>01</i><div><b>Offline by default</b><div class="pr-desc">Core workflows run locally without waiting on a network round-trip.</div></div></div>
-          <div class="pr"><i>02</i><div><b>Instant interactions</b><div class="pr-desc">Indexed local reads, lean state and native windowing keep the UI responsive.</div></div></div>
-          <div class="pr"><i>03</i><div><b>Minimal dependencies</b><div class="pr-desc">Fewer moving parts to audit, smaller installers, easier long-term upkeep.</div></div></div>
+          <div class="pr"><div><b>Offline by default</b><div class="pr-desc">Core workflows run locally without waiting on a network round-trip.</div></div></div>
+          <div class="pr"><div><b>Instant interactions</b><div class="pr-desc">Indexed local reads, lean state and native windowing keep the UI responsive.</div></div></div>
+          <div class="pr"><div><b>Minimal dependencies</b><div class="pr-desc">Fewer moving parts to audit, smaller installers, easier long-term upkeep.</div></div></div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- 02 // ENGINEERING STACK -->
   <section id="stack" class="sec">
     <div class="wrap">
-      <div class="head">
-        <h2><i>02</i>Engineering stack</h2>
-        <span class="lbl">PRODUCTION CAPABILITIES</span>
-      </div>
+      <div class="head"><h2>Engineering stack</h2></div>
       <div class="stack">
         <div>
-          <div class="stack-col-head">
-            <span class="lbl">Systems &amp; desktop</span>
-            <span class="lbl">01</span>
-          </div>
+          <div class="stack-col-head"><span class="lbl">Systems &amp; desktop</span></div>
           <ul>
-            <li><span>Rust</span><span>Core / Native</span></li>
-            <li><span>Tauri</span><span>Desktop Runtime</span></li>
-            <li><span>TypeScript &amp; React</span><span>UI Layer</span></li>
-            <li><span>Windows packaging</span><span>MSI / EXE</span></li>
+            <li><span>Rust</span><span>DewTask, ItemCare</span></li>
+            <li><span>Tauri</span><span>DewTask, ItemCare</span></li>
+            <li><span>TypeScript &amp; React</span><span>Desktop interfaces</span></li>
+            <li><span>Windows packaging</span><span>MSI / EXE releases</span></li>
           </ul>
         </div>
         <div>
-          <div class="stack-col-head">
-            <span class="lbl">Backend &amp; data</span>
-            <span class="lbl">02</span>
-          </div>
+          <div class="stack-col-head"><span class="lbl">Backend &amp; data</span></div>
           <ul>
-            <li><span>FastAPI</span><span>REST / Async APIs</span></li>
-            <li><span>Python</span><span>Services &amp; CLI</span></li>
-            <li><span>SQLite &amp; SQL</span><span>Local / Relational</span></li>
-            <li><span>Schema &amp; query tuning</span><span>Indexing</span></li>
+            <li><span>FastAPI</span><span>APIs at Deloitte</span></li>
+            <li><span>Python</span><span>Services &amp; CLI tools</span></li>
+            <li><span>SQLite &amp; SQL</span><span>DewTask data layer</span></li>
+            <li><span>Schema &amp; query tuning</span><span>Slow-query profiling</span></li>
           </ul>
         </div>
         <div>
-          <div class="stack-col-head">
-            <span class="lbl">Engineering practice</span>
-            <span class="lbl">03</span>
-          </div>
+          <div class="stack-col-head"><span class="lbl">Engineering practice</span></div>
           <ul>
             <li><span>Performance profiling</span><span>Latency</span></li>
-            <li><span>Data pipelines</span><span>ETL / Sync</span></li>
+            <li><span>Data pipelines</span><span>ETL and sync</span></li>
             <li><span>Release automation</span><span>CI / CD</span></li>
-            <li><span>Offline-first architecture</span><span>State</span></li>
+            <li><span>Offline-first architecture</span><span>Local state</span></li>
           </ul>
         </div>
       </div>
+
     </div>
   </section>
 
-  <!-- 03 // ABOUT -->
   <section id="about" class="sec about">
     <div class="wrap">
-      <div class="head">
-        <h2><i>03</i>About</h2>
-        <span class="lbl">BACKGROUND &amp; TELEMETRY</span>
-      </div>
+      <div class="head"><h2>About</h2></div>
       <div class="grid grid-start">
         <div class="c7">
           <p class="about-lead">
-            I'm a software engineer with 3+ years of experience, including 2+ years in industry at Deloitte, focused on building low-latency FastAPI backends and native-feeling desktop applications.
+            At Deloitte, I worked on FastAPI backends. In my independent work, I build desktop apps that keep data local and remain usable offline.
           </p>
           <p class="about-sub">
             I enjoy working across the boundary between systems and interface: structuring clean relational schemas, profiling slow queries, and shipping software that feels calm, predictable, and snappy in daily use.
@@ -354,21 +385,21 @@
         </div>
         <div class="c5 facts">
           <div><span class="lbl">Role</span><span class="mono">Systems &amp; Data Engineer</span></div>
-          <div><span class="lbl">Experience</span><span class="mono">3+ Years (Deloitte &amp; Independent)</span></div>
           <div><span class="lbl">Based in</span><span class="mono">Tripura, India</span></div>
           <div><span class="lbl">Time zone</span><span class="mono">IST (UTC+5:30)</span></div>
         </div>
       </div>
+      <div class="about-stats">
+        <div><b>3+</b><span>Years building software</span></div>
+        <div><b>2+</b><span>Years in industry at Deloitte</span></div>
+        <div><b>2</b><span>Desktop apps shipped</span></div>
+      </div>
     </div>
   </section>
 
-  <!-- 04 // CONTACT -->
   <section id="contact" class="sec contact">
     <div class="wrap">
-      <div class="head">
-        <h2><i>04</i>Contact</h2>
-        <span class="lbl">DIRECT CHANNEL</span>
-      </div>
+      <div class="head"><h2>Contact</h2></div>
       <div class="grid contact-grid">
         <div class="c7">
           <h3>Have a system or desktop tool that needs to be fast and dependable?</h3>
@@ -381,22 +412,23 @@
               <span class="arr" aria-hidden="true">→</span>
             </a>
             <button id="copyBtn" class="btn gh" type="button" hidden>Copy address</button>
+            <a class="btn gh resume-link" href="#" hidden download>Résumé</a>
           </div>
         </div>
         <div class="c5 contact-box">
           <div class="contact-box-head">
-            <span class="lbl">AVAILABILITY STATUS</span>
-            <span class="pill"><span class="dot" aria-hidden="true"></span><span class="lbl lbl-strong">OPEN TO SELECT BUILDS</span></span>
+            <span class="lbl">Availability</span>
+            <span class="pill"><span class="dot" aria-hidden="true"></span><span class="lbl lbl-strong">Open to work</span></span>
           </div>
           <p class="contact-box-text">
-            Available for backend engineering, native desktop product development, and technical collaborations.
+            Open to freelance builds, full-time roles and technical collaborations. Backend engineering and native desktop product work are the best fit.
           </p>
           <div class="contact-box-row">
-            <span class="lbl">PREFERRED CHANNEL</span>
+            <span class="lbl">Preferred channel</span>
             <a id="mailLink" class="under" href="#contact" hidden></a>
           </div>
           <div class="contact-box-row">
-            <span class="lbl">SOCIALS</span>
+            <span class="lbl">Elsewhere</span>
             <div class="contact-socials">
               <a class="under" href="https://github.com/arnabsaha7" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
               <a class="under" href="https://www.linkedin.com/in/arnab-saha-7o7" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
@@ -411,9 +443,9 @@
 
 <footer>
   <div class="wrap">
-    <span class="lbl lbl-2">ARNAB SAHA © 2026</span>
-    <span class="lbl">BUILT WITH PRECISION · NO BLOAT</span>
-    <a class="lbl lbl-strong" id="toTop" href="#top">BACK TO TOP ↑</a>
+    <span class="lbl lbl-2">Arnab Saha © 2026</span>
+    <span class="lbl">Built with precision, no bloat</span>
+    <a class="lbl lbl-strong" id="toTop" href="#top">Back to top ↑</a>
   </div>
 </footer>
 
