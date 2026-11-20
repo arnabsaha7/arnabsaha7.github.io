@@ -1266,6 +1266,7 @@ html[data-theme=light] .hero { --dg: rgba(18, 20, 23, 0.035); }
 
   .brand-tag { display: none; }
   .bar .wrap, .brand { gap: 0.5rem; }
+  .engineering-notes { display: none; }
 
   .principles .pr-list,
   .flow,
