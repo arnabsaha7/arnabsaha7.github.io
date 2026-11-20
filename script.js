@@ -342,20 +342,18 @@
     });
 
     run('release-tag', () => {
-      const cacheKey = 'dewtask_rel_v2';
       const cacheLifetime = 36e5;
-      const label = $('#dewTag');
-      if (!label) return;
+      const projects = [
+        { label: $('#dewTag'), repository: 'dewtask', cacheKey: 'dewtask_rel_v2' },
+        { label: $('#itemcareTag'), repository: 'ItemCare', cacheKey: 'itemcare_tag_v1', tags: true }
+      ];
 
-      function show(tag) {
-        if (tag) label.textContent = 'Live · ' + tag;
-      }
-
-      async function loadRelease() {
+      async function loadVersion(project) {
+        if (!project.label) return;
         try {
-          const cached = JSON.parse(localStorage.getItem(cacheKey) || 'null');
+          const cached = JSON.parse(localStorage.getItem(project.cacheKey) || 'null');
           if (cached && Date.now() - cached.t < cacheLifetime) {
-            show(cached.tag);
+            project.label.textContent = 'Live · ' + cached.tag;
             return;
           }
         } catch (_) {}
@@ -365,8 +363,8 @@
 
         try {
           const response = await fetch(
-            'https://api.github.com/repos/arnabsaha7/dewtask/releases?per_page=100',
-            { signal: controller.signal }
+            `https://api.github.com/repos/arnabsaha7/${project.repository}/${project.tags ? 'tags?per_page=1' : 'releases?per_page=100'}`,
+            { signal: controller.signal, priority: 'low' }
           );
           if (!response.ok) return;
 
@@ -374,12 +372,15 @@
           if (!Array.isArray(releases) || !releases.length) return;
 
           const published = releases.filter(release => !release.draft);
-          const latest = published.find(release => !release.prerelease) || published[0];
-          const tag = latest && latest.tag_name;
-          show(tag);
+          const latest = project.tags
+            ? releases[0]
+            : published.find(release => !release.prerelease) || published[0];
+          const tag = project.tags ? latest.name : latest.tag_name;
+          if (!tag) return;
+          project.label.textContent = 'Live · ' + tag;
 
           try {
-            localStorage.setItem(cacheKey, JSON.stringify({ tag, t: Date.now() }));
+            localStorage.setItem(project.cacheKey, JSON.stringify({ tag, t: Date.now() }));
           } catch (_) {}
         } catch (_) {
           // The card already displays its default Live label.
@@ -388,7 +389,7 @@
         }
       }
 
-      loadRelease();
+      projects.forEach(loadVersion);
     });
   });
 })();
