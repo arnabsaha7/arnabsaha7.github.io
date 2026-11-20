@@ -1,17 +1,19 @@
 :root {
-  --bg: #090A0C;
-  --surface: #101216;
-  --surface-hover: #15181E;
-  --well: #060709;
-  --line: #1E2128;
-  --line-strong: #2C303B;
-  --text: #F3F4F6;
-  --text-2: #9CA3AF;
-  --text-3: #8E96A4;
-  --accent: #FF5A1F;
-  --accent-hover: #FF6E3A;
+  --bg: #0A0E12;
+  --surface: #0F151B;
+  --surface-hover: #151C24;
+  --well: #070A0D;
+  --line: #1A222B;
+  --line-strong: #2A3541;
+  --text: #F1F5F9;
+  --text-2: #A3AFBD;
+  --text-3: #8D9AAA;
+  --accent: #55D6E8;
+  --accent-hover: #7BE2F0;
   --bar-h: 64px;
-  --accent-dim: rgba(255, 90, 31, 0.12);
+  --accent-dim: rgba(85, 214, 232, 0.12);
+  --warn: #F5B84B;
+  --on-accent: #06151A;
   --live: #22C55E;
   --display: 'Space Grotesk', system-ui, -apple-system, sans-serif;
   --body: 'Inter', system-ui, -apple-system, sans-serif;
@@ -44,7 +46,7 @@ body {
 
 ::selection {
   background: var(--accent);
-  color: #090A0C;
+  color: var(--on-accent);
 }
 
 a {
@@ -96,7 +98,6 @@ h1, h2, h3 {
   height: 6px;
   border-radius: 50%;
   background: var(--live);
-  box-shadow: 0 0 8px rgba(34, 197, 94, 0.55);
   flex: none;
 }
 
@@ -108,7 +109,7 @@ h1, h2, h3 {
   top: 0;
   z-index: 50;
   height: var(--bar-h);
-  background: rgba(9, 10, 12, 0.88);
+  background: rgba(10, 14, 18, 0.88);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--line);
@@ -261,7 +262,7 @@ h1, h2, h3 {
 .btn.pri {
   background: var(--accent);
   border-color: var(--accent);
-  color: #090A0C;
+  color: var(--on-accent);
   font-weight: 600;
 }
 
@@ -284,7 +285,7 @@ h1, h2, h3 {
 }
 
 .btn.gh {
-  background: rgba(16, 18, 22, 0.75);
+  background: rgba(15, 21, 27, 0.75);
   color: var(--text);
   border-color: var(--line-strong);
 }
@@ -469,10 +470,11 @@ section {
 
 /* Terminal Card */
 .term {
+  --t-accent: #55D6E8;
   align-self: center;
   max-width: 100%;
-  background: #0A0B0E;
-  border: 1px solid #262A34;
+  background: #090D11;
+  border: 1px solid #222C37;
   box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
   color: #F3F4F6;
   font: 12.5px/1.7 var(--mono);
@@ -480,7 +482,7 @@ section {
 }
 
 .term:hover {
-  border-color: #343946;
+  border-color: #33404E;
 }
 
 .th, .tf {
@@ -490,7 +492,7 @@ section {
   gap: 8px;
   padding: 0 16px;
   min-height: 44px;
-  background: #0E1015;
+  background: #0C1217;
   font-size: 11px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -498,11 +500,11 @@ section {
 }
 
 .th {
-  border-bottom: 1px solid #1F2229;
+  border-bottom: 1px solid #1B242E;
 }
 
 .tf {
-  border-top: 1px solid #1F2229;
+  border-top: 1px solid #1B242E;
   color: #9CA3AF;
 }
 
@@ -542,7 +544,7 @@ section {
   right: 0;
   bottom: -1px;
   height: 2px;
-  background: var(--accent);
+  background: var(--t-accent);
 }
 
 .tb {
@@ -588,7 +590,7 @@ section {
 }
 
 .t-cmd b {
-  color: var(--accent);
+  color: var(--t-accent);
   font-weight: 600;
   margin-right: 6px;
 }
@@ -629,7 +631,7 @@ section {
   display: inline-block;
   width: 7px;
   height: 14px;
-  background: var(--accent);
+  background: var(--t-accent);
   vertical-align: -2px;
   animation: blink 1s steps(2, start) infinite;
 }
@@ -936,27 +938,25 @@ footer .wrap {
    7. Light Theme Overrides & Responsive Breakpoints
    ------------------------------------------------------------------- */
 html[data-theme=light] {
-  --bg: #F5F4F0;
+  --bg: #F1F5F9;
   --surface: #FFFFFF;
-  --surface-hover: #EFECE6;
-  --well: #EAE8E1;
-  --line: #D5D3CB;
-  --line-strong: #B8B5AA;
-  --text: #121417;
-  --text-2: #49505E;
-  --text-3: #525866;
-  --accent: #C93A06;
-  --accent-hover: #A93005;
-  --accent-dim: rgba(201, 58, 6, 0.1);
+  --surface-hover: #E7EDF3;
+  --well: #E6ECF2;
+  --line: #D3DBE4;
+  --line-strong: #B5C0CC;
+  --text: #0E1621;
+  --text-2: #475569;
+  --text-3: #52606F;
+  --accent: #0A7482;
+  --accent-hover: #085F6B;
+  --accent-dim: rgba(10, 116, 130, 0.1);
+  --warn: #B45309;
+  --on-accent: #FFFFFF;
   --live: #15803D;
   color-scheme: light;
 }
 
-html[data-theme=light] .bar { background: rgba(245, 244, 240, 0.88); }
-
-html[data-theme=light] .btn.pri { color: #FFFFFF; }
-
-html[data-theme=light] .skip { color: #FFFFFF; }
+html[data-theme=light] .bar { background: rgba(241, 245, 249, 0.88); }
 
 html[data-theme=light] .btn.gh { background: #FFFFFF; }
 
@@ -1020,7 +1020,7 @@ html[data-theme=light] .hero { --dg: rgba(18, 20, 23, 0.09); }
   z-index: 200;
   padding: 10px 14px;
   background: var(--accent);
-  color: #090A0C;
+  color: var(--on-accent);
   font: 600 12px var(--mono);
   transition: top 0.15s ease;
 }
@@ -1144,8 +1144,7 @@ html[data-theme=light] .hero { --dg: rgba(18, 20, 23, 0.09); }
 }
 
 .dot.wip {
-  background: var(--accent);
-  box-shadow: 0 0 8px var(--accent-dim);
+  background: var(--warn);
   animation: wipPulse 1.6s ease-in-out infinite;
 }
 

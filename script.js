@@ -12,7 +12,7 @@
   const EMAIL = 'arnab.work.7@protonmail.com';
 
   const root = document.documentElement;
-  const THEME_COLORS = { dark: '#090A0C', light: '#F5F4F0' };
+  const THEME_COLORS = { dark: '#0A0E12', light: '#F1F5F9' };
   const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)');
 
   const run = (name, fn) => {
