@@ -153,6 +153,7 @@
     </a>
     <div class="nav-cluster">
       <nav class="top-nav" id="primaryNav" aria-label="Primary">
+        <a href="#top">Home</a>
         <a href="#work">Work</a>
         <a href="#stack">Stack</a>
         <a href="#about">About</a>
@@ -171,7 +172,7 @@
         </button>
         <button id="themeBtn" class="ico" type="button" aria-label="Switch theme">
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
-            <circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor"/>
+            <circle cx="8" cy="8" r="7"/><path d="M8 1a7 7 0 0 1 0 14z" fill="currentColor"/>
           </svg>
         </button>
       </div>
@@ -183,6 +184,7 @@
   <section id="top" class="hero">
     <div class="wrap grid">
       <div class="c7">
+        <a class="hero-note" href="#contact"><span class="dot" aria-hidden="true"></span><span>Open to work</span><span aria-hidden="true">↗</span></a>
         <h1>Hi, I am <span class="nw">Arnab Saha.</span></h1>
         <p class="hero-lead">I’m a systems and data engineer building responsive desktop apps and reliable APIs with <strong>Rust, Tauri, TypeScript, and FastAPI</strong>.</p>
         <div class="row">
@@ -205,70 +207,66 @@
             <div class="th-l">
               <span class="t-dots" aria-hidden="true"><i></i><i></i><i></i></span>
               <div class="term-tabs" role="tablist" aria-label="Terminal view">
-                <button class="term-tab on" type="button" role="tab" aria-selected="true" id="tab-manifest" aria-controls="pane-manifest" tabindex="0" data-tab="manifest">manifest.md</button>
-                <button class="term-tab" type="button" role="tab" aria-selected="false" id="tab-workflow" aria-controls="pane-workflow" tabindex="-1" data-tab="workflow">workflow.md</button>
+                <button class="term-tab on" type="button" role="tab" aria-selected="true" id="tab-manifest" aria-controls="pane-manifest" tabindex="0" data-tab="manifest">profile.md</button>
+                <button class="term-tab" type="button" role="tab" aria-selected="false" id="tab-workflow" aria-controls="pane-workflow" tabindex="-1" data-tab="workflow">approach.md</button>
               </div>
             </div>
-            <span>UTF-8 · LF</span>
+            <span>PORTFOLIO</span>
           </div>
 
           <div class="tb">
             <div class="term-pane on" id="pane-manifest" role="tabpanel" aria-labelledby="tab-manifest">
               <div class="t-block">
                 <div class="t-cmd">
-                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
-                  <span class="t-type"><span class="prog">arnab</span> inspect <span class="flag">--architecture</span></span>
+                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/portfolio</em></span><b aria-hidden="true">❯</b>
+                  <span class="t-type"><span class="prog">cat</span> profile.md</span>
                 </div>
                 <dl class="t-grid t-res">
-                  <dt>focus</dt><dd>Local-first desktop &amp; API systems</dd>
+                  <dt>role</dt><dd>Systems &amp; Data Engineer</dd>
+                  <dt>focus</dt><dd>Desktop apps &amp; reliable APIs</dd>
                   <dt>desktop</dt><dd><span class="tk">Rust</span> · <span class="tk">Tauri</span> · <span class="tk">TypeScript</span> · <span class="tk">React</span></dd>
                   <dt>backend</dt><dd><span class="tk">FastAPI</span> · <span class="tk">Python</span> · <span class="tk">SQLite</span> · <span class="tk">SQL</span></dd>
-                  <dt>standard</dt><dd>Offline-capable, zero-bloat builds</dd>
                 </dl>
               </div>
               <div class="t-block">
                 <div class="t-cmd">
-                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
-                  <span class="t-type"><span class="prog">git</span> status <span class="flag">--short</span> <span class="flag">--branch</span></span>
+                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/portfolio</em></span><b aria-hidden="true">❯</b>
+                  <span class="t-type"><span class="prog">cat</span> principles.md</span>
                 </div>
-                <div class="t-out t-res"><span class="t-branch">## main...origin/main</span> · shipping <strong>DewTask</strong></div>
+                <dl class="t-grid t-res">
+                  <dt>data</dt><dd>Stored locally by default</dd>
+                  <dt>interfaces</dt><dd>Responsive and focused</dd>
+                  <dt>delivery</dt><dd>Lean builds with clear documentation</dd>
+                </dl>
               </div>
               <div class="t-block">
-                <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
+                <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/portfolio</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
               </div>
             </div>
 
             <div class="term-pane" id="pane-workflow" role="tabpanel" aria-labelledby="tab-workflow">
               <div class="t-block">
                 <div class="t-cmd">
-                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
-                  <span class="t-type"><span class="prog">project</span> run <span class="flag">--protocol</span></span>
+                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/portfolio</em></span><b aria-hidden="true">❯</b>
+                  <span class="t-type"><span class="prog">cat</span> approach.md</span>
                 </div>
                 <dl class="t-grid t-res">
-                  <dt><span class="n">01</span> scope</dt><dd>Architecture &amp; edge cases defined upfront</dd>
-                  <dt><span class="n">02</span> estimate</dt><dd>Clear milestones, zero hidden unknowns</dd>
-                  <dt><span class="n">03</span> build</dt><dd>Iterative ships with plain-word updates</dd>
-                  <dt><span class="n">04</span> handover</dt><dd>Tested binaries, docs &amp; clean source</dd>
+                  <dt><span class="n">01</span> scope</dt><dd>Clarify goals, constraints, and edge cases</dd>
+                  <dt><span class="n">02</span> design</dt><dd>Define data models and system boundaries</dd>
+                  <dt><span class="n">03</span> build</dt><dd>Deliver focused, maintainable features</dd>
+                  <dt><span class="n">04</span> validate</dt><dd>Check behavior and document the handoff</dd>
                 </dl>
               </div>
               <div class="t-block">
-                <div class="t-cmd">
-                  <span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b>
-                  <span class="t-type"><span class="prog">status</span> <span class="flag">--availability</span></span>
-                </div>
-                <div class="t-out t-res">Open for select engineering &amp; product builds</div>
-              </div>
-              <div class="t-block">
-                <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/dev</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
+                <div class="t-cmd"><span class="t-ps" aria-hidden="true"><i>arnab</i><em>~/portfolio</em></span><b aria-hidden="true">❯</b><i class="cur" aria-hidden="true"></i></div>
               </div>
             </div>
           </div>
 
           <div class="tf">
-            <span class="tf-l"><i class="dot" aria-hidden="true"></i>status: nominal</span>
+            <span class="tf-l"><i class="dot" aria-hidden="true"></i>portfolio profile</span>
             <span class="tf-r">
-              <span>IST <time id="termClock">--:--</time></span>
-              <span class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span>
+              <span>Tripura, India · IST <time id="termClock">--:--</time></span>
             </span>
           </div>
         </div>
@@ -351,7 +349,7 @@
         <div>
           <div class="stack-col-head"><span class="lbl">Backend &amp; data</span></div>
           <ul>
-            <li><span>FastAPI</span><span>APIs at Deloitte</span></li>
+            <li><span>FastAPI</span><span>High-performance APIs</span></li>
             <li><span>Python</span><span>Services &amp; CLI tools</span></li>
             <li><span>SQLite &amp; SQL</span><span>DewTask data layer</span></li>
             <li><span>Schema &amp; query tuning</span><span>Slow-query profiling</span></li>

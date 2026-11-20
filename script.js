@@ -243,7 +243,7 @@
         const viewportHeight = window.innerHeight;
         const documentHeight = document.documentElement.scrollHeight;
 
-        if (scrollY < 220) return '';
+        if (scrollY < 220) return '#top';
         if (scrollY + viewportHeight >= documentHeight - 48) {
           return sectionHashes[sectionHashes.length - 1];
         }
@@ -304,8 +304,7 @@
         const link = event.target.closest && event.target.closest('a[href^="#"]');
         if (!link || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
         const hash = link.getAttribute('href');
-        if (hash === '#top') lock('');
-        else if (sectionHashes.includes(hash)) lock(hash);
+        if (sectionHashes.includes(hash)) lock(hash);
       });
 
       function fromHash() {
