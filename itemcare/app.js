@@ -150,10 +150,10 @@ activate($('cardTco'), toggleTco);
 // =========================================================
 const inr = n => '₹' + n.toLocaleString('en-IN');
 const ITEMS = [
-  { n: 'LG C3 65" OLED Evo TV', r: 'Living Room', p: 189990, s: '307NTRL1X842', d: '2025-03-14', m: 24, v: 'Croma', i: 'INV-25-08813', svc: 0, f: 'LG_C3_Manual.pdf', hash: '8e41…c90a', img: 'assets/products/lg-c3-oled-tv.svg' },
-  { n: 'Bosch Serie 6 Washer', r: 'Kitchen', p: 54990, s: 'WGB-6620-7741', d: '2024-01-20', m: 24, v: 'Reliance Digital', i: 'RD-24-30192', svc: 1800, f: 'Bosch_Serie6_Manual.pdf', hash: '3b19…f42d', img: 'assets/products/bosch-serie6-washer.svg' },
-  { n: 'Daikin 1.5T Inverter AC', r: 'Master Bedroom', p: 46500, s: 'DKN-1507-33A91', d: '2025-12-05', m: 12, v: 'Vijay Sales', i: 'VS-25-77120', svc: 1200, f: 'Daikin_FTKM_Manual.pdf', hash: '9f2c…b71e', img: 'assets/products/daikin-inverter-ac.svg' },
-  { n: 'Apple MacBook Pro 16" M3', r: 'Master Bedroom', p: 249900, s: 'FVFXK3MNQ05D', d: '2024-11-30', m: 36, v: 'Apple Store', i: 'APL-24-559021', svc: 0, f: 'MacBookPro_Guide.pdf', hash: '5a7d…108c', img: 'assets/products/macbook-pro-16.svg' }
+  { n: 'LG C3 65" OLED Evo TV', short: 'LG OLED TV', r: 'Living Room', p: 189990, s: '307NTRL1X842', d: '2025-03-14', m: 24, v: 'Croma', i: 'INV-25-08813', svc: 0, f: 'LG_C3_Manual.pdf', hash: '8e41…c90a', img: 'assets/products/lg-c3-oled-tv.svg' },
+  { n: 'Bosch Serie 6 Washer', short: 'Washer', r: 'Kitchen', p: 54990, s: 'WGB-6620-7741', d: '2024-01-20', m: 24, v: 'Reliance Digital', i: 'RD-24-30192', svc: 1800, f: 'Bosch_Serie6_Manual.pdf', hash: '3b19…f42d', img: 'assets/products/bosch-serie6-washer.svg' },
+  { n: 'Daikin 1.5T Inverter AC', short: 'Daikin AC', r: 'Master Bedroom', p: 46500, s: 'DKN-1507-33A91', d: '2025-12-05', m: 12, v: 'Vijay Sales', i: 'VS-25-77120', svc: 1200, f: 'Daikin_FTKM_Manual.pdf', hash: '9f2c…b71e', img: 'assets/products/daikin-inverter-ac.svg' },
+  { n: 'Apple MacBook Pro 16" M3', short: 'MacBook Pro', r: 'Master Bedroom', p: 249900, s: 'FVFXK3MNQ05D', d: '2024-11-30', m: 36, v: 'Apple Store', i: 'APL-24-559021', svc: 0, f: 'MacBookPro_Guide.pdf', hash: '5a7d…108c', img: 'assets/products/macbook-pro-16.svg' }
 ];
 const ROOMS = ['All Items', 'Living Room', 'Kitchen', 'Master Bedroom'];
 const left = x => {
@@ -243,16 +243,32 @@ addEventListener('resize', syncMobileDetail);
 draw();
 
 // Bento capabilities
+const serviceTotal = ITEMS.reduce((sum, x) => sum + x.svc, 0);
+const chartColors = ['#34d399', '#60a5fa', '#c084fc', '#fbbf24'];
+const chartCircumference = 2 * Math.PI * 62;
+let chartOffset = 0;
+const chartSegments = ITEMS.map((item, i) => {
+  const length = chartCircumference * item.p / totalVal;
+  const segment = `<circle cx="80" cy="80" r="62" fill="none" stroke="${chartColors[i]}" stroke-width="17" stroke-dasharray="${length} ${chartCircumference - length}" stroke-dashoffset="${-chartOffset}" transform="rotate(-90 80 80)"/>`;
+  chartOffset += length;
+  return segment;
+}).join('');
+const portfolioRows = ITEMS.map((item, i) => ({ item, color: chartColors[i], share: item.p / totalVal * 100 }))
+  .sort((a, b) => b.share - a.share);
+const portfolioChart = `<figure class="portfolio-chart"><div class="portfolio-donut"><svg viewBox="0 0 160 160" aria-hidden="true"><circle cx="80" cy="80" r="62" fill="none" stroke="var(--hair)" stroke-width="17"/>${chartSegments}</svg><div class="portfolio-donut-center"><strong>₹${(totalVal / 100000).toFixed(2)}L</strong><span>purchase value</span></div></div><figcaption><ul aria-label="Purchase value by asset">${portfolioRows.map(({ item, color, share }) => `<li style="--segment:${color};--share:${share}%"><div class="portfolio-row-top"><i aria-hidden="true"></i><span>${item.short === 'LG OLED TV' ? 'TV' : item.short === 'MacBook Pro' ? 'Laptop' : item.short}</span><b>${Math.round(share)}%</b></div><span class="portfolio-share-track" aria-hidden="true"><i></i></span></li>`).join('')}</ul></figcaption></figure>`;
+const daikin = ITEMS.find(x => x.short === 'Daikin AC');
+const warrantyDays = left(daikin);
+const warrantyPercent = Math.max(0, Math.min(100, warrantyDays / (daikin.m * 30.44) * 100));
 const B = [
-  ['Asset & TCO Dashboard', 'Track purchase dates, retailers, invoice numbers, serial numbers, and Total Cost of Ownership: purchase price plus cumulative service costs.', 'M3 3v18h18M7 14l4-4 3 3 5-6', '<span>Portfolio TCO</span><strong>₹5,44,380</strong>'],
-  ['Smart Warranty Center', 'Color-coded active, expiring-soon, and expired tracking with customizable alert thresholds and linked warranty certificates.', 'M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z', '<span>Daikin AC</span><span class="mini-pill warn">30d threshold</span>'],
-  ['Preventive Maintenance Scheduler', 'Recurring routines (filter cleanings, descaling, annual service) with overdue indicators and complete service logs.', 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z', '<span>RO Filter</span><span class="mini-pill">Every 6 mo</span>'],
-  ['SHA-256 Verified Document Vault', 'Category folders for Invoices, Warranty Certificates, User Manuals, Serial Photos, Service Receipts, Insurance and Property Documents, with tamper detection and full-text PDF page search.', 'M6 3h9l4 4v14H6zM14 3v5h5', '<span>SHA-256 · 9f2c…b71e</span><span class="mini-pill ok">Tamper Check ✓</span>'],
-  ['Property Specifications Hub', 'Room paint swatches (brand, finish, hex), electrical DB breaker mappings, mesh Wi-Fi details, and utility/AMC contacts.', 'M3 11 12 3l9 8v10H3zM9 21v-6h6v6', '<span>MCB-7 · 16A</span><strong>#E8DCC8 Matt</strong>'],
-  ['AES-256 Encrypted Insurance Packs', 'One-click password-protected .zip exports bundling CSV inventory, maintenance history, attachments, and an auto-generated PDF Valuation Report.', 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4', '<span>Claim_Pack.zip</span><span class="mini-pill ok">AES-256</span>']
+  { id: 'asset', category: 'OWNERSHIP', icon: 'M3 3v18h18M7 14l4-4 3 3 5-6', title: 'Asset & TCO Dashboard', description: 'See the full purchase and service cost.', visual: portfolioChart, footer: `<span class="feature-pill">Total cost = Purchase ${inr(totalVal)} + Service ${inr(serviceTotal)}</span>` },
+  { id: 'warranty', category: 'COVERAGE', icon: 'M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z', title: 'Smart Warranty Center', description: 'Know what is covered and when it expires.', visual: `<div class="coverage-visual"><div class="visual-label"><span>Time left</span><b>${warrantyDays > 0 ? `${warrantyDays} days` : 'Expired'}</b></div><progress value="${warrantyPercent}" max="100" aria-label="Daikin AC warranty time remaining"></progress></div>`, footer: '<span class="feature-pill">30d alert</span><span class="feature-pill">Daikin AC · 12 mo</span>' },
+  { id: 'maintenance', category: 'ROUTINE CARE', icon: 'M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2.4-.6-.6-2.4z', title: 'Preventive Maintenance', description: 'Track upcoming household care.', visual: '<ol class="maintenance-timeline" aria-label="Maintenance schedule"><li class="done"><i></i><span>Done</span></li><li class="due"><i></i><span>Due</span></li><li class="overdue"><i></i><span>Overdue</span></li></ol>', footer: '<span class="feature-pill">RO filter</span><span class="feature-pill">Every 6 mo</span>' },
+  { id: 'vault', category: 'DOCUMENTS', icon: 'M6 3h9l4 4v14H6zM14 3v5h5', title: 'Document Vault', description: 'Find invoices and manuals fast.', visual: '<div class="document-visual"><span class="file-type"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5h8l4 4V17H4zM12 2.5v4h4"/></svg>PDF</span><span class="file-type"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 2.5h8l4 4V17H4zM12 2.5v4h4"/></svg>DOC</span><span class="file-type"><svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3" y="3" width="14" height="14" rx="2"/><circle cx="7" cy="7" r="1.2"/><path d="m4 15 4-4 2 2 2-3 4 5"/></svg>IMG</span></div>', footer: '<span class="feature-pill verified"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="m3 8 3.2 3.2L13 4.5"/></svg>Verified</span><span class="feature-pill">PDF text search</span>' },
+  { id: 'property', category: 'PROPERTY', icon: 'M3 11 12 3l9 8v10H3zM9 21v-6h6v6', title: 'Property Specifications', description: 'Keep room details close at hand.', visual: '<div class="property-visual"><span class="paint-swatch" aria-label="Paint color #E8DCC8"></span><div><b>#E8DCC8</b><span>Room paint reference</span></div></div>', footer: '<span class="feature-pill">MCB-7 · 16A</span><span class="feature-pill">Wi-Fi · contacts</span>' },
+  { id: 'insurance', category: 'INSURANCE', icon: 'M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4', title: 'Encrypted Insurance Packs', description: 'Export protected household records.', visual: '<div class="insurance-visual"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 11h14v10H5zM8 11V7a4 4 0 0 1 8 0v4"/></svg><span>Encrypted export</span></div>', footer: '<span class="feature-pill">ZIP</span><span class="feature-pill">CSV</span><span class="feature-pill">PDF</span>' }
 ];
 $('bento').innerHTML = B.map(b =>
-  `<div class="card spotlight"><div class="ico"><svg width="21" height="21" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${b[2]}"/></svg></div><h3>${b[0]}</h3><p>${b[1]}</p><div class="mini-ui">${b[3]}</div></div>`
+  `<article class="card feature-card feature-card--${b.id}">${b.id === 'asset' ? `<div class="ownership-header"><div class="feature-kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${b.icon}"/></svg><span>${b.category}</span></div><h3>${b.title}</h3></div><div class="ownership-kpis"><div class="ownership-kpi ownership-kpi--total"><span>Total cost</span><strong>${inr(totalVal + serviceTotal)}</strong></div><div class="ownership-kpi"><span>Purchase</span><strong>${inr(totalVal)}</strong></div><div class="ownership-kpi"><span>Service</span><strong>${inr(serviceTotal)}</strong></div></div><div class="ownership-main">${b.visual}</div><footer class="feature-footer">${b.footer}</footer>` : `<div class="feature-kicker"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="${b.icon}"/></svg><span>${b.category}</span></div><h3>${b.title}</h3><p>${b.description}</p><div class="feature-visual">${b.visual}</div><footer class="feature-footer">${b.footer}</footer>`}</article>`
 ).join('');
 
 // Feature deep-dive tabs
