@@ -15,8 +15,6 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400..600&family=JetBrains+Mono:wght@400;500;600&display=swap">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="icon" href="assets/favicon.ico" sizes="48x48">
-  <link rel="icon" href="assets/favicon-32.png" type="image/png" sizes="32x32">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body class="home">
@@ -58,7 +56,7 @@
         <div class="hero-stage">
           <!-- Left Floating Glass Lane -->
           <div class="hero-lane left">
-            <div class="glass-float gf-offset-1" id="carebotCard" role="button" tabindex="0" aria-label="Click CareBot to run a local vault pulse scan">
+            <div class="glass-float gf-offset-1" id="carebotCard" role="button" tabindex="0" aria-label="Preview sample vault status">
               <div class="gf-head">
                 <span class="gf-label">Vault Sentinel</span>
                 <span class="gf-dot cyan" aria-hidden="true"></span>
@@ -92,12 +90,12 @@
                   </svg>
                 </div>
                 <div>
-                  <div class="gf-title">CareBot Local</div>
-                  <div class="gf-sub">Offline integrity guard</div>
+                  <div class="gf-title">CareBot Demo</div>
+                  <div class="gf-sub">Sample vault status</div>
                 </div>
               </div>
-              <div class="bot-speech" id="botSpeech">SQLite local · 0 bytes sent</div>
-              <div class="gf-hint">Click to run pulse scan</div>
+              <div class="bot-speech" id="botSpeech">Sample data · 0 bytes sent</div>
+              <div class="gf-hint">Preview sample status</div>
             </div>
 
             <div class="glass-float gf-offset-2" id="cardTco" role="button" tabindex="0" aria-label="Toggle TCO breakdown">
@@ -138,7 +136,7 @@
                 <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12m0 0 5-5m-5 5-5-5M5 21h14"/></svg>
                 Download for Windows
               </a>
-              <a class="btn glass lg" href="#preview">Try Live Workspace</a>
+              <a class="btn glass lg" href="#preview">Explore Workspace Preview</a>
             </div>
           </div>
 
@@ -162,17 +160,17 @@
               <div class="gf-hint">Click to cycle asset</div>
             </div>
 
-            <div class="glass-float gf-offset-4" id="cardHash" role="button" tabindex="0" aria-label="Verify document SHA-256 checksum">
+            <div class="glass-float gf-offset-4" id="cardHash" role="button" tabindex="0" aria-label="Preview a sample SHA-256 hash animation">
               <div class="gf-head">
-                <span class="gf-label">SHA-256 Vault</span>
-                <span class="gf-chip ok" id="hashBadge">Verified</span>
+                <span class="gf-label">SHA-256 Demo</span>
+                <span class="gf-chip" id="hashBadge">Sample</span>
               </div>
               <div class="gf-title">LG_C3_Manual.pdf</div>
               <div class="hash-box">
                 <span id="hashText">8e41…c90a</span>
                 <span style="color:var(--ok)">✓</span>
               </div>
-              <div class="gf-hint">Click to re-verify hash</div>
+              <div class="gf-hint">Preview sample hash animation</div>
             </div>
           </div>
         </div>
@@ -184,7 +182,7 @@
           <div class="bar">
             <div class="traffic" aria-hidden="true"><i></i><i></i><i></i></div>
             <span class="mono">ItemCare · Local Workspace</span>
-            <span class="bar-pill"><i aria-hidden="true"></i>Live Demo</span>
+            <span class="bar-pill"><i aria-hidden="true"></i>Interactive Sample</span>
           </div>
           <div class="panes">
             <div class="side" id="rooms" aria-label="Filter by room"></div>
@@ -192,9 +190,9 @@
             <div class="insp" id="insp" aria-live="polite"></div>
           </div>
           <div class="status mono">
-            <span><i aria-hidden="true"></i>Offline SQLite Engine</span>
+            <span><i aria-hidden="true"></i>Sample data · not connected to the app</span>
             <span>%APPDATA%\com.itemcare.desktop\ItemCare\itemcare.db</span>
-            <span>SHA-256 Verified</span>
+            <span>Sample hashes</span>
           </div>
         </div>
       </div>
@@ -215,7 +213,7 @@
         <h2>Engineered for the details.</h2>
         <p class="sub">Select a workflow to inspect how ItemCare organizes and verifies your records.</p>
         <div class="tabs" id="tabs" role="tablist" aria-label="Feature workflows"></div>
-        <div class="split card" id="tabbody" role="tabpanel"></div>
+        <div class="split card" id="tabbody" role="tabpanel" tabindex="0"></div>
       </div>
     </section>
 

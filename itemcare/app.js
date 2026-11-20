@@ -73,10 +73,10 @@ if (!calm) {
 
 // 3. CareBot Interactive Pulse Scan
 const BOT_LINES = [
-  'SQLite local · 0 bytes sent',
-  'All 4 assets verified · SHA-256 OK',
-  'AES-256 insurance pack ready',
-  'Next alert: Daikin AC warranty'
+  'Sample data · 0 bytes sent',
+  'Sample: 4 assets · hashes ready',
+  'Sample insurance pack · AES-256',
+  'Sample alert: Daikin AC warranty'
 ];
 let botIdx = 0;
 const runBotScan = () => {
@@ -116,7 +116,7 @@ let hashIdx = 0;
 const verifyHeroHash = () => {
   const el = $('hashText');
   const badge = $('hashBadge');
-  badge.textContent = 'Checking…';
+  badge.textContent = 'Demo…';
   badge.className = 'gf-chip';
   let steps = 0;
   const hex = '0123456789abcdef';
@@ -127,8 +127,8 @@ const verifyHeroHash = () => {
       clearInterval(timer);
       hashIdx = (hashIdx + 1) % HASH_POOL.length;
       el.textContent = HASH_POOL[hashIdx];
-      badge.textContent = 'Verified';
-      badge.className = 'gf-chip ok';
+      badge.textContent = 'Sample';
+      badge.className = 'gf-chip';
     }
   }, 55);
 };
@@ -157,9 +157,15 @@ const ITEMS = [
 ];
 const ROOMS = ['All Items', 'Living Room', 'Kitchen', 'Master Bedroom'];
 const left = x => {
-  const e = new Date(x.d);
-  e.setMonth(e.getMonth() + x.m);
-  return Math.ceil((e - new Date()) / 864e5);
+  const [year, month, day] = x.d.split('-').map(Number);
+  const monthIndex = month - 1 + x.m;
+  const dueYear = year + Math.floor(monthIndex / 12);
+  const dueMonth = monthIndex % 12;
+  const dueDay = Math.min(day, new Date(dueYear, dueMonth + 1, 0).getDate());
+  const due = new Date(dueYear, dueMonth, dueDay);
+  const today = new Date();
+  const dayNumber = date => Date.UTC(date.getFullYear(), date.getMonth(), date.getDate()) / 864e5;
+  return dayNumber(due) - dayNumber(today);
 };
 const st = x => {
   const l = left(x);
@@ -168,8 +174,11 @@ const st = x => {
 
 let room = 0;
 let sel = 0;
+let mobileDetail = false;
 const verified = new Set();
 const totalVal = ITEMS.reduce((sum, x) => sum + x.p, 0);
+const panes = document.querySelector('.panes');
+const syncMobileDetail = () => panes.classList.toggle('mobile-detail', mobileDetail && matchMedia('(max-width: 900px)').matches);
 
 function draw() {
   $('rooms').innerHTML =
@@ -197,25 +206,40 @@ function draw() {
   const isVerified = verified.has(sel);
   const row = (a, b) => `<div class="kv"><span>${a}</span><span class="mono">${b}</span></div>`;
   $('insp').innerHTML =
+    '<button type="button" class="mobile-back" data-back-to-items>← Back to items</button>' +
     `<div class="th"><img src="${x.img}" alt="${x.n}"></div>` +
-    `<h3>${x.n}</h3><p class="meta">${x.r} · ${x.v}</p>` +
+    `<h3 tabindex="-1">${x.n}</h3><p class="meta">${x.r} · ${x.v}</p>` +
     `<span class="badge ${s[0]}">Warranty: ${s[1]}</span>` +
     `<div>${row('Purchase price', inr(x.p))}${row('Service costs', inr(x.svc))}${row('Total cost of ownership', inr(x.p + x.svc))}${row('Serial', x.s)}${row('Invoice', x.i)}${row('Purchased', x.d)}</div>` +
-    `<div class="doc"><div class="doc-left"><span class="doc-tag mono">PDF</span><span>${x.f}</span></div><button type="button" class="verify-btn ${isVerified ? 'done' : ''}" data-verify="${sel}">${isVerified ? x.hash + ' ✓' : 'Verify Hash'}</button></div>`;
+    `<div class="doc"><div class="doc-left"><span class="doc-tag mono">PDF</span><span>${x.f}</span></div><button type="button" class="verify-btn ${isVerified ? 'done' : ''}" data-verify="${sel}">${isVerified ? 'Sample hash · ' + x.hash + ' ✓' : 'Show sample hash'}</button></div>`;
+  syncMobileDetail();
 }
 
 $('rooms').addEventListener('click', e => {
   const b = e.target.closest('[data-r]');
-  if (b) { room = +b.dataset.r; draw(); }
+  if (b) { room = +b.dataset.r; mobileDetail = false; draw(); $('rooms').querySelector(`[data-r="${room}"]`).focus(); }
 });
 $('grid').addEventListener('click', e => {
   const b = e.target.closest('[data-i]');
-  if (b) { sel = +b.dataset.i; draw(); }
+  if (b) {
+    sel = +b.dataset.i;
+    mobileDetail = true;
+    draw();
+    if (matchMedia('(max-width: 900px)').matches) $('insp').querySelector('h3').focus();
+    else $('grid').querySelector(`[data-i="${sel}"]`).focus();
+  }
 });
 $('insp').addEventListener('click', e => {
+  if (e.target.closest('[data-back-to-items]')) {
+    mobileDetail = false;
+    draw();
+    $('grid').querySelector(`[data-i="${sel}"]`).focus();
+    return;
+  }
   const b = e.target.closest('[data-verify]');
-  if (b) { verified.add(+b.dataset.verify); draw(); }
+  if (b) { verified.add(+b.dataset.verify); draw(); $('insp').querySelector('[data-verify]').focus(); }
 });
+addEventListener('resize', syncMobileDetail);
 draw();
 
 // Bento capabilities
@@ -258,16 +282,30 @@ const T = [
 let tab = 0;
 function drawTab() {
   $('tabs').innerHTML = T.map((x, i) =>
-    `<button type="button" role="tab" aria-selected="${i === tab}" class="btn ${i === tab ? 'on' : ''}" data-t="${i}">${x.t}</button>`
+    `<button type="button" role="tab" id="workflow-tab-${i}" aria-selected="${i === tab}" tabindex="${i === tab ? 0 : -1}" class="btn ${i === tab ? 'on' : ''}" data-t="${i}">${x.t}</button>`
   ).join('');
   const x = T[tab];
+  $('tabbody').setAttribute('aria-labelledby', `workflow-tab-${tab}`);
   $('tabbody').innerHTML =
     `<div><h3>${x.t}</h3><ul class="chk">${x.c.map(c => `<li>${c}</li>`).join('')}</ul></div>` +
     `<div><div class="tabcard">${x.v()}</div></div>`;
 }
 $('tabs').addEventListener('click', e => {
   const b = e.target.closest('[data-t]');
-  if (b) { tab = +b.dataset.t; drawTab(); }
+  if (b) selectTab(+b.dataset.t);
+});
+const selectTab = index => {
+  tab = (index + T.length) % T.length;
+  drawTab();
+  $(`workflow-tab-${tab}`).focus();
+};
+$('tabs').addEventListener('keydown', e => {
+  const b = e.target.closest('[data-t]');
+  if (!b) return;
+  if (e.key === 'ArrowRight') { e.preventDefault(); selectTab(tab + 1); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); selectTab(tab - 1); }
+  else if (e.key === 'Home') { e.preventDefault(); selectTab(0); }
+  else if (e.key === 'End') { e.preventDefault(); selectTab(T.length - 1); }
 });
 drawTab();
 
