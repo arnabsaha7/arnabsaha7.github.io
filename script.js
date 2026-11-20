@@ -106,10 +106,10 @@
           pane.classList.toggle('on', match);
           if (match && !REDUCED.matches) {
             // Restart the boot-in animation for the newly shown pane.
-            pane.querySelectorAll('.t-block').forEach(blk => {
-              blk.style.animation = 'none';
-              void blk.offsetHeight;
-              blk.style.animation = '';
+            pane.querySelectorAll('.t-block, .t-type, .t-res').forEach(el => {
+              el.style.animation = 'none';
+              void el.offsetHeight;
+              el.style.animation = '';
             });
           }
         });
@@ -126,6 +126,16 @@
           if (n > -1) { e.preventDefault(); select(tabs[n], true); }
         });
       });
+    });
+
+    /* ---------- 5b. Terminal status bar: live IST clock ---------- */
+    run('terminal-clock', () => {
+      const el = $('#termClock');
+      if (!el) return;
+      const fmt = new Intl.DateTimeFormat('en-GB', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', hour12: false });
+      const tick = () => { el.textContent = fmt.format(new Date()); };
+      tick();
+      setInterval(tick, 15000);
     });
 
     /* ---------- 6. Email buttons ---------- */

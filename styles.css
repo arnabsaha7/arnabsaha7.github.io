@@ -470,63 +470,114 @@ section {
 
 /* Terminal Card */
 .term {
+  --t-bg: #070B0F;
+  --t-chrome: #0B1117;
+  --t-line: #1A232D;
+  --t-text: #E6EBF1;
+  --t-text-2: #B4BFCC;
+  --t-dim: #8392A3;
   --t-accent: #55D6E8;
+  --t-path: #F5B84B;
+  position: relative;
   align-self: center;
   max-width: 100%;
-  background: #090D11;
-  border: 1px solid #222C37;
-  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.5);
-  color: #F3F4F6;
-  font: 12.5px/1.7 var(--mono);
-  transition: border-color 0.2s ease;
+  overflow: hidden;
+  background: var(--t-bg);
+  border: 1px solid #243040;
+  box-shadow:
+    0 32px 70px -24px rgba(0, 0, 0, 0.7),
+    0 0 90px -40px rgba(85, 214, 232, 0.35);
+  color: var(--t-text);
+  font: 12.5px/1.75 var(--mono);
+  transition: border-color 0.2s ease, box-shadow 0.3s ease;
+}
+
+.term::before {            /* accent hairline along the top edge */
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--t-accent) 50%, transparent);
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 2;
 }
 
 .term:hover {
   border-color: #33404E;
+  box-shadow:
+    0 32px 70px -24px rgba(0, 0, 0, 0.7),
+    0 0 110px -36px rgba(85, 214, 232, 0.5);
 }
 
-.th, .tf {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 8px;
-  padding: 0 16px;
-  min-height: 44px;
-  background: #0C1217;
-  font-size: 11px;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #9099A8;
+html[data-theme=light] .term {
+  box-shadow: 0 30px 60px -28px rgba(10, 20, 35, 0.5), 0 0 0 1px rgba(10, 20, 35, 0.06);
 }
 
+/* Window bar: traffic dots + file tabs */
 .th {
-  border-bottom: 1px solid #1B242E;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 14px;
+  min-height: 42px;
+  background: var(--t-chrome);
+  border-bottom: 1px solid var(--t-line);
+  font-size: 11px;
+  color: var(--t-dim);
 }
 
-.tf {
-  border-top: 1px solid #1B242E;
-  color: #9CA3AF;
+.th > span {
+  align-self: center;
+  white-space: nowrap;
 }
+
+.th-l {
+  display: flex;
+  align-items: stretch;
+  gap: 14px;
+  min-width: 0;
+}
+
+.t-dots {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: none;
+}
+
+.t-dots i {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #27323E;
+  transition: background 0.25s ease;
+}
+
+.term:hover .t-dots i:nth-child(1) { background: #F0605A; }
+.term:hover .t-dots i:nth-child(2) { background: #F5B84B; }
+.term:hover .t-dots i:nth-child(3) { background: #3FCB6A; }
 
 .term-tabs {
   display: flex;
   align-items: stretch;
-  min-height: 44px;
-  gap: 12px;
+  min-height: 42px;
 }
 
 .term-tab {
   position: relative;
-  min-height: 44px;
-  padding: 0 4px;
+  padding: 0 14px;
   display: inline-flex;
   align-items: center;
-  font: 500 11px var(--mono);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  color: #8A93A3;
+  font: 500 11.5px var(--mono);
+  color: var(--t-dim);
   white-space: nowrap;
-  transition: color 0.15s ease;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  transition: color 0.15s ease, background 0.15s ease;
 }
 
 .term-tab:hover {
@@ -534,93 +585,161 @@ section {
 }
 
 .term-tab.on {
-  color: #F3F4F6;
+  color: var(--t-text);
+  background: var(--t-bg);
+  border-color: var(--t-line);
+  box-shadow: 0 1px 0 var(--t-bg);      /* merges the active tab into the body */
 }
 
 .term-tab.on::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -1px;
+  left: -1px;
+  right: -1px;
+  top: 0;
   height: 2px;
   background: var(--t-accent);
 }
 
+/* Body */
 .tb {
-  padding: 20px 18px;
-  min-height: 256px;
+  position: relative;
+  padding: 20px 18px 18px;
+  min-height: 268px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  background:
+    radial-gradient(110% 70% at 100% 0%, rgba(85, 214, 232, 0.07), transparent 60%),
+    var(--t-bg);
+}
+
+.tb::after {                /* very faint scanlines */
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.016) 0 1px, transparent 1px 3px);
+  pointer-events: none;
 }
 
 .term-pane {
   display: none;
   flex-direction: column;
-  gap: 14px;
+  gap: 16px;
 }
 
 .term-pane.on {
   display: flex;
 }
 
+/* One orchestrated moment: each command types itself, then its output appears */
 .t-block {
   opacity: 0;
-  transform: translateY(5px);
-  animation: termBoot 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation: termBoot 0.2s ease forwards;
+  animation-delay: var(--d, 0s);
 }
 
-.t-block:nth-child(1) { animation-delay: 0.08s; }
-
-.t-block:nth-child(2) { animation-delay: 0.22s; }
-
-.t-block:nth-child(3) { animation-delay: 0.36s; }
-
-.t-block:nth-child(4) { animation-delay: 0.50s; }
+.t-block:nth-child(1) { --d: 0.1s; }
+.t-block:nth-child(2) { --d: 1.05s; }
+.t-block:nth-child(3) { --d: 2s; }
 
 @keyframes termBoot {
-  to { opacity: 1; transform: translateY(0); }
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: none; }
+}
+
+@keyframes typeIn {
+  from { width: 0; }
 }
 
 .t-cmd {
-  color: #F3F4F6;
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  min-width: 0;
+  color: var(--t-text-2);
   font-weight: 500;
-  overflow-wrap: anywhere;
+}
+
+.t-ps {
+  display: inline-flex;
+  gap: 8px;
+  flex: none;
+  white-space: nowrap;
+}
+
+.t-ps i {
+  font-style: normal;
+  color: var(--t-accent);
+}
+
+.t-ps em {
+  font-style: normal;
+  color: var(--t-path);
 }
 
 .t-cmd b {
-  color: var(--t-accent);
+  flex: none;
+  color: var(--live);
   font-weight: 600;
-  margin-right: 6px;
+}
+
+.t-type {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  vertical-align: top;
+  width: calc(var(--n) * 1ch);
+  animation: typeIn calc(var(--n) * 22ms) steps(var(--n)) both;
+  animation-delay: var(--d, 0s);
+}
+
+.t-type .prog { color: var(--t-text); font-weight: 600; }
+.t-type .flag { color: var(--t-accent); }
+
+/* Output: sits under its command behind a thin guide line */
+.t-res {
+  margin: 6px 0 0 3px;
+  padding-left: 14px;
+  border-left: 1px solid var(--t-line);
+  opacity: 0;
+  animation: termBoot 0.3s ease forwards;
+  animation-delay: calc(var(--d, 0s) + var(--n, 0) * 22ms + 0.12s);
 }
 
 .t-grid {
   display: grid;
-  grid-template-columns: 104px minmax(0, 1fr);
-  gap: 4px 12px;
-  padding-left: 16px;
-  margin-top: 4px;
+  grid-template-columns: max-content minmax(0, 1fr);
+  gap: 3px 18px;
 }
 
 .t-grid dt {
-  color: #8A93A3;
+  color: var(--t-dim);
+  white-space: nowrap;
+}
+
+.t-grid dt .n {
+  color: #5B6978;
+  margin-right: 4px;
 }
 
 .t-grid dd {
-  color: #E5E7EB;
+  color: var(--t-text);
   min-width: 0;
 }
 
+.t-grid dd .tk {
+  color: var(--t-accent);
+}
+
 .t-out {
-  padding-left: 16px;
-  color: #9CA3AF;
-  margin-top: 2px;
+  color: var(--t-text-2);
 }
 
 .t-out strong {
-  color: #F3F4F6;
-  font-weight: 500;
+  color: var(--t-text);
+  font-weight: 600;
 }
 
 .t-branch {
@@ -629,15 +748,51 @@ section {
 
 .cur {
   display: inline-block;
-  width: 7px;
-  height: 14px;
+  width: 8px;
+  height: 15px;
   background: var(--t-accent);
-  vertical-align: -2px;
+  vertical-align: -3px;
   animation: blink 1s steps(2, start) infinite;
 }
 
 @keyframes blink {
   to { visibility: hidden; }
+}
+
+/* Status bar */
+.tf {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 0 14px;
+  min-height: 34px;
+  background: var(--t-chrome);
+  border-top: 1px solid var(--t-line);
+  font-size: 11px;
+  color: var(--t-dim);
+}
+
+.tf-l, .tf-r {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tf-r { gap: 14px; }
+
+.tf .dot {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--live);
+  box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.18);
+}
+
+.tf time {
+  color: var(--t-text-2);
+  font-variant-numeric: tabular-nums;
 }
 
 .wave {
@@ -655,13 +810,9 @@ section {
 }
 
 .wave i:nth-child(1) { height: 45%; animation-delay: 0.0s; }
-
 .wave i:nth-child(2) { height: 90%; animation-delay: 0.2s; }
-
 .wave i:nth-child(3) { height: 55%; animation-delay: 0.4s; }
-
 .wave i:nth-child(4) { height: 100%; animation-delay: 0.1s; }
-
 .wave i:nth-child(5) { height: 65%; animation-delay: 0.3s; }
 
 @keyframes eqPulse {
@@ -995,9 +1146,15 @@ html[data-theme=light] .hero { --dg: rgba(18, 20, 23, 0.09); }
 }
 
 @media (max-width: 560px) {
-  .th > span { display: none; }
-  .tf { height: auto; min-height: 44px; padding: 8px 16px; flex-wrap: wrap; gap: 6px 12px; }
-  .t-grid { grid-template-columns: 88px minmax(0, 1fr); }
+  .th > span, .t-dots { display: none; }
+  .th { padding: 0 6px; }
+  .term-tab { padding: 0 12px; }
+  .tf { padding: 6px 14px; flex-wrap: wrap; gap: 6px 12px; }
+  .t-grid { column-gap: 14px; }
+  .t-ps i { display: none; }
+  /* Narrow screens: skip the typing effect so long commands can wrap instead of clipping */
+  .t-type { width: auto; white-space: normal; animation: none; }
+  .t-res { animation-delay: calc(var(--d, 0s) + 0.15s); }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1006,7 +1163,8 @@ html[data-theme=light] .hero { --dg: rgba(18, 20, 23, 0.09); }
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
   }
-  .t-block { opacity: 1; transform: none; }
+  .t-block, .t-res { opacity: 1; transform: none; }
+  .t-type { width: auto; }
   .cur, .wave i { animation: none !important; }
 }
 
