@@ -1,10 +1,6 @@
 (() => {
   'use strict';
 
-  const scriptUrl = document.currentScript?.src || new URL('js/dewtask-sandbox.js', window.location.href).href;
-  const siteRoot = new URL('../', scriptUrl);
-  const partialUrl = new URL('partials/dewtask-sandbox.html', siteRoot).href;
-
   const esc = s => String(s).replace(/[&<>"']/g, c => ({
     '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
   }[c]));
@@ -215,29 +211,13 @@
     render();
   };
 
-  const mountSandboxes = async () => {
-    const mounts = [...document.querySelectorAll('[data-dewtask-sandbox]')];
-    if (!mounts.length) {
+  const mountSandboxes = () => {
+    const roots = [...document.querySelectorAll('[data-dewtask-sandbox] #dw')];
+    if (!roots.length) {
       const inline = document.getElementById('dw');
-      if (inline) initSandbox(inline);
-      return;
+      if (inline) roots.push(inline);
     }
-
-    try {
-      const res = await fetch(partialUrl, { credentials: 'same-origin' });
-      if (!res.ok) throw new Error(`HTTP ${res.status}`);
-      const html = await res.text();
-      mounts.forEach(mount => {
-        mount.innerHTML = html;
-        const dw = mount.querySelector('#dw');
-        if (dw) initSandbox(dw);
-      });
-    } catch (err) {
-      console.error('[DewTask Sandbox] Failed to load partial:', err);
-      mounts.forEach(mount => {
-        mount.innerHTML = '<div class="p-6 font-mono text-xs text-slate-400">Interactive sandbox unavailable offline.</div>';
-      });
-    }
+    roots.forEach(initSandbox);
   };
 
   if (document.readyState === 'loading') {

@@ -58,18 +58,16 @@
     --default-font-family: var(--font-sans);
     --default-mono-font-family: var(--font-mono);
     --font-display: "Space Grotesk", sans-serif;
-    --color-brand-300: #8bdcff;
+    --color-brand-300: #56c2ff;
     --color-brand-400: #56c2ff;
-    --color-brand-500: #2693ff;
-    --color-brand-teal: #1ad9a6;
-    --color-brand-emerald: #2ce074;
-    --color-surface-base: #06080c;
-    --color-surface-deep: #0a0e14;
-    --color-surface-elevated: #0f1520;
-    --color-surface-card: #121926;
-    --color-surface-highlight: #182232;
-    --color-surface-border: #1c2638;
-    --color-surface-borderBright: #2a3952;
+    --color-brand-500: #56c2ff;
+    --color-surface-base: #090909;
+    --color-surface-deep: #151515;
+    --color-surface-elevated: #202020;
+    --color-surface-card: #242424;
+    --color-surface-highlight: #2d2d2d;
+    --color-surface-border: #2b2b2b;
+    --color-surface-borderBright: #383838;
   }
 }
 @layer base {
@@ -644,15 +642,6 @@
       border-color: color-mix(in oklab, var(--color-brand-500) 40%, transparent);
     }
   }
-  .border-brand-emerald {
-    border-color: var(--color-brand-emerald);
-  }
-  .border-brand-teal\/30 {
-    border-color: color-mix(in srgb, #1ad9a6 30%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-brand-teal) 30%, transparent);
-    }
-  }
   .border-slate-500 {
     border-color: var(--color-slate-500);
   }
@@ -687,21 +676,6 @@
     background-color: color-mix(in srgb, #2693ff 20%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-brand-500) 20%, transparent);
-    }
-  }
-  .bg-brand-emerald {
-    background-color: var(--color-brand-emerald);
-  }
-  .bg-brand-emerald\/15 {
-    background-color: color-mix(in srgb, #2ce074 15%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-brand-emerald) 15%, transparent);
-    }
-  }
-  .bg-brand-emerald\/20 {
-    background-color: color-mix(in srgb, #2ce074 20%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-brand-emerald) 20%, transparent);
     }
   }
   .bg-slate-700 {
@@ -978,12 +952,6 @@
   }
   .text-brand-400 {
     color: var(--color-brand-400);
-  }
-  .text-brand-emerald {
-    color: var(--color-brand-emerald);
-  }
-  .text-brand-teal {
-    color: var(--color-brand-teal);
   }
   .text-red-400 {
     color: var(--color-red-400);

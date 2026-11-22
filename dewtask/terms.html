@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-  <meta content="#06080c" name="theme-color"/>
+  <meta content="#090909" name="theme-color"/>
   <meta content="Read the DewTask Terms of Service, including application use, user content, optional Google Drive synchronization, and third-party services." name="description"/>
   <meta property="og:type" content="website"/>
   <meta property="og:url" content="https://arnabsaha7.github.io/dewtask/terms.html"/>
@@ -16,24 +16,11 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
-  <meta name="color-scheme" content="dark light"/>
-  <script>
-    /* Apply saved (or system) theme before first paint (no dark/light flash). */
-    (function () {
-      var t = null;
-      try { t = localStorage.getItem('dewtask-theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') {
-        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      }
-      var r = document.documentElement;
-      r.dataset.theme = t;
-      r.classList.toggle('light', t === 'light');
-      r.classList.toggle('dark', t !== 'light');
-    })();
-  </script>
+  <meta name="color-scheme" content="dark"/>
   <link href="assets/dewtask-icon-dark.svg" rel="icon"/>
   <link href="./assets/tailwind.css" rel="stylesheet"/>
   <link href="./styles.css" rel="stylesheet"/>
+  <link href="./css/site-refresh.css" rel="stylesheet"/>
 </head>
 
 <body class="min-h-screen bg-surface-base font-sans text-slate-300 antialiased" data-page="terms" id="top">
@@ -57,8 +44,8 @@
             </h1>
           </div>
           <div class="flex flex-wrap gap-2 font-mono text-xs">
-            <span class="rounded border border-surface-border bg-surface-card px-2.5 py-1 text-brand-400">Effective: November 2026</span>
-            <span class="rounded border border-surface-border bg-surface-card px-2.5 py-1 text-brand-300">Scope: Desktop Application</span>
+            <span class="legal-meta-pill">Effective: <strong>November 2026</strong></span>
+            <span class="legal-meta-pill">Scope: <strong>Desktop Application</strong></span>
           </div>
         </div>
       </div>
@@ -69,7 +56,7 @@
       <div class="legal-grid items-start">
 
         <!-- Left Column: Sticky Section Index -->
-        <aside class="hidden lg:block lg:sticky lg:top-20 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
+        <aside class="hidden lg:block lg:sticky lg:top-24 max-h-[calc(100vh-6rem)] overflow-y-auto pr-2">
           <div class="font-mono text-[11px] font-semibold uppercase tracking-wider text-slate-400 mb-3">Sections</div>
           <nav aria-label="Terms of Service sections" class="flex flex-col">
             <a data-toc-link href="#section-01" class="toc-link active"><span class="font-mono text-[11px]">01</span><span>Acceptance of Terms</span></a>
@@ -105,14 +92,14 @@
                   <div class="font-mono text-[11px] font-semibold uppercase text-brand-400">01. Sovereignty</div>
                   <p class="mt-2 text-xs leading-relaxed text-slate-400">You retain the rights you hold in the content you create and store in DewTask.</p>
                 </div>
-                <span class="mt-4 font-mono text-[11px] text-brand-teal">Local-First Storage</span>
+                <span class="mt-4 font-mono text-[11px] text-accent-soft">Local-First Storage</span>
               </div>
               <div class="rounded-lg border border-surface-border bg-surface-card/70 p-4 flex flex-col justify-between">
                 <div>
-                  <div class="font-mono text-[11px] font-semibold uppercase text-brand-teal">02. Direct Sync</div>
+                  <div class="font-mono text-[11px] font-semibold uppercase text-brand-400">02. Direct Sync</div>
                   <p class="mt-2 text-xs leading-relaxed text-slate-400">DewTask does not operate its own cloud storage servers. Optional sync stores application data in your Google Drive <code class="text-slate-300">appDataFolder</code>.</p>
                 </div>
-                <span class="mt-4 font-mono text-[11px] text-brand-teal">No Middleman Servers</span>
+                <span class="mt-4 font-mono text-[11px] text-accent-soft">No Middleman Servers</span>
               </div>
               <div class="rounded-lg border border-surface-border bg-surface-card/70 p-4 flex flex-col justify-between">
                 <div>
@@ -206,7 +193,7 @@
               <div class="space-y-3 text-sm sm:text-base leading-relaxed text-slate-400">
                 <p>Google sign-in and Google Drive synchronization are optional. If you enable synchronization, the Application connects to Google services to authenticate your account and store application data in your Google Drive. These connections use Google’s APIs and are subject to the permissions you authorize.</p>
                 <div class="rounded-lg border border-surface-border bg-surface-deep p-4 space-y-1.5">
-                  <span class="font-mono text-[11px] text-brand-teal font-medium uppercase">Sandbox Constraint (`appDataFolder`)</span>
+                  <span class="font-mono text-[11px] text-accent-soft font-medium uppercase">Sandbox Constraint (`appDataFolder`)</span>
                   <p class="text-xs leading-relaxed text-slate-400">Synchronization is designed to use Google Drive’s hidden application data area (<code class="font-mono text-[11px] bg-surface-card px-1 py-0.5 rounded text-brand-400">appDataFolder</code>) for DewTask-specific data. It is separate from the files and folders normally shown in your Drive. The actual access is limited by the Google OAuth permissions granted to the Application.</p>
                 </div>
                 <p>When synchronization is enabled, the selected DewTask data is transmitted from your device to Google Drive and may be downloaded to other devices where you use DewTask. This means the data leaves your device and is stored by Google; it is not stored on DewTask-managed servers. DewTask does not operate its own cloud storage service or host your workspace content on its infrastructure. Google’s services are governed by Google’s own terms and privacy policy. Sync availability, data consistency, and retention may depend on Google and your network connection.</p>

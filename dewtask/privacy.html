@@ -4,7 +4,7 @@
   <meta charset="utf-8"/>
   <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
   <title>Privacy Policy - DewTask</title>
-  <meta name="theme-color" content="#06080c">
+  <meta name="theme-color" content="#090909">
   <meta name="description" content="Learn how DewTask handles local SQLite task data, optional Google sign-in, and direct Google Drive appDataFolder synchronization.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://arnabsaha7.github.io/dewtask/privacy.html">
@@ -16,24 +16,11 @@
   <link href="https://fonts.googleapis.com" rel="preconnect"/>
   <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet"/>
-  <meta name="color-scheme" content="dark light">
-  <script>
-    /* Apply saved (or system) theme before first paint (no dark/light flash). */
-    (function () {
-      var t = null;
-      try { t = localStorage.getItem('dewtask-theme'); } catch (e) {}
-      if (t !== 'light' && t !== 'dark') {
-        t = window.matchMedia && matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
-      }
-      var r = document.documentElement;
-      r.dataset.theme = t;
-      r.classList.toggle('light', t === 'light');
-      r.classList.toggle('dark', t !== 'light');
-    })();
-  </script>
+  <meta name="color-scheme" content="dark">
   <link rel="icon" href="assets/dewtask-icon-dark.svg">
   <link rel="stylesheet" href="./assets/tailwind.css">
   <link rel="stylesheet" href="./styles.css">
+  <link rel="stylesheet" href="./css/site-refresh.css">
 </head>
 
 <body id="top" data-page="privacy" class="min-h-screen bg-surface-base font-sans text-slate-300 antialiased">
@@ -51,13 +38,13 @@
         </a>
         <div class="mt-6 flex flex-col justify-between gap-4 lg:flex-row lg:items-end">
           <div>
-            <span class="font-mono text-xs font-semibold uppercase tracking-widest text-brand-teal">Data Sovereignty &amp; Privacy</span>
+            <span class="font-mono text-xs font-semibold uppercase tracking-widest text-accent-soft">Data Sovereignty &amp; Privacy</span>
             <h1 class="mt-2 font-display text-3xl font-bold tracking-tight text-white sm:text-5xl">
               Privacy, without the complexity.
             </h1>
           </div>
-          <div class="font-mono text-xs text-slate-400">
-            Last updated: <span class="text-slate-200">November 2026</span>
+          <div class="legal-meta-row">
+            <span class="legal-meta-pill">Last updated: <strong>November 2026</strong></span>
           </div>
         </div>
       </div>
@@ -96,15 +83,15 @@
 
           <!-- The Essentials -->
           <section id="privacy-essentials" class="rounded-xl border border-surface-borderBright bg-surface-deep p-6 sm:p-8">
-            <h2 class="font-mono text-xs font-semibold uppercase tracking-wider text-brand-teal mb-5">00 // The Essentials</h2>
+            <h2 class="font-mono text-xs font-semibold uppercase tracking-wider text-accent-soft mb-5">00 // The Essentials</h2>
             <div class="grid gap-5 sm:grid-cols-3">
               <div class="rounded-lg border border-surface-border bg-surface-card/70 p-4">
-                <div class="font-mono text-[11px] text-brand-400">LOCAL-FIRST</div>
+                <div class="font-mono text-[11px] text-accent-soft">LOCAL-FIRST</div>
                 <h3 class="mt-1 text-sm font-semibold text-white">Stored on your PC</h3>
                 <p class="mt-1.5 text-xs leading-relaxed text-slate-400">Your workspaces, tasks, and hierarchies live in a local SQLite file on your device.</p>
               </div>
               <div class="rounded-lg border border-surface-border bg-surface-card/70 p-4">
-                <div class="font-mono text-[11px] text-brand-emerald">OFFLINE CAPABLE</div>
+                <div class="font-mono text-[11px] text-accent-soft">OFFLINE CAPABLE</div>
                 <h3 class="mt-1 text-sm font-semibold text-white">No mandatory account</h3>
                 <p class="mt-1.5 text-xs leading-relaxed text-slate-400">Core task management works completely offline without registering an account.</p>
               </div>

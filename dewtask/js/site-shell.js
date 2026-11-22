@@ -30,7 +30,6 @@
               <a href="${resolveSiteUrl('privacy.html')}">Privacy</a>
               <a href="${resolveSiteUrl('terms.html')}">Terms</a>
             </nav>
-            <button id="themeBtn" type="button" class="theme-btn" aria-label="Switch theme">Theme</button>
           </div>
         </header>`;
     } else {
@@ -61,43 +60,66 @@
     }
   };
 
-  const initializeThemeSwitch = () => {
-    const root = document.documentElement;
-    const themeBtn = document.getElementById('themeBtn');
-    const meta = document.querySelector('meta[name="theme-color"]');
-    const THEME_COLORS = { dark: '#06080c', light: '#F5F4F0' };
-
-    const applyTheme = mode => {
-      const light = mode === 'light';
-      root.dataset.theme = light ? 'light' : 'dark';
-      root.classList.toggle('light', light);
-      root.classList.toggle('dark', !light);
-      if (themeBtn) {
-        themeBtn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
-      }
-      if (meta) {
-        meta.setAttribute('content', THEME_COLORS[light ? 'light' : 'dark']);
-      }
-    };
-
-    const initial = root.dataset.theme === 'light' || root.classList.contains('light') ? 'light' : 'dark';
-    applyTheme(initial);
-
-    if (themeBtn) {
-      themeBtn.addEventListener('click', () => {
-        const next = root.dataset.theme === 'light' ? 'dark' : 'light';
-        try { localStorage.setItem('dewtask-theme', next); } catch (_) {}
-        applyTheme(next);
-      });
-    }
-  };
-
   const initializeHeroPause = () => {
     const hero = document.querySelector('.hero-stage');
     if (!hero || !('IntersectionObserver' in window)) return;
     new IntersectionObserver(([entry]) => {
       hero.classList.toggle('paused', !entry.isIntersecting);
     }).observe(hero);
+  };
+
+  const initializeHeroMark = () => {
+    const mark = document.querySelector('.hero-mark');
+    if (!mark || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    const ripple = mark.querySelector('.hero-mark__ripple');
+    let started = false;
+    let entranceDone = false;
+    let interactionRunning = false;
+    let inViewport = false;
+
+    const updatePaused = () => mark.classList.toggle('is-paused', !inViewport || document.hidden);
+    const startEntrance = () => {
+      if (started) return;
+      started = true;
+      mark.classList.add('is-entering');
+    };
+    const interact = () => {
+      if (!entranceDone || interactionRunning || !inViewport || document.hidden) return;
+      interactionRunning = true;
+      mark.classList.add('is-interacting');
+    };
+
+    mark.addEventListener('animationend', event => {
+      if (event.target !== ripple || event.animationName !== 'hero-mark-ripple') return;
+      if (mark.classList.contains('is-entering')) {
+        mark.classList.remove('is-entering');
+        mark.classList.add('is-entrance-done');
+        entranceDone = true;
+      } else if (mark.classList.contains('is-interacting')) {
+        mark.classList.remove('is-interacting');
+        interactionRunning = false;
+      }
+    });
+
+    mark.addEventListener('pointerenter', event => {
+      if (event.pointerType === 'mouse') interact();
+    });
+    mark.addEventListener('click', interact);
+    document.addEventListener('visibilitychange', updatePaused);
+
+    if ('IntersectionObserver' in window) {
+      mark.classList.add('is-paused');
+      new IntersectionObserver(([entry]) => {
+        inViewport = entry.isIntersecting;
+        if (inViewport) startEntrance();
+        updatePaused();
+      }, { threshold: 0.1 }).observe(mark);
+    } else {
+      inViewport = true;
+      startEntrance();
+      updatePaused();
+    }
   };
 
   const initializeMobileMenu = () => {
@@ -293,6 +315,84 @@
     activate(initiallySelected.dataset.viewTab);
   };
 
+  const initializeArchitectureViews = () => {
+    const tablist = document.querySelector('[data-architecture-tabs]');
+    if (!tablist) return;
+    const tabs = Array.from(tablist.querySelectorAll('[data-architecture-tab]'));
+    const panels = Array.from(document.querySelectorAll('[data-architecture-panel]'));
+    if (!tabs.length || !panels.length) return;
+
+    const activate = (tab, moveFocus = false) => {
+      tabs.forEach(item => {
+        const selected = item === tab;
+        item.setAttribute('aria-selected', String(selected));
+        item.tabIndex = selected ? 0 : -1;
+      });
+      panels.forEach(panel => {
+        panel.hidden = panel.dataset.architecturePanel !== tab.dataset.architectureTab;
+      });
+      if (moveFocus) tab.focus();
+    };
+
+    tabs.forEach((tab, index) => {
+      tab.addEventListener('click', () => activate(tab));
+      tab.addEventListener('keydown', event => {
+        let nextIndex = index;
+        if (event.key === 'ArrowRight') nextIndex = (index + 1) % tabs.length;
+        else if (event.key === 'ArrowLeft') nextIndex = (index - 1 + tabs.length) % tabs.length;
+        else if (event.key === 'Home') nextIndex = 0;
+        else if (event.key === 'End') nextIndex = tabs.length - 1;
+        else return;
+        event.preventDefault();
+        activate(tabs[nextIndex], true);
+      });
+    });
+
+    activate(tabs.find(tab => tab.getAttribute('aria-selected') === 'true') || tabs[0]);
+  };
+
+  const initializeCalendarView = () => {
+    document.querySelectorAll('[data-calendar-mode]').forEach(button => {
+      button.addEventListener('click', () => {
+        const mode = button.dataset.calendarMode;
+        const section = button.closest('[data-view-panel="calendar"]');
+        section?.querySelectorAll('[data-calendar-mode]').forEach(tab => {
+          tab.setAttribute('aria-pressed', String(tab === button));
+        });
+        section?.querySelectorAll('[data-calendar-panel]').forEach(panel => {
+          panel.hidden = panel.dataset.calendarPanel !== mode;
+        });
+      });
+    });
+  };
+
+  const initializeCopyPath = () => {
+    document.querySelectorAll('[data-copy-path]').forEach(button => {
+      const label = button.querySelector('[data-copy-label]');
+      const path = button.closest('.path-chip')?.querySelector('code');
+      let resetTimer;
+      button.addEventListener('click', async () => {
+        try {
+          await navigator.clipboard.writeText(button.dataset.copyPath);
+          if (label) label.textContent = 'Copied';
+        } catch (_) {
+          if (path) {
+            const range = document.createRange();
+            range.selectNodeContents(path);
+            const selection = window.getSelection();
+            selection?.removeAllRanges();
+            selection?.addRange(range);
+          }
+          if (label) label.textContent = 'Press Ctrl+C';
+        }
+        window.clearTimeout(resetTimer);
+        resetTimer = window.setTimeout(() => {
+          if (label) label.textContent = 'Copy';
+        }, 1800);
+      });
+    });
+  };
+
   const initializeShareLinks = () => {
     document.querySelectorAll('[data-share-desktop]').forEach(button => {
       button.addEventListener('click', async () => {
@@ -324,7 +424,17 @@
 
   const initializeReleaseLinks = () => {
     const releaseUrl = 'https://api.github.com/repos/arnabsaha7/dewtask/releases/latest';
+    const releaseCacheKey = 'dewtask-latest-release';
     let releasePromise;
+    const versionBadge = document.getElementById('nav-version');
+    const liveStatus = document.getElementById('nav-version-status');
+
+    if (versionBadge) {
+      try {
+        const cachedVersion = localStorage.getItem(releaseCacheKey);
+        if (cachedVersion) versionBadge.textContent = cachedVersion;
+      } catch (_) {}
+    }
 
     const getRelease = () => {
       if (!releasePromise) {
@@ -338,10 +448,43 @@
       return releasePromise;
     };
 
+    const getWindowsInstallers = release => (Array.isArray(release.assets) ? release.assets : [])
+      .filter(asset => /\.(exe|msi)$/i.test(asset.name) && asset.browser_download_url)
+      .sort((a, b) => {
+        const score = asset => {
+          const name = asset.name.toLowerCase();
+          let value = name.endsWith('.exe') ? 30 : 20;
+          if (/setup|installer/.test(name)) value += 100;
+          if (/windows|win64|win-x64|x64|x86_64/.test(name)) value += 20;
+          return value;
+        };
+        return score(b) - score(a);
+      });
+
     getRelease().then(release => {
-      const badge = document.getElementById('nav-version');
-      if (badge && release.tag_name) badge.textContent = release.tag_name;
-    }).catch(error => console.warn('[DewTask] Release version unavailable.', error));
+      if (!release || typeof release.tag_name !== 'string' || !release.tag_name.trim()) {
+        throw new Error('GitHub returned a release without a version tag.');
+      }
+      if (versionBadge && release.tag_name) {
+        versionBadge.textContent = release.tag_name;
+        try { localStorage.setItem(releaseCacheKey, release.tag_name); } catch (_) {}
+      }
+      if (liveStatus) liveStatus.hidden = false;
+      const versionPill = document.querySelector('[data-release-version]');
+      if (versionPill && release.tag_name) {
+        versionPill.querySelector('strong').textContent = release.tag_name;
+        versionPill.hidden = false;
+      }
+      const installerPill = document.querySelector('[data-installer-size]');
+      const installerSize = Number(getWindowsInstallers(release)[0]?.size);
+      if (installerPill && Number.isFinite(installerSize) && installerSize > 0) {
+        installerPill.querySelector('strong').textContent = (installerSize / (1024 * 1024)).toFixed(1) + ' MB';
+        installerPill.hidden = false;
+      }
+    }).catch(error => {
+      if (liveStatus) liveStatus.hidden = true;
+      console.warn('[DewTask] Release version unavailable.', error);
+    });
 
     document.querySelectorAll('[data-download-link]').forEach(link => {
       link.addEventListener('click', async event => {
@@ -355,18 +498,7 @@
 
         try {
           const release = await getRelease();
-          const installers = (Array.isArray(release.assets) ? release.assets : [])
-            .filter(asset => /\.(exe|msi)$/i.test(asset.name) && asset.browser_download_url)
-            .sort((a, b) => {
-              const score = asset => {
-                const name = asset.name.toLowerCase();
-                let value = name.endsWith('.exe') ? 30 : 20;
-                if (/setup|installer/.test(name)) value += 100;
-                if (/windows|win64|win-x64|x64|x86_64/.test(name)) value += 20;
-                return value;
-              };
-              return score(b) - score(a);
-            });
+          const installers = getWindowsInstallers(release);
 
           if (!installers.length) throw new Error('No Windows installer was found in the latest release.');
           window.location.assign(installers[0].browser_download_url);
@@ -385,15 +517,19 @@
     const year = document.getElementById('current-year');
     if (year) year.textContent = String(new Date().getFullYear());
 
-    initializeThemeSwitch();
     initializeHeroPause();
     initializeMobileMenu();
     initializeActiveNavigation();
     initializeLegalToc();
     initializeViewSwitcher();
+    initializeArchitectureViews();
+    initializeCalendarView();
+    initializeCopyPath();
     initializeShareLinks();
     initializeReleaseLinks();
   };
+
+  initializeHeroMark();
 
   Promise.all([
     loadPartial('[data-site-header]', 'partials/navbar.html', 'header'),

@@ -3,13 +3,10 @@
     <!-- Brand + Version Tag -->
     <div class="flex items-center gap-3 justify-self-start">
       <a href="index.html" class="focus-ring group inline-flex items-center gap-2.5 rounded-md py-1" aria-label="DewTask home">
-        <img src="assets/dewtask-icon-dark.svg" alt="" width="28" height="28" class="h-7 w-7 rounded-md transition-transform duration-150 group-hover:scale-105">
+        <svg viewBox="0 0 160 160" width="28" height="28" aria-hidden="true" focusable="false" class="h-7 w-7 rounded-md transition-transform duration-150 group-hover:scale-105"><defs><linearGradient id="nav-drop" x1="35%" y1="5%" x2="70%" y2="85%"><stop stop-color="#5CE1FF"/><stop offset="45%" stop-color="#2B99FF"/><stop offset="100%" stop-color="#1463E0"/></linearGradient><linearGradient id="nav-leaf-a"><stop stop-color="var(--logo-leaf-1)"/><stop offset="55%" stop-color="var(--logo-leaf-2)"/><stop offset="100%" stop-color="var(--logo-leaf-3)"/></linearGradient><linearGradient id="nav-leaf-b"><stop stop-color="var(--logo-leaf-4)"/><stop offset="100%" stop-color="var(--logo-leaf-5)"/></linearGradient><linearGradient id="nav-leaf-c"><stop stop-color="var(--logo-leaf-6)"/><stop offset="50%" stop-color="var(--logo-leaf-7)"/><stop offset="100%" stop-color="var(--logo-leaf-8)"/></linearGradient></defs><g transform="translate(-21 -15)"><path d="M65 65C51 86 46 105 49 124c3 18 16 33 30 40 3-9 8-18 15-25-23-11-34-30-34-52 0-8 2-15 5-22z" fill="url(#nav-leaf-a)"/><path d="M97 22c2-2.5 4-2.5 6 0 15 18 49 55 49 86 0 2-.2 3.5-.5 5-17.5 4-43.5 11-57.5 26-28-16-35-42-29-74 9-15 22-31 32-43z" fill="url(#nav-drop)"/><path d="M85 165c11-27 35-42 69-48-19 18-42 36-69 48z" fill="url(#nav-leaf-b)"/><path d="M85 165c27-12 50-30 69-48-2 29-22 52-51 52-7 0-13-1.5-18-4z" fill="url(#nav-leaf-c)"/><path d="m85 99 11.5 11.5 25-25.5" fill="none" stroke="#fff" stroke-width="9.5" stroke-linecap="round" stroke-linejoin="round"/></g></svg>
         <span class="font-display text-base font-bold tracking-tight text-white">DewTask</span>
       </a>
-      <a href="https://github.com/arnabsaha7/dewtask/releases/latest" target="_blank" rel="noopener noreferrer" class="hidden items-center gap-1.5 rounded border border-surface-border bg-surface-elevated px-2 py-0.5 font-mono text-[11px] font-medium text-slate-400 transition hover:border-surface-borderBright hover:text-slate-200 sm:inline-flex" title="Latest release on GitHub">
-        <span class="h-1.5 w-1.5 rounded-full bg-brand-emerald"></span>
-        <span id="nav-version">v1.0</span>
-      </a>
+      <span id="nav-version-badge" class="inline-flex items-center gap-1.5 rounded border border-surface-border bg-surface-elevated px-2 py-0.5 font-mono text-[11px] font-medium text-slate-400" title="Current DewTask release"><span id="nav-version-status" class="nav-version-dot" role="img" aria-label="Live release version" title="Live release version" hidden></span><span id="nav-version" aria-live="polite">v1.4.0</span></span>
     </div>
 
     <!-- Center Desktop Links -->
@@ -19,26 +16,10 @@
       <a class="nav-link focus-ring" data-nav="why-dewtask" href="index.html#why-dewtask">Philosophy</a>
       <a class="nav-link focus-ring" data-nav="privacy" href="privacy.html">Privacy</a>
       <a class="nav-link focus-ring" data-nav="terms" href="terms.html">Terms</a>
-      <a class="nav-link focus-ring" href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer">
-        GitHub <span aria-hidden="true" class="ml-1 font-mono text-[11px] text-slate-400">↗</span>
-      </a>
     </nav>
 
     <!-- Right Actions -->
     <div class="flex items-center gap-2 justify-self-end">
-      <a href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer" class="focus-ring hidden min-h-[44px] items-center gap-1.5 rounded-md border border-surface-border bg-surface-elevated px-3 py-2 text-xs font-medium text-slate-300 transition hover:border-surface-borderBright hover:text-white sm:inline-flex">
-        <svg aria-hidden="true" class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
-        <span>Source</span>
-      </a>
-
-      <a href="https://github.com/arnabsaha7/dewtask/releases/latest" data-download-link class="focus-ring inline-flex min-h-[44px] items-center gap-2 rounded-md bg-white px-3.5 py-2 text-xs font-semibold text-slate-950 transition hover:bg-brand-300">
-        <svg aria-hidden="true" class="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24"><path d="M0 3.449 9.75 2.1v9.451H0m10.949-9.602L24 0v11.4H10.949M0 12.6h9.75v9.451L0 20.699M10.949 12.6H24V24l-12.949-1.801"/></svg>
-        <span data-download-label>Download</span>
-      </a>
-
-      <button id="themeBtn" type="button" class="theme-btn focus-ring inline-flex h-11 w-11 items-center justify-center rounded-md border border-surface-border bg-surface-elevated text-slate-300 transition hover:border-surface-borderBright hover:text-white" aria-label="Switch to light theme">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="8" cy="8" r="6"/><path d="M8 2a6 6 0 0 1 0 12z" fill="currentColor"/></svg>
-      </button>
 
       <button id="mobile-menu-btn" type="button" class="focus-ring inline-flex h-11 w-11 items-center justify-center rounded-md border border-surface-border bg-surface-elevated text-slate-300 hover:border-surface-borderBright hover:text-white lg:hidden" aria-label="Open navigation menu" aria-controls="mobile-menu" aria-expanded="false">
         <svg id="menu-icon-bars" aria-hidden="true" class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -55,11 +36,6 @@
       <a class="mobile-nav-link" data-nav="why-dewtask" href="index.html#why-dewtask">Why DewTask</a>
       <a class="mobile-nav-link" data-nav="privacy" href="privacy.html">Privacy Policy</a>
       <a class="mobile-nav-link" data-nav="terms" href="terms.html">Terms of Service</a>
-      <div class="my-1 border-t border-surface-border/80"></div>
-      <a class="mobile-nav-link justify-between text-slate-400" href="https://github.com/arnabsaha7/dewtask" target="_blank" rel="noopener noreferrer">
-        <span>GitHub Repository</span>
-        <span class="font-mono text-xs text-brand-400">arnabsaha7/dewtask ↗</span>
-      </a>
     </div>
   </nav>
 </header>

@@ -1,9 +1,52 @@
-/* ==========================================================================
-   DewTask Interactive Sandbox
-   Follows page theme automatically via:
-   - Default (dark): html.dark, html[data-theme="dark"], or unclassed root
-   - Light: html.light or html[data-theme="light"]
-   ========================================================================== */
+/* DewTask Interactive Sandbox (dark theme). */
+
+:root {
+  --demo-bg: #06070A;
+  --demo-border: #1F2229;
+  --demo-text: #E5E7EB;
+  --demo-strong: #F3F4F6;
+  --demo-muted: #9CA3AF;
+  --demo-dim: #8894A6;
+  --demo-side: #080A0E;
+  --demo-side-line: #161A21;
+  --demo-card: #0B0E14;
+  --demo-card-line: #1B2029;
+  --demo-input: #0B0D12;
+  --demo-track: #0A0C10;
+  --demo-accent: #2B7A8C;
+  --demo-accent-hover: #34899C;
+  --demo-on-accent: #FFFFFF;
+  --demo-nav-hover: rgba(255, 255, 255, 0.03);
+  --demo-nav-on-bg: #0E1A22;
+  --demo-nav-on-line: #1F4A58;
+  --demo-nav-on-icon: #7DD3FC;
+  --demo-brand-i: #2B99FF;
+  --demo-pop-bg: #0D1219;
+  --demo-pop-input: #07090D;
+  --demo-pop-line: #1F2937;
+  --demo-pop-head: #7DD3FC;
+  --demo-pop-focus: #38BDF8;
+  --demo-cancel-bg: #161B24;
+  --demo-full-bg: #1B222D;
+  --demo-full-line: #2C3545;
+  --demo-del-bg: rgba(239, 68, 68, 0.15);
+  --demo-del-fg: #F87171;
+  --demo-done: #6EE7B7;
+  --demo-progress: #7DD3FC;
+  --demo-todo: #FCD34D;
+  --demo-bar: #34D399;
+  --demo-chip-todo-fg: #FCD34D;
+  --demo-chip-todo-line: #5B4A14;
+  --demo-chip-todo-bg: #1B1707;
+  --demo-chip-prog-fg: #7DD3FC;
+  --demo-chip-prog-line: #1C4A63;
+  --demo-chip-prog-bg: #0B1A24;
+  --demo-chip-done-fg: #6EE7B7;
+  --demo-chip-done-line: #1B5A46;
+  --demo-chip-done-bg: #0A1D17;
+  --demo-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
+  --demo-pop-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+}
 
 [data-dewtask-sandbox] {
   display: block;
@@ -15,45 +58,51 @@
   --dw-body: var(--font-sans, var(--body, 'Inter', system-ui, -apple-system, sans-serif));
   --dw-mono: var(--font-mono, var(--mono, 'JetBrains Mono', ui-monospace, Consolas, monospace));
 
-  --dw-bg: #06070A;
-  --dw-border: #1F2229;
-  --dw-text: #E5E7EB;
-  --dw-strong: #F3F4F6;
-  --dw-muted: #9CA3AF;
-  --dw-dim: #8894A6;
-  --dw-side: #080A0E;
-  --dw-side-line: #161A21;
-  --dw-card: #0B0E14;
-  --dw-card-line: #1B2029;
-  --dw-input: #0B0D12;
-  --dw-track: #0A0C10;
-  --dw-accent: #2B7A8C;
-  --dw-accent-hover: #34899C;
-  --dw-on-accent: #FFFFFF;
-  --dw-nav-hover: rgba(255, 255, 255, 0.03);
-  --dw-nav-on-bg: #0E1A22;
-  --dw-nav-on-line: #1F4A58;
-  --dw-nav-on-icon: #7DD3FC;
-  --dw-brand-i: #2B99FF;
-  --dw-pop-bg: #0D1219;
-  --dw-pop-input: #07090D;
-  --dw-pop-line: #1F2937;
-  --dw-pop-head: #7DD3FC;
-  --dw-pop-focus: #38BDF8;
-  --dw-cancel-bg: #161B24;
-  --dw-full-bg: #1B222D;
-  --dw-full-line: #2C3545;
-  --dw-del-bg: rgba(239, 68, 68, 0.15);
-  --dw-del-fg: #F87171;
-  --dw-done: #6EE7B7;
-  --dw-progress: #7DD3FC;
-  --dw-todo: #FCD34D;
-  --dw-bar: #34D399;
-  --dw-chip-todo-fg: #FCD34D;   --dw-chip-todo-line: #5B4A14;   --dw-chip-todo-bg: #1B1707;
-  --dw-chip-prog-fg: #7DD3FC;   --dw-chip-prog-line: #1C4A63;   --dw-chip-prog-bg: #0B1A24;
-  --dw-chip-done-fg: #6EE7B7;   --dw-chip-done-line: #1B5A46;   --dw-chip-done-bg: #0A1D17;
-  --dw-shadow: 0 16px 40px rgba(0, 0, 0, 0.45);
-  --dw-pop-shadow: 0 12px 28px rgba(0, 0, 0, 0.65);
+    --dw-bg: var(--demo-bg);
+  --dw-border: var(--demo-border);
+  --dw-text: var(--demo-text);
+  --dw-strong: var(--demo-strong);
+  --dw-muted: var(--demo-muted);
+  --dw-dim: var(--demo-dim);
+  --dw-side: var(--demo-side);
+  --dw-side-line: var(--demo-side-line);
+  --dw-card: var(--demo-card);
+  --dw-card-line: var(--demo-card-line);
+  --dw-input: var(--demo-input);
+  --dw-track: var(--demo-track);
+  --dw-accent: var(--demo-accent);
+  --dw-accent-hover: var(--demo-accent-hover);
+  --dw-on-accent: var(--demo-on-accent);
+  --dw-nav-hover: var(--demo-nav-hover);
+  --dw-nav-on-bg: var(--demo-nav-on-bg);
+  --dw-nav-on-line: var(--demo-nav-on-line);
+  --dw-nav-on-icon: var(--demo-nav-on-icon);
+  --dw-brand-i: var(--demo-brand-i);
+  --dw-pop-bg: var(--demo-pop-bg);
+  --dw-pop-input: var(--demo-pop-input);
+  --dw-pop-line: var(--demo-pop-line);
+  --dw-pop-head: var(--demo-pop-head);
+  --dw-pop-focus: var(--demo-pop-focus);
+  --dw-cancel-bg: var(--demo-cancel-bg);
+  --dw-full-bg: var(--demo-full-bg);
+  --dw-full-line: var(--demo-full-line);
+  --dw-del-bg: var(--demo-del-bg);
+  --dw-del-fg: var(--demo-del-fg);
+  --dw-done: var(--demo-done);
+  --dw-progress: var(--demo-progress);
+  --dw-todo: var(--demo-todo);
+  --dw-bar: var(--demo-bar);
+  --dw-chip-todo-fg: var(--demo-chip-todo-fg);
+  --dw-chip-todo-line: var(--demo-chip-todo-line);
+  --dw-chip-todo-bg: var(--demo-chip-todo-bg);
+  --dw-chip-prog-fg: var(--demo-chip-prog-fg);
+  --dw-chip-prog-line: var(--demo-chip-prog-line);
+  --dw-chip-prog-bg: var(--demo-chip-prog-bg);
+  --dw-chip-done-fg: var(--demo-chip-done-fg);
+  --dw-chip-done-line: var(--demo-chip-done-line);
+  --dw-chip-done-bg: var(--demo-chip-done-bg);
+  --dw-shadow: var(--demo-shadow);
+  --dw-pop-shadow: var(--demo-pop-shadow);
 
   flex: 1;
   display: grid;
@@ -164,48 +213,6 @@
 .win11-window .dwr {
   min-height: 50px;
   gap: 12px;
-}
-
-html[data-theme="light"] .dw,
-html.light .dw {
-  --dw-bg: #FFFFFF;
-  --dw-border: #D5D3CB;
-  --dw-text: #232833;
-  --dw-strong: #121417;
-  --dw-muted: #49505E;
-  --dw-dim: #565E6B;
-  --dw-side: #F5F4F0;
-  --dw-side-line: #E3E1D9;
-  --dw-card: #F8F7F3;
-  --dw-card-line: #E3E1D9;
-  --dw-input: #FFFFFF;
-  --dw-track: #E4E2DA;
-  --dw-accent: #1F6B7C;
-  --dw-accent-hover: #185A69;
-  --dw-nav-hover: rgba(0, 0, 0, 0.04);
-  --dw-nav-on-bg: #E3F1F5;
-  --dw-nav-on-line: #9CC9D4;
-  --dw-nav-on-icon: #1F6B7C;
-  --dw-brand-i: #1463E0;
-  --dw-pop-bg: #FFFFFF;
-  --dw-pop-input: #F5F4F0;
-  --dw-pop-line: #D5D3CB;
-  --dw-pop-head: #1F6B7C;
-  --dw-pop-focus: #1F6B7C;
-  --dw-cancel-bg: #EAE8E1;
-  --dw-full-bg: #EAE8E1;
-  --dw-full-line: #C9C6BB;
-  --dw-del-bg: rgba(220, 38, 38, 0.1);
-  --dw-del-fg: #DC2626;
-  --dw-done: #10B981;
-  --dw-progress: #0EA5E9;
-  --dw-todo: #F59E0B;
-  --dw-bar: #10B981;
-  --dw-chip-todo-fg: #7A5D00;   --dw-chip-todo-line: #E5CF7A;   --dw-chip-todo-bg: #FFF7D6;
-  --dw-chip-prog-fg: #0B6593;   --dw-chip-prog-line: #9ED2EC;   --dw-chip-prog-bg: #E6F4FB;
-  --dw-chip-done-fg: #0F7A55;   --dw-chip-done-line: #9FD9BF;   --dw-chip-done-bg: #E4F6EE;
-  --dw-shadow: 0 16px 40px rgba(18, 20, 23, 0.12);
-  --dw-pop-shadow: 0 12px 28px rgba(18, 20, 23, 0.18);
 }
 
 .dwn {
