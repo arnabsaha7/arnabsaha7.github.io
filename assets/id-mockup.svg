@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="680" height="650" viewBox="0 0 680 650" font-family="Bahnschrift, 'DIN Alternate', 'Segoe UI', sans-serif" role="img" aria-labelledby="title desc">
+  <title id="title">Arnab Saha’s portfolio badge</title>
+  <desc id="desc">Two charcoal badges hanging from retractable reels. The front shows Arnab’s illustrated portrait and role. The back has a QR code for arnabsaha7.github.io.</desc>
+  <defs>
+    <linearGradient id="bg" x2="0" y2="1">
+      <stop stop-color="#f3f5f8"/>
+      <stop offset="1" stop-color="#dfe5ec"/>
+    </linearGradient>
+    <linearGradient id="metal" x2="1" y2="0">
+      <stop stop-color="#8b8b8b"/>
+      <stop offset=".45" stop-color="#ededed"/>
+      <stop offset="1" stop-color="#858585"/>
+    </linearGradient>
+    <linearGradient id="portrait-shade" x2="0" y2="1">
+      <stop offset=".57" stop-color="#080808" stop-opacity="0"/>
+      <stop offset="1" stop-color="#080808" stop-opacity=".45"/>
+    </linearGradient>
+    <clipPath id="portrait">
+      <rect x="12" y="210" width="224" height="286.3" rx="10"/>
+    </clipPath>
+    <filter id="shadow" x="-.1" y="-.1" width="1.2" height="1.2">
+      <feGaussianBlur stdDeviation="5"/>
+    </filter>
+    <g id="strap" fill="none">
+      <use href="#reel-cord"/>
+      <use href="#reel-head"/>
+      <use href="#reel-tip"/>
+    </g>
+    <g id="reel-cord" fill="none">
+      <path d="M124 63v48" stroke="#191919" stroke-width="5"/>
+      <path d="M124 63v48" stroke="#909090" stroke-width="1.3" stroke-dasharray="2 2"/>
+    </g>
+    <g id="reel-head" fill="none">
+      <rect x="117" y="56" width="14" height="11" rx="4" fill="#2a2a2a" stroke="#191919"/>
+      <circle cx="124" cy="37" r="24" fill="#0e1621" stroke="#111111" stroke-width="2"/>
+      <circle cx="124" cy="36" r="20" stroke="#606060"/>
+      <path d="M110 32a15 15 0 0 1 20-10" stroke="#939393" stroke-linecap="round"/>
+      <circle cx="124" cy="36" r="5" fill="url(#metal)" stroke="#191919"/>
+    </g>
+    <g id="reel-tip" fill="none">
+      <path d="M122 105h4l3 4v9h-10v-9Z" fill="#34383d" stroke="#191919" stroke-linejoin="round"/>
+      <path d="M121.5 110.5h5m-5 3h5" stroke="#8a8d90" stroke-linecap="round"/>
+    </g>
+    <g id="badge">
+      <rect x="-4" y="182" width="260" height="409" rx="19" fill="#080808" opacity=".32" filter="url(#shadow)"/>
+      <path d="M124 146A9 23 0 0 0 124 192" fill="none" stroke="#606060" stroke-width="3"/>
+      <rect x="-6" y="174" width="260" height="409" rx="18" fill="#0e1621" stroke="#454545"/>
+      <path d="M-5 564v1a17 17 0 0 0 17 17h224a17 17 0 0 0 17-17" fill="none" stroke="#111111" stroke-width="2"/>
+      <rect x="104" y="188" width="40" height="8" rx="4" fill="#080808" stroke="#454545"/>
+      <path d="M124 146A9 23 0 0 1 124 192" fill="none" stroke="#080808" stroke-width="5.5"/>
+      <path d="M124 146A9 23 0 0 1 124 192" fill="none" stroke="#dedede" stroke-width="3"/>
+      <path d="M120 118h8a3 3 0 0 1 3 3v3l2 4v14a6 6 0 0 1-6 6h-6a6 6 0 0 1-6-6v-14l2-4v-3a3 3 0 0 1 3-3Z" fill="url(#metal)" stroke="#191919" stroke-linejoin="round"/>
+      <circle cx="124" cy="130" r="4.5" fill="#5d6166" stroke="#e0e0e0"/>
+      <path d="m122.5 131.5 3-3M118 141h12" fill="none" stroke="#414449" stroke-linecap="round"/>
+    </g>
+    <g id="badge-id">
+      <path d="M12 556h224" stroke="#2a2a2a"/>
+      <text x="12" y="573" fill="#a3afbd" font-size="10" letter-spacing="1.2">BADGE ID</text>
+      <text x="236" y="573" text-anchor="end" font-size="12" letter-spacing="1">07092001</text>
+    </g>
+
+    <g id="badge-front">
+      <use href="#badge"/>
+      <g clip-path="url(#portrait)">
+        <image x="12" y="210" width="224" height="286.3" preserveAspectRatio="xMidYMid slice" href="./about-portrait.jpg"/>
+        <image x="12" y="210" width="224" height="286.3" preserveAspectRatio="xMidYMid slice" href="https://avatars.githubusercontent.com/u/88814961?s=460"/>
+      </g>
+      <use href="#badge-front-details"/>
+    </g>
+
+    <g id="badge-front-details" fill="#f1f5f9" font-family="Bahnschrift, 'DIN Alternate', 'Segoe UI', sans-serif">
+      <rect x="12" y="210" width="224" height="286.3" rx="10" fill="url(#portrait-shade)"/>
+      <rect x="12" y="210" width="224" height="286.3" rx="10" fill="none" stroke="#454545"/>
+
+      <text x="12" y="528" font-size="27" font-weight="700" letter-spacing=".15">Arnab Saha</text>
+      <text x="12" y="546" fill="#fff" font-size="11" font-weight="500" letter-spacing="1.3">SYSTEMS AND DATA ENGINEER</text>
+      <use href="#badge-id"/>
+    </g>
+
+    <g id="badge-back" fill="#f1f5f9" font-family="Bahnschrift, 'DIN Alternate', 'Segoe UI', sans-serif">
+      <use href="#badge"/>
+      <rect x="6" y="235.15" width="236" height="236" rx="10" fill="#0e1621" stroke="#454545"/>
+      <path transform="translate(31.925 261.075) scale(6.35)" fill="#fff"
+            d="M0 0h1v1h-1zM1 0h1v1h-1zM2 0h1v1h-1zM3 0h1v1h-1zM4 0h1v1h-1zM5 0h1v1h-1zM6 0h1v1h-1zM12 0h1v1h-1zM14 0h1v1h-1zM17 0h1v1h-1zM18 0h1v1h-1zM19 0h1v1h-1zM22 0h1v1h-1zM23 0h1v1h-1zM24 0h1v1h-1zM25 0h1v1h-1zM26 0h1v1h-1zM27 0h1v1h-1zM28 0h1v1h-1zM0 1h1v1h-1zM6 1h1v1h-1zM9 1h1v1h-1zM11 1h1v1h-1zM16 1h1v1h-1zM17 1h1v1h-1zM22 1h1v1h-1zM28 1h1v1h-1zM0 2h1v1h-1zM2 2h1v1h-1zM3 2h1v1h-1zM4 2h1v1h-1zM6 2h1v1h-1zM11 2h1v1h-1zM14 2h1v1h-1zM15 2h1v1h-1zM17 2h1v1h-1zM18 2h1v1h-1zM20 2h1v1h-1zM22 2h1v1h-1zM24 2h1v1h-1zM25 2h1v1h-1zM26 2h1v1h-1zM28 2h1v1h-1zM0 3h1v1h-1zM2 3h1v1h-1zM3 3h1v1h-1zM4 3h1v1h-1zM6 3h1v1h-1zM10 3h1v1h-1zM11 3h1v1h-1zM13 3h1v1h-1zM16 3h1v1h-1zM18 3h1v1h-1zM19 3h1v1h-1zM20 3h1v1h-1zM22 3h1v1h-1zM24 3h1v1h-1zM25 3h1v1h-1zM26 3h1v1h-1zM28 3h1v1h-1zM0 4h1v1h-1zM2 4h1v1h-1zM3 4h1v1h-1zM4 4h1v1h-1zM6 4h1v1h-1zM9 4h1v1h-1zM11 4h1v1h-1zM12 4h1v1h-1zM22 4h1v1h-1zM24 4h1v1h-1zM25 4h1v1h-1zM26 4h1v1h-1zM28 4h1v1h-1zM0 5h1v1h-1zM6 5h1v1h-1zM8 5h1v1h-1zM9 5h1v1h-1zM10 5h1v1h-1zM11 5h1v1h-1zM15 5h1v1h-1zM16 5h1v1h-1zM18 5h1v1h-1zM19 5h1v1h-1zM22 5h1v1h-1zM28 5h1v1h-1zM0 6h1v1h-1zM1 6h1v1h-1zM2 6h1v1h-1zM3 6h1v1h-1zM4 6h1v1h-1zM5 6h1v1h-1zM6 6h1v1h-1zM8 6h1v1h-1zM10 6h1v1h-1zM12 6h1v1h-1zM14 6h1v1h-1zM16 6h1v1h-1zM18 6h1v1h-1zM20 6h1v1h-1zM22 6h1v1h-1zM23 6h1v1h-1zM24 6h1v1h-1zM25 6h1v1h-1zM26 6h1v1h-1zM27 6h1v1h-1zM28 6h1v1h-1zM10 7h1v1h-1zM11 7h1v1h-1zM12 7h1v1h-1zM13 7h1v1h-1zM15 7h1v1h-1zM16 7h1v1h-1zM17 7h1v1h-1zM18 7h1v1h-1zM0 8h1v1h-1zM3 8h1v1h-1zM5 8h1v1h-1zM6 8h1v1h-1zM8 8h1v1h-1zM9 8h1v1h-1zM11 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM19 8h1v1h-1zM21 8h1v1h-1zM23 8h1v1h-1zM0 9h1v1h-1zM1 9h1v1h-1zM3 9h1v1h-1zM4 9h1v1h-1zM7 9h1v1h-1zM9 9h1v1h-1zM10 9h1v1h-1zM11 9h1v1h-1zM12 9h1v1h-1zM13 9h1v1h-1zM15 9h1v1h-1zM16 9h1v1h-1zM17 9h1v1h-1zM20 9h1v1h-1zM21 9h1v1h-1zM22 9h1v1h-1zM25 9h1v1h-1zM28 9h1v1h-1zM1 10h1v1h-1zM2 10h1v1h-1zM3 10h1v1h-1zM4 10h1v1h-1zM6 10h1v1h-1zM9 10h1v1h-1zM11 10h1v1h-1zM13 10h1v1h-1zM14 10h1v1h-1zM15 10h1v1h-1zM17 10h1v1h-1zM18 10h1v1h-1zM19 10h1v1h-1zM23 10h1v1h-1zM24 10h1v1h-1zM25 10h1v1h-1zM26 10h1v1h-1zM27 10h1v1h-1zM0 11h1v1h-1zM1 11h1v1h-1zM2 11h1v1h-1zM8 11h1v1h-1zM9 11h1v1h-1zM11 11h1v1h-1zM13 11h1v1h-1zM16 11h1v1h-1zM21 11h1v1h-1zM22 11h1v1h-1zM26 11h1v1h-1zM27 11h1v1h-1zM0 12h1v1h-1zM1 12h1v1h-1zM4 12h1v1h-1zM6 12h1v1h-1zM7 12h1v1h-1zM11 12h1v1h-1zM14 12h1v1h-1zM15 12h1v1h-1zM17 12h1v1h-1zM18 12h1v1h-1zM20 12h1v1h-1zM21 12h1v1h-1zM22 12h1v1h-1zM25 12h1v1h-1zM27 12h1v1h-1zM28 12h1v1h-1zM0 13h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM9 13h1v1h-1zM13 13h1v1h-1zM14 13h1v1h-1zM15 13h1v1h-1zM16 13h1v1h-1zM19 13h1v1h-1zM20 13h1v1h-1zM1 14h1v1h-1zM5 14h1v1h-1zM6 14h1v1h-1zM10 14h1v1h-1zM11 14h1v1h-1zM13 14h1v1h-1zM14 14h1v1h-1zM22 14h1v1h-1zM23 14h1v1h-1zM25 14h1v1h-1zM26 14h1v1h-1zM27 14h1v1h-1zM28 14h1v1h-1zM0 15h1v1h-1zM2 15h1v1h-1zM4 15h1v1h-1zM5 15h1v1h-1zM7 15h1v1h-1zM8 15h1v1h-1zM10 15h1v1h-1zM12 15h1v1h-1zM15 15h1v1h-1zM17 15h1v1h-1zM20 15h1v1h-1zM22 15h1v1h-1zM24 15h1v1h-1zM25 15h1v1h-1zM27 15h1v1h-1zM0 16h1v1h-1zM2 16h1v1h-1zM3 16h1v1h-1zM6 16h1v1h-1zM8 16h1v1h-1zM9 16h1v1h-1zM10 16h1v1h-1zM11 16h1v1h-1zM12 16h1v1h-1zM13 16h1v1h-1zM17 16h1v1h-1zM20 16h1v1h-1zM21 16h1v1h-1zM27 16h1v1h-1zM2 17h1v1h-1zM3 17h1v1h-1zM4 17h1v1h-1zM5 17h1v1h-1zM7 17h1v1h-1zM10 17h1v1h-1zM13 17h1v1h-1zM14 17h1v1h-1zM15 17h1v1h-1zM16 17h1v1h-1zM17 17h1v1h-1zM20 17h1v1h-1zM21 17h1v1h-1zM22 17h1v1h-1zM23 17h1v1h-1zM25 17h1v1h-1zM28 17h1v1h-1zM0 18h1v1h-1zM3 18h1v1h-1zM6 18h1v1h-1zM7 18h1v1h-1zM11 18h1v1h-1zM12 18h1v1h-1zM14 18h1v1h-1zM15 18h1v1h-1zM16 18h1v1h-1zM18 18h1v1h-1zM22 18h1v1h-1zM27 18h1v1h-1zM28 18h1v1h-1zM2 19h1v1h-1zM3 19h1v1h-1zM4 19h1v1h-1zM7 19h1v1h-1zM9 19h1v1h-1zM10 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM18 19h1v1h-1zM19 19h1v1h-1zM20 19h1v1h-1zM22 19h1v1h-1zM23 19h1v1h-1zM27 19h1v1h-1zM28 19h1v1h-1zM0 20h1v1h-1zM4 20h1v1h-1zM6 20h1v1h-1zM8 20h1v1h-1zM10 20h1v1h-1zM11 20h1v1h-1zM12 20h1v1h-1zM15 20h1v1h-1zM20 20h1v1h-1zM21 20h1v1h-1zM22 20h1v1h-1zM23 20h1v1h-1zM24 20h1v1h-1zM26 20h1v1h-1zM8 21h1v1h-1zM9 21h1v1h-1zM12 21h1v1h-1zM14 21h1v1h-1zM15 21h1v1h-1zM20 21h1v1h-1zM24 21h1v1h-1zM26 21h1v1h-1zM27 21h1v1h-1zM28 21h1v1h-1zM0 22h1v1h-1zM1 22h1v1h-1zM2 22h1v1h-1zM3 22h1v1h-1zM4 22h1v1h-1zM5 22h1v1h-1zM6 22h1v1h-1zM9 22h1v1h-1zM10 22h1v1h-1zM11 22h1v1h-1zM12 22h1v1h-1zM16 22h1v1h-1zM17 22h1v1h-1zM20 22h1v1h-1zM22 22h1v1h-1zM24 22h1v1h-1zM27 22h1v1h-1zM0 23h1v1h-1zM6 23h1v1h-1zM8 23h1v1h-1zM10 23h1v1h-1zM11 23h1v1h-1zM12 23h1v1h-1zM14 23h1v1h-1zM15 23h1v1h-1zM18 23h1v1h-1zM19 23h1v1h-1zM20 23h1v1h-1zM24 23h1v1h-1zM25 23h1v1h-1zM26 23h1v1h-1zM0 24h1v1h-1zM2 24h1v1h-1zM3 24h1v1h-1zM4 24h1v1h-1zM6 24h1v1h-1zM9 24h1v1h-1zM10 24h1v1h-1zM12 24h1v1h-1zM16 24h1v1h-1zM17 24h1v1h-1zM18 24h1v1h-1zM20 24h1v1h-1zM21 24h1v1h-1zM22 24h1v1h-1zM23 24h1v1h-1zM24 24h1v1h-1zM27 24h1v1h-1zM0 25h1v1h-1zM2 25h1v1h-1zM3 25h1v1h-1zM4 25h1v1h-1zM6 25h1v1h-1zM8 25h1v1h-1zM9 25h1v1h-1zM10 25h1v1h-1zM11 25h1v1h-1zM13 25h1v1h-1zM15 25h1v1h-1zM19 25h1v1h-1zM22 25h1v1h-1zM24 25h1v1h-1zM25 25h1v1h-1zM26 25h1v1h-1zM28 25h1v1h-1zM0 26h1v1h-1zM2 26h1v1h-1zM3 26h1v1h-1zM4 26h1v1h-1zM6 26h1v1h-1zM14 26h1v1h-1zM15 26h1v1h-1zM16 26h1v1h-1zM24 26h1v1h-1zM25 26h1v1h-1zM26 26h1v1h-1zM28 26h1v1h-1zM0 27h1v1h-1zM6 27h1v1h-1zM9 27h1v1h-1zM16 27h1v1h-1zM17 27h1v1h-1zM18 27h1v1h-1zM19 27h1v1h-1zM20 27h1v1h-1zM21 27h1v1h-1zM22 27h1v1h-1zM27 27h1v1h-1zM0 28h1v1h-1zM1 28h1v1h-1zM2 28h1v1h-1zM3 28h1v1h-1zM4 28h1v1h-1zM5 28h1v1h-1zM6 28h1v1h-1zM8 28h1v1h-1zM9 28h1v1h-1zM11 28h1v1h-1zM13 28h1v1h-1zM14 28h1v1h-1zM15 28h1v1h-1zM18 28h1v1h-1zM20 28h1v1h-1zM24 28h1v1h-1zM25 28h1v1h-1zM27 28h1v1h-1z"/>
+
+      <text x="124" y="513.575" text-anchor="middle" dominant-baseline="central" fill="#fff" font-size="13" font-weight="500" letter-spacing="1.3">SCAN WITH YOUR CAMERA</text>
+      <use href="#badge-id"/>
+    </g>
+  </defs>
+
+  <rect width="680" height="650" fill="url(#bg)"/>
+  <use href="#strap" x="48"/>
+  <use href="#strap" x="384"/>
+  <use href="#badge-front" transform="translate(48) rotate(2.5 124 122)"/>
+  <use href="#badge-back" transform="translate(384) rotate(-2.5 124 122)"/>
+</svg>

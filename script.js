@@ -27,17 +27,6 @@
     const $ = selector => document.querySelector(selector);
     const $$ = selector => [...document.querySelectorAll(selector)];
 
-    const toast = $('#toast');
-    let toastTimer;
-
-    function say(message) {
-      if (!toast) return;
-      toast.textContent = message;
-      toast.classList.add('show');
-      clearTimeout(toastTimer);
-      toastTimer = setTimeout(() => toast.classList.remove('show'), 2400);
-    }
-
     run('theme', () => {
       const themeBtn = $('#themeBtn');
       const meta = $('meta[name="theme-color"]');
@@ -45,7 +34,9 @@
       function paintTheme() {
         const light = root.dataset.theme === 'light';
         if (themeBtn) {
-          themeBtn.setAttribute('aria-label', light ? 'Switch to dark theme' : 'Switch to light theme');
+          const mode = light ? 'Light' : 'Dark';
+          const next = light ? 'dark' : 'light';
+          themeBtn.setAttribute('aria-label', `${mode} mode. Switch to ${next} theme`);
         }
         if (meta) {
           meta.setAttribute('content', THEME_COLORS[light ? 'light' : 'dark']);
@@ -75,7 +66,7 @@
       }
 
       navBtn.addEventListener('click', () => setNav(!bar.classList.contains('open')));
-      $$('.top-nav a').forEach(link => link.addEventListener('click', () => setNav(false)));
+      bar.querySelectorAll('.brand, .top-nav a').forEach(link => link.addEventListener('click', () => setNav(false)));
 
       document.addEventListener('keydown', event => {
         if (event.key === 'Escape' && bar.classList.contains('open')) {
@@ -202,17 +193,6 @@
         mailLink.href = 'mailto:' + EMAIL;
         mailLink.textContent = EMAIL;
       }
-
-      const copy = $('#copyBtn');
-      if (!copy) return;
-      copy.hidden = false;
-      copy.addEventListener('click', () => {
-        if (!navigator.clipboard) return say(EMAIL);
-        navigator.clipboard.writeText(EMAIL).then(
-          () => say('Email copied'),
-          () => say(EMAIL)
-        );
-      });
     });
 
     run('resume', () => {
@@ -223,9 +203,208 @@
       });
     });
 
+    run('about-entrance', () => {
+      const about = $('#about');
+      if (!about || REDUCED.matches || !('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver(([entry]) => {
+        const inView = entry.isIntersecting && entry.intersectionRatio >= 0.18;
+        about.classList.toggle('about-in-view', inView);
+        if (inView) about.classList.add('about-entered');
+      }, { threshold: 0.18 });
+
+      observer.observe(about);
+    });
+
+    run('about-badge', () => {
+      const badge = $('#about-badge');
+      if (!badge) return;
+
+      const hanger = badge.querySelector('.about-hanger');
+      const card = badge.querySelector('.about-card');
+      const cord = badge.querySelector('.about-cord');
+      let pointerType;
+      let grab;
+      let dragged = false;
+      let pullX = 0;
+      let pullY = 0;
+      let retractFrame;
+
+      function moveBadge(x, y) {
+        pullX = x;
+        pullY = y;
+        hanger.style.setProperty('--about-offset', `${x}px ${y}px`);
+        hanger.style.setProperty('--about-pull', `calc(var(--about-rest) + ${-x * 0.12}deg)`);
+
+        // The cord runs from (124, 63) to the hanger pivot 48 SVG units below.
+        const svgUnits = 296 / grab.width;
+        const horizontal = x * svgUnits;
+        const vertical = 48 + y * svgUnits;
+        const angle = -Math.atan2(horizontal, vertical) * 180 / Math.PI;
+        const stretch = Math.hypot(horizontal, vertical) / 48;
+        cord.setAttribute('transform', `translate(124 63) rotate(${angle}) scale(1 ${stretch}) translate(-124 -63)`);
+      }
+
+      function retract() {
+        if (!badge.classList.contains('about-dragging')) return;
+        const releasedX = pullX;
+        const releasedY = pullY;
+        const releasedAt = performance.now();
+
+        function step(now) {
+          const seconds = (now - releasedAt) / 1000;
+          if (seconds >= 0.8 || REDUCED.matches) {
+            pullX = 0;
+            pullY = 0;
+            hanger.style.removeProperty('--about-offset');
+            hanger.style.removeProperty('--about-pull');
+            cord.removeAttribute('transform');
+            badge.classList.remove('about-dragging');
+            return;
+          }
+          const remaining = Math.exp(-7 * seconds) * Math.cos(10 * seconds);
+          moveBadge(releasedX * remaining, releasedY * remaining);
+          retractFrame = requestAnimationFrame(step);
+        }
+
+        retractFrame = requestAnimationFrame(step);
+      }
+
+      function flip() {
+        const flipped = badge.toggleAttribute('data-flipped');
+        hanger.setAttribute('aria-pressed', String(flipped));
+      }
+
+      hanger.addEventListener('click', event => {
+        if (event.detail === 0 || pointerType === 'touch') flip();
+      });
+      hanger.addEventListener('dblclick', () => {
+        if (pointerType !== 'touch' && !dragged) flip();
+      });
+      hanger.addEventListener('contextmenu', event => {
+        if (pointerType === 'touch' && event.pointerType === 'touch') return;
+        event.preventDefault();
+        flip();
+      });
+      badge.classList.add('about-badge-interactive');
+      hanger.disabled = false;
+
+      card.addEventListener('pointerdown', event => {
+        pointerType = event.pointerType;
+        if (pointerType !== 'mouse' || event.button !== 0 || REDUCED.matches || !card.setPointerCapture) return;
+        cancelAnimationFrame(retractFrame);
+        dragged = false;
+        grab = { x: event.clientX, y: event.clientY, pullX, pullY, width: badge.clientWidth };
+        card.setPointerCapture(event.pointerId);
+      });
+
+      card.addEventListener('pointermove', event => {
+        if (!card.hasPointerCapture?.(event.pointerId) || REDUCED.matches) return;
+        const dx = event.clientX - grab.x;
+        const dy = event.clientY - grab.y;
+        if (Math.hypot(dx, dy) < 4 && !dragged) return;
+        dragged = true;
+        badge.classList.add('about-dragging');
+        const horizontalLimit = grab.width * 0.32;
+        const verticalLimit = grab.width * 0.36;
+        const x = Math.max(-horizontalLimit, Math.min(horizontalLimit, grab.pullX + dx));
+        const y = Math.max(-grab.width * 0.06, Math.min(verticalLimit, grab.pullY + dy));
+        moveBadge(x, y);
+      });
+
+      card.addEventListener('lostpointercapture', retract);
+    });
+
+    run('project-card-entrance', () => {
+      if (REDUCED.matches || !('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('pc--revealed');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px 32px' });
+
+      $$('.pcards > .pc').forEach(card => observer.observe(card));
+    });
+
+    run('work-principles', () => {
+      const principles = $('.principles');
+      if (!principles) return;
+
+      const map = principles.querySelector('.principle-map');
+      const items = [...map.querySelectorAll('.principle-item')];
+      const paths = map.querySelectorAll('.principle-connectors path');
+      let active = map.querySelector('[aria-current="true"]');
+
+      items.forEach(item => {
+        const card = item.querySelector('.principle-card');
+        function activate() {
+          if (card === active) return;
+          active.removeAttribute('aria-current');
+          card.setAttribute('aria-current', 'true');
+          active = card;
+        }
+
+        card.addEventListener('pointerenter', event => {
+          if (event.pointerType === 'mouse') activate();
+        });
+        card.addEventListener('focus', activate);
+        card.addEventListener('click', activate);
+      });
+
+      function drawConnectors() {
+        const boxes = items.map(item => ({
+          x: item.offsetLeft + item.offsetWidth / 2,
+          y: item.offsetTop + item.offsetHeight / 2,
+          halfWidth: item.offsetWidth / 2 - 8,
+          halfHeight: item.offsetHeight / 2 - 8
+        }));
+
+        // End just inside each card so the connector still meets it as it floats.
+        function edgePoint(box, dx, dy) {
+          const scale = Math.max(Math.abs(dx) / box.halfWidth, Math.abs(dy) / box.halfHeight);
+          return [box.x + dx / scale, box.y + dy / scale];
+        }
+
+        const path = boxes.slice(1).map((end, index) => {
+          const start = boxes[index];
+          const dx = end.x - start.x;
+          const dy = end.y - start.y;
+          const [fromX, fromY] = edgePoint(start, dx, dy);
+          const [toX, toY] = edgePoint(end, -dx, -dy);
+          const bendX = (fromX + toX) / 2;
+          return `M ${fromX} ${fromY} C ${bendX} ${fromY} ${bendX} ${toY} ${toX} ${toY}`;
+        }).join(' ');
+
+        paths.forEach(line => line.setAttribute('d', path));
+      }
+
+      drawConnectors();
+      if ('ResizeObserver' in window) {
+        const resize = new ResizeObserver(drawConnectors);
+        resize.observe(map);
+        items.forEach(item => resize.observe(item));
+      } else {
+        window.addEventListener('resize', drawConnectors);
+        document.fonts?.ready.then(drawConnectors);
+      }
+
+      if (!('IntersectionObserver' in window)) return;
+      principles.classList.add('principles-ready');
+
+      const entrance = new IntersectionObserver(([entry]) => {
+        if (!entry.isIntersecting) return;
+        principles.classList.add('principles-revealed');
+        entrance.disconnect();
+      }, { threshold: 0.12 });
+      entrance.observe(map);
+    });
+
     // Keep the clicked section active until the visitor scrolls away.
     run('scroll-spy', () => {
-      const navLinks = $$('.top-nav a[href^="#"]');
+      const navLinks = $$('.bar :is(.brand, .top-nav a)[href^="#"]');
       const sections = navLinks
         .map(link => document.querySelector(link.getAttribute('href')))
         .filter(Boolean);
@@ -340,55 +519,79 @@
       update();
     });
 
-    run('release-tag', () => {
+    run('project-metadata', () => {
       const cacheLifetime = 36e5;
       const projects = [
         { label: $('#dewTag'), repository: 'dewtask', cacheKey: 'dewtask_rel_v2' },
         { label: $('#itemcareTag'), repository: 'ItemCare', cacheKey: 'itemcare_tag_v1', tags: true }
       ];
 
-      async function loadVersion(project) {
-        if (!project.label) return;
-        try {
-          const cached = JSON.parse(localStorage.getItem(project.cacheKey) || 'null');
-          if (cached && Date.now() - cached.t < cacheLifetime) {
-            project.label.textContent = 'Live · ' + cached.tag;
-            return;
-          }
-        } catch (_) {}
-
+      async function getRepositoryData(path) {
         const controller = new AbortController();
         const timer = setTimeout(() => controller.abort(), 6000);
 
         try {
-          const response = await fetch(
-            `https://api.github.com/repos/arnabsaha7/${project.repository}/${project.tags ? 'tags?per_page=1' : 'releases?per_page=100'}`,
-            { signal: controller.signal, priority: 'low' }
-          );
-          if (!response.ok) return;
-
-          const releases = await response.json();
-          if (!Array.isArray(releases) || !releases.length) return;
-
-          const published = releases.filter(release => !release.draft);
-          const latest = project.tags
-            ? releases[0]
-            : published.find(release => !release.prerelease) || published[0];
-          const tag = project.tags ? latest.name : latest.tag_name;
-          if (!tag) return;
-          project.label.textContent = 'Live · ' + tag;
-
-          try {
-            localStorage.setItem(project.cacheKey, JSON.stringify({ tag, t: Date.now() }));
-          } catch (_) {}
+          const response = await fetch(`https://api.github.com/repos/arnabsaha7/${path}`, {
+            signal: controller.signal, priority: 'low'
+          });
+          return response.ok ? await response.json() : null;
         } catch (_) {
-          // The card already displays its default Live label.
+          return null;
         } finally {
           clearTimeout(timer);
         }
       }
 
-      projects.forEach(loadVersion);
+      async function loadVersion(project) {
+        try {
+          const cached = JSON.parse(localStorage.getItem(project.cacheKey) || 'null');
+          if (cached?.tag && Date.now() - cached.t < cacheLifetime) {
+            project.label.textContent = 'Live · ' + cached.tag;
+            return;
+          }
+        } catch (_) {}
+
+        const endpoint = project.tags ? 'tags?per_page=1' : 'releases?per_page=100';
+        const releases = await getRepositoryData(`${project.repository}/${endpoint}`);
+        if (!Array.isArray(releases) || !releases.length) return;
+
+        const published = releases.filter(release => !release.draft);
+        const latest = project.tags
+          ? releases[0]
+          : published.find(release => !release.prerelease) || published[0];
+        const tag = project.tags ? latest?.name : latest?.tag_name;
+        if (!tag) return;
+        project.label.textContent = 'Live · ' + tag;
+
+        try {
+          localStorage.setItem(project.cacheKey, JSON.stringify({ tag, t: Date.now() }));
+        } catch (_) {}
+      }
+
+      async function loadRepository(project) {
+        const repository = await getRepositoryData(project.repository);
+        if (!repository) return;
+
+        const card = project.label.closest('.pc');
+        const description = card.querySelector('.pc-description');
+        if (typeof repository.description === 'string' && repository.description.trim()) {
+          description.textContent = repository.description;
+        }
+
+        const count = repository.stargazers_count;
+        if (!Number.isSafeInteger(count) || count < 0) return;
+        const stars = card.querySelector('.pc-stars');
+        const formatted = count.toLocaleString();
+        const name = card.querySelector('h3').textContent;
+        stars.querySelector('span').textContent = formatted;
+        stars.setAttribute('aria-label', `${name}: ${formatted} ${count === 1 ? 'star' : 'stars'} on GitHub`);
+      }
+
+      projects.forEach(project => {
+        if (!project.label) return;
+        loadVersion(project);
+        loadRepository(project);
+      });
     });
   });
 })();
