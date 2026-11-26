@@ -80,10 +80,10 @@
       <linearGradient id="leafBotGradDark" x1="10%" y1="90%" x2="95%" y2="25%">
         <stop offset="0%" stop-color="#14B866"/><stop offset="50%" stop-color="#1ED175"/><stop offset="100%" stop-color="#28E382"/>
       </linearGradient>
-      <filter id="appDropShadowDark" x="-25%" y="-25%" width="150%" height="150%">
+      <filter id="appDropShadowDark" x="-25%" y="-25%" width="150%" height="150%" color-interpolation-filters="sRGB">
         <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#020813" flood-opacity="0.5"/>
       </filter>
-      <filter id="checkShadowDark" x="-20%" y="-20%" width="140%" height="140%">
+      <filter id="checkShadowDark" x="-20%" y="-20%" width="140%" height="140%" color-interpolation-filters="sRGB">
         <feDropShadow dx="0" dy="1.5" stdDeviation="1.6" flood-color="#021B4A" flood-opacity="0.5"/>
       </filter>
     </defs>
@@ -157,6 +157,8 @@
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
     </nav>
+    <div class="bar-end">
+    <a class="btn pri nav-resume" href="./assets/docs/resume.pdf" download>Résumé</a>
     <button id="themeBtn" class="ico theme-switch" type="button" aria-label="Switch theme">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <g class="theme-sun">
@@ -166,15 +168,17 @@
         <path class="theme-moon" d="M20.9 13.35A9 9 0 1 1 10.65 3.1a7 7 0 0 0 10.25 10.25Z"/>
       </svg>
     </button>
+    </div>
   </div>
 </header>
 
 <main id="main">
   <section id="top" class="hero">
+    <canvas class="hero-bg" id="heroBg" aria-hidden="true"></canvas>
     <div class="wrap grid">
       <div class="c7">
         <a class="hero-note" href="#contact"><span class="dot" aria-hidden="true"></span><span>Open to work</span><span aria-hidden="true">↗</span></a>
-        <h1>Hi, I am <span class="nw">Arnab Saha.</span></h1>
+        <h1><span class="greet">Hi, I am</span> <span class="nw">Arnab Saha.</span></h1>
         <p class="hero-role">Systems &amp; Data Engineer</p>
         <p class="hero-description">I build local-first desktop apps, FastAPI services, and data pipelines.</p>
         <div class="row">
@@ -186,7 +190,6 @@
             <span>Get in touch</span>
             <span class="arr" aria-hidden="true">→</span>
           </a>
-          <a class="btn gh" href="./assets/docs/resume.pdf" download>Résumé (PDF)</a>
         </div>
       </div>
 
@@ -280,8 +283,11 @@
                 </defs>
                 <use href="./assets/id-mockup.svg#badge"/>
                 <g clip-path="url(#about-avatar-clip)">
-                  <image href="./assets/about-portrait.jpg" x="12" y="210" width="224" height="286.3" preserveAspectRatio="xMidYMid slice"/>
-                  <image href="https://avatars.githubusercontent.com/u/88814961?s=460" x="12" y="210" width="224" height="286.3" preserveAspectRatio="xMidYMid slice" decoding="async" fetchpriority="low"/>
+                  <foreignObject x="12" y="210" width="224" height="286.3">
+                    <div xmlns="http://www.w3.org/1999/xhtml" style="width: 100%; height: 100%;">
+                      <img src="./assets/about-portrait.jpg" alt="Portrait of Arnab Saha" style="width: 100%; height: 100%; object-fit: cover; display: block;" onerror="this.onerror=null;this.src='https://avatars.githubusercontent.com/u/88814961?s=460';" decoding="async" fetchpriority="low">
+                    </div>
+                  </foreignObject>
                 </g>
                 <use href="./assets/id-mockup.svg#badge-front-details"/>
               </svg>
@@ -355,7 +361,7 @@
           <p class="pc-description">An offline-first Windows task manager with an outliner, Kanban board, and calendar in one local workspace.</p>
           <footer class="pc-actions">
             <div class="pc-meta">
-              <span class="pc-status"><span class="dot" aria-hidden="true"></span><span id="dewTag">Live</span></span>
+              <span class="pc-status"><span class="dot" aria-hidden="true"></span><span id="dewTag" data-fallback-tag="v1.4.0">Live</span></span>
               <a class="pc-stars" href="https://github.com/arnabsaha7/dewtask/stargazers" aria-label="DewTask stars on GitHub">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m12 3 2.8 5.7 6.3.9-4.5 4.4 1.1 6.2-5.7-3-5.7 3 1.1-6.2-4.5-4.4 6.3-.9L12 3Z"/></svg>
                 <span>Stars</span>
@@ -374,7 +380,7 @@
           <p class="pc-description">A local-first home inventory that keeps belongings, warranties, maintenance history, and insurance documents together.</p>
           <footer class="pc-actions">
             <div class="pc-meta">
-              <span class="pc-status"><span class="dot" aria-hidden="true"></span><span id="itemcareTag">Live</span></span>
+              <span class="pc-status"><span class="dot" aria-hidden="true"></span><span id="itemcareTag" data-fallback-tag="v1.0.0">Live</span></span>
               <a class="pc-stars" href="https://github.com/arnabsaha7/ItemCare/stargazers" aria-label="ItemCare stars on GitHub">
                 <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="m12 3 2.8 5.7 6.3.9-4.5 4.4 1.1 6.2-5.7-3-5.7 3 1.1-6.2-4.5-4.4 6.3-.9L12 3Z"/></svg>
                 <span>Stars</span>
@@ -559,7 +565,6 @@
               <span>Email me</span>
               <span class="arr" aria-hidden="true">→</span>
             </a>
-            <a class="btn gh" href="./assets/docs/resume.pdf" download>Résumé (PDF)</a>
           </div>
         </div>
         <div class="c5 contact-box">
