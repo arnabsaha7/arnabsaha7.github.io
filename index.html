@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>Arnab Saha, Systems &amp; Data Engineer (Rust, Tauri, FastAPI)</title>
-  <meta name="description" content="Arnab Saha is a Systems &amp; Data Engineer building local-first desktop apps and high-throughput FastAPI backends with Rust, Tauri, TypeScript, and Python.">
+  <meta name="description" content="Arnab Saha is a Systems &amp; Data Engineer building local-first desktop apps, FastAPI services, and data pipelines.">
   <link rel="canonical" href="https://arnabsaha7.github.io/">
   <meta name="color-scheme" content="dark light">
   <meta name="theme-color" content="#0A0E12">
@@ -13,18 +13,18 @@
   <meta property="og:site_name" content="Arnab Saha">
   <meta property="og:url" content="https://arnabsaha7.github.io/">
   <meta property="og:title" content="Arnab Saha, Systems &amp; Data Engineer (Rust, Tauri, FastAPI)">
-  <meta property="og:description" content="Systems &amp; Data Engineer building local-first desktop software and resilient backend systems for zero latency.">
+  <meta property="og:description" content="Systems &amp; Data Engineer building FastAPI services and desktop apps that store data locally and work offline.">
   <meta property="og:image" content="https://arnabsaha7.github.io/assets/portfolio-card.png">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-  <meta property="og:image:alt" content="Arnab Saha, Systems &amp; Data Engineer. Apps and backends built for instant response.">
+  <meta property="og:image:alt" content="Arnab Saha, Systems &amp; Data Engineer">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Arnab Saha, Systems &amp; Data Engineer (Rust, Tauri, FastAPI)">
-  <meta name="twitter:description" content="Systems &amp; Data Engineer building local-first desktop software and resilient backend systems for zero latency.">
+  <meta name="twitter:description" content="Systems &amp; Data Engineer building FastAPI services and desktop apps that store data locally and work offline.">
   <meta name="twitter:image" content="https://arnabsaha7.github.io/assets/portfolio-card.png">
-  <meta name="twitter:image:alt" content="Arnab Saha, Systems &amp; Data Engineer. Apps and backends built for instant response.">
+  <meta name="twitter:image:alt" content="Arnab Saha, Systems &amp; Data Engineer">
 
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Crect width='24' height='24' fill='%2355D6E8'/%3E%3Ctext x='12' y='18' font-family='monospace' font-size='16' font-weight='700' fill='%2306151A' text-anchor='middle'%3EA%3C/text%3E%3C/svg%3E">
   <script>
@@ -153,6 +153,7 @@
     <nav class="top-nav" id="primaryNav" aria-label="Primary">
       <a href="#about">About</a>
       <a href="#work">Work</a>
+      <a href="#experience">My Journey</a>
       <a href="#stack">Stack</a>
       <a href="#contact">Contact</a>
     </nav>
@@ -174,16 +175,18 @@
       <div class="c7">
         <a class="hero-note" href="#contact"><span class="dot" aria-hidden="true"></span><span>Open to work</span><span aria-hidden="true">↗</span></a>
         <h1>Hi, I am <span class="nw">Arnab Saha.</span></h1>
+        <p class="hero-role">Systems &amp; Data Engineer</p>
+        <p class="hero-description">I build local-first desktop apps, FastAPI services, and data pipelines.</p>
         <div class="row">
           <a class="btn pri" href="#work">
-            <span>Explore selected work</span>
+            <span>Explore my work</span>
             <span class="arr" aria-hidden="true">↓</span>
           </a>
           <a class="btn gh" href="#contact">
             <span>Get in touch</span>
             <span class="arr" aria-hidden="true">→</span>
           </a>
-          <a class="btn gh resume-link" href="#" hidden download>Résumé</a>
+          <a class="btn gh" href="./assets/docs/resume.pdf" download>Résumé (PDF)</a>
         </div>
       </div>
 
@@ -296,7 +299,7 @@
         <h2 id="about-title" class="about-title">A little <span>about me</span></h2>
         <div class="about-copy">
           <p class="about-lead">
-            At Deloitte, I worked on multiple industry-leading projects spanning FastAPI backends, data engineering, and agentic AI. Independently, I build local-first desktop apps that keep data on the device and work fully offline.
+            I build desktop apps that keep your data on your device and stay useful offline. My professional work at Deloitte spans backend services, data engineering, and agentic AI.
           </p>
           <p class="about-sub">
             I work across the boundary between systems and interface: designing clean relational schemas, profiling and fixing slow queries, and shipping software that feels calm, predictable, and snappy in daily use.
@@ -328,17 +331,28 @@
     </div>
   </section>
 
-  <section id="work" class="sec">
+  <section id="work" class="sec" aria-labelledby="work-title">
     <div class="wrap">
-      <div class="head"><h2>Selected work</h2></div>
+      <div class="head">
+        <h2 id="work-title">Things I've Built</h2>
+        <p id="work-drag-hint" class="work-drag-hint" hidden>
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <circle cx="5.5" cy="3.5" r="1.25"/><circle cx="10.5" cy="3.5" r="1.25"/>
+            <circle cx="5.5" cy="8" r="1.25"/><circle cx="10.5" cy="8" r="1.25"/>
+            <circle cx="5.5" cy="12.5" r="1.25"/><circle cx="10.5" cy="12.5" r="1.25"/>
+          </svg>
+          Drag a card
+        </p>
+      </div>
 
       <div class="pcards">
         <article class="pc pc--dewtask">
-          <div class="pc-art" aria-hidden="true">
+          <img class="pc-preview" src="./assets/dewtask-dashboard.png" width="1120" height="658" loading="lazy" decoding="async" alt="DewTask dashboard showing task progress, weekly completions, and workspace navigation">
+          <div class="pc-heading">
             <svg class="pc-logo" viewBox="0 0 512 512" aria-hidden="true"><use href="#dewIcon"/></svg>
+            <h3>DewTask</h3>
           </div>
-          <h3>DewTask</h3>
-          <p class="pc-description">An offline-first workspace and task management application designed to help you organize projects, manage tasks, and stay productive.</p>
+          <p class="pc-description">An offline-first Windows task manager with an outliner, Kanban board, and calendar in one local workspace.</p>
           <footer class="pc-actions">
             <div class="pc-meta">
               <span class="pc-status"><span class="dot" aria-hidden="true"></span><span id="dewTag">Live</span></span>
@@ -352,11 +366,12 @@
         </article>
 
         <article class="pc pc--itemcare">
-          <div class="pc-art" aria-hidden="true">
+          <img class="pc-preview" src="./assets/itemcare-dashboard.jpg" width="1120" height="658" loading="lazy" decoding="async" alt="ItemCare asset dashboard showing appliance cards, warranty status, and maintenance due dates">
+          <div class="pc-heading">
             <svg class="pc-logo" viewBox="0 0 512 512" aria-hidden="true"><use href="#icIcon"/></svg>
+            <h3>ItemCare</h3>
           </div>
-          <h3>ItemCare</h3>
-          <p class="pc-description">A local-first home &amp; asset command center. Track belongings, warranties, maintenance, insurance and documents, all stored privately on your device. Built with Tauri 2, Rust, React &amp; SQLite.</p>
+          <p class="pc-description">A local-first home inventory that keeps belongings, warranties, maintenance history, and insurance documents together.</p>
           <footer class="pc-actions">
             <div class="pc-meta">
               <span class="pc-status"><span class="dot" aria-hidden="true"></span><span id="itemcareTag">Live</span></span>
@@ -367,14 +382,6 @@
             </div>
             <a class="btn pri" href="https://arnabsaha7.github.io/itemcare/" target="_blank" rel="noopener noreferrer" aria-label="Visit website for ItemCare (opens in a new tab)">Visit website <span aria-hidden="true">↗</span></a>
           </footer>
-        </article>
-
-        <article class="pc pc--soon">
-          <svg class="pc-soon-icon" viewBox="0 0 48 48" aria-hidden="true">
-            <path d="M14 10h20M14 38h20M17 10v5c0 4 3 6 7 9-4 3-7 5-7 9v5M31 10v5c0 4-3 6-7 9 4 3 7 5 7 9v5" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-            <path d="m19 34 5-4 5 4Z" fill="currentColor" opacity=".55"/>
-          </svg>
-          <h3>More projects dropping soon</h3>
         </article>
       </div>
 
@@ -403,7 +410,7 @@
             <li class="principle-item">
               <article class="principle-card" tabindex="0" aria-labelledby="principle-fast">
                 <span class="principle-number" aria-hidden="true">02</span>
-                <h4 id="principle-fast">Instant interactions</h4>
+                <h4 id="principle-fast">Responsive interfaces</h4>
                 <p>Indexed local reads, lean state and native windowing keep the UI responsive.</p>
               </article>
             </li>
@@ -411,14 +418,14 @@
               <article class="principle-card" tabindex="0" aria-labelledby="principle-minimal">
                 <span class="principle-number" aria-hidden="true">03</span>
                 <h4 id="principle-minimal">Minimal dependencies</h4>
-                <p>Fewer moving parts to audit, smaller installers, easier long-term upkeep.</p>
+                <p>Keep the core workflow small so there are fewer moving parts to audit, package, and maintain.</p>
               </article>
             </li>
             <li class="principle-item">
-              <article class="principle-card" tabindex="0" aria-labelledby="principle-zero-bloatware">
+              <article class="principle-card" tabindex="0" aria-labelledby="principle-sync">
                 <span class="principle-number" aria-hidden="true">04</span>
-                <h4 id="principle-zero-bloatware">Zero bloatware</h4>
-                <p>Ship only what serves the core workflow. Leave out bundled extras that add clutter.</p>
+                <h4 id="principle-sync">Optional sync</h4>
+                <p>In DewTask, edits go to SQLite first. Drive sync helps when you use multiple devices and stays optional for single-device work.</p>
               </article>
             </li>
           </ol>
@@ -427,39 +434,114 @@
     </div>
   </section>
 
-  <section id="stack" class="sec">
-    <div class="wrap">
-      <div class="head"><h2>Engineering stack</h2></div>
-      <div class="stack">
-        <div>
-          <div class="stack-col-head"><span class="lbl">Systems &amp; desktop</span></div>
-          <ul>
-            <li><span>Rust</span><span>DewTask, ItemCare</span></li>
-            <li><span>Tauri</span><span>DewTask, ItemCare</span></li>
-            <li><span>TypeScript &amp; React</span><span>Desktop interfaces</span></li>
-            <li><span>Windows packaging</span><span>MSI / EXE releases</span></li>
-          </ul>
-        </div>
-        <div>
-          <div class="stack-col-head"><span class="lbl">Backend &amp; data</span></div>
-          <ul>
-            <li><span>FastAPI</span><span>High-performance APIs</span></li>
-            <li><span>Python</span><span>Services &amp; CLI tools</span></li>
-            <li><span>SQLite &amp; SQL</span><span>DewTask data layer</span></li>
-            <li><span>Schema &amp; query tuning</span><span>Slow-query profiling</span></li>
-          </ul>
-        </div>
-        <div>
-          <div class="stack-col-head"><span class="lbl">Engineering practice</span></div>
-          <ul>
-            <li><span>Performance profiling</span><span>Latency</span></li>
-            <li><span>Data pipelines</span><span>ETL and sync</span></li>
-            <li><span>Release automation</span><span>CI / CD</span></li>
-            <li><span>Offline-first architecture</span><span>Local state</span></li>
-          </ul>
-        </div>
-      </div>
+  <section id="experience" class="sec" aria-labelledby="experience-title">
+    <div class="wrap experience-wrap">
+      <div class="head"><h2 id="experience-title">My Journey</h2></div>
+      <ol class="experience-timeline" role="list">
+        <li>
+          <span class="experience-node" aria-hidden="true">01</span>
+          <svg class="experience-connector" viewBox="0 0 32 16" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 8H32" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <article class="experience-card">
+            <header class="experience-header">
+              <div class="experience-role">
+                <span class="experience-mark" aria-hidden="true">D</span>
+                <div>
+                  <h3>Analyst</h3>
+                  <p class="experience-company">Deloitte</p>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <p class="pill experience-tenure"><span><time datetime="2024-10">Oct 2024</time> – Present</span></p>
+                <p class="pill experience-location">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  Bhubaneswar, Odisha
+                </p>
+              </div>
+            </header>
+            <ul>
+              <li>Contributed to backend projects built with FastAPI.</li>
+              <li>Worked on data engineering and agentic AI projects.</li>
+            </ul>
+          </article>
+        </li>
+        <li>
+          <span class="experience-node" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="m2 9 10-5 10 5-10 5-10-5Z"/><path d="M6 11v5c3 3 9 3 12 0v-5m4-2v7"/></svg>
+          </span>
+          <svg class="experience-connector" viewBox="0 0 32 16" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 8H32" vector-effect="non-scaling-stroke"/>
+          </svg>
+          <article class="experience-card">
+            <header class="experience-header">
+              <div class="experience-role">
+                <span class="experience-mark" aria-hidden="true">TU</span>
+                <div>
+                  <h3>B.Tech, Computer Science and Engineering</h3>
+                  <p class="experience-company">Tripura University</p>
+                </div>
+              </div>
+              <div class="experience-meta">
+                <p class="pill experience-tenure"><span><time datetime="2020">2020</time> – <time datetime="2024">2024</time></span></p>
+                <p class="pill experience-location">
+                  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 5-8 10-8 10S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg>
+                  Tripura
+                </p>
+              </div>
+            </header>
+            <ul>
+              <li>CGPA: <strong>9.11</strong></li>
+            </ul>
+          </article>
+        </li>
+      </ol>
+    </div>
+  </section>
 
+  <section id="stack" class="sec" aria-labelledby="stack-title">
+    <div class="wrap">
+      <div class="head"><h2 id="stack-title">Engineering stack</h2></div>
+      <div class="stack">
+        <article class="stack-card stack-card--desktop">
+          <h3>Desktop systems</h3>
+          <ul class="stack-tools" role="list">
+            <li data-tool="rust"><span class="stack-icon"><img src="./assets/technology/rust.svg" width="22" height="22" alt="" loading="lazy"></span>Rust</li>
+            <li data-tool="tauri"><span class="stack-icon"><img src="./assets/technology/tauri.svg" width="22" height="22" alt="" loading="lazy"></span>Tauri</li>
+            <li data-tool="typescript"><span class="stack-icon"><img src="./assets/technology/typescript.svg" width="22" height="22" alt="" loading="lazy"></span>TypeScript</li>
+            <li data-tool="react"><span class="stack-icon"><img src="./assets/technology/react.svg" width="22" height="22" alt="" loading="lazy"></span>React</li>
+          </ul>
+        </article>
+        <article class="stack-card stack-card--backend">
+          <h3>Backend &amp; tooling</h3>
+          <ul class="stack-tools" role="list">
+            <li data-tool="python"><span class="stack-icon"><img src="./assets/technology/python.svg" width="22" height="22" alt="" loading="lazy"></span>Python</li>
+            <li data-tool="fastapi"><span class="stack-icon"><img src="./assets/technology/fastapi.svg" width="22" height="22" alt="" loading="lazy"></span>FastAPI</li>
+            <li data-tool="uvicorn"><span class="stack-icon"><img src="./assets/technology/uvicorn.png" width="22" height="22" alt="" loading="lazy"></span>Uvicorn</li>
+            <li data-tool="docker"><span class="stack-icon"><img src="./assets/technology/docker.svg" width="22" height="22" alt="" loading="lazy"></span>Docker</li>
+            <li data-tool="gitlab"><span class="stack-icon"><img src="./assets/technology/gitlab.svg" width="22" height="22" alt="" loading="lazy"></span>GitLab</li>
+          </ul>
+        </article>
+        <article class="stack-card stack-card--data">
+          <h3>Data</h3>
+          <ul class="stack-tools" role="list">
+            <li data-tool="sqlite"><span class="stack-icon"><img src="./assets/technology/sqlite.svg" width="22" height="22" alt="" loading="lazy"></span>SQLite</li>
+            <li data-tool="postgresql"><span class="stack-icon"><img src="./assets/technology/postgresql.svg" width="22" height="22" alt="" loading="lazy"></span>PostgreSQL</li>
+            <li data-tool="pyspark"><span class="stack-icon"><img src="./assets/technology/apachespark.svg" width="22" height="22" alt="" loading="lazy"></span>PySpark</li>
+            <li data-tool="airflow"><span class="stack-icon"><img src="./assets/technology/apacheairflow.svg" width="22" height="22" alt="" loading="lazy"></span>Airflow</li>
+            <li data-tool="dremio"><span class="stack-icon"><img src="./assets/technology/dremio.png" width="22" height="22" alt="" loading="lazy"></span>Dremio</li>
+            <li data-tool="power-bi"><span class="stack-icon"><img src="./assets/technology/power-bi.svg" width="22" height="22" alt="" loading="lazy"></span>Power BI</li>
+          </ul>
+        </article>
+        <article class="stack-card stack-card--ai">
+          <h3>Agentic AI</h3>
+          <ul class="stack-tools" role="list">
+            <li data-tool="langchain"><span class="stack-icon"><img src="./assets/technology/langchain.svg" width="22" height="22" alt="" loading="lazy"></span>LangChain</li>
+            <li data-tool="mcp"><span class="stack-icon"><img src="./assets/technology/mcp.svg" width="22" height="22" alt="" loading="lazy"></span>MCP</li>
+            <li data-tool="workflow"><span class="stack-icon"><svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="15" y="15" width="6" height="6" rx="1"/><path d="M6 9v6a3 3 0 0 0 3 3h6m0-12h6m-3-3 3 3-3 3"/></svg></span>Automation</li>
+          </ul>
+        </article>
+      </div>
     </div>
   </section>
 
@@ -477,7 +559,7 @@
               <span>Email me</span>
               <span class="arr" aria-hidden="true">→</span>
             </a>
-            <a class="btn gh resume-link" href="#" hidden download>Résumé</a>
+            <a class="btn gh" href="./assets/docs/resume.pdf" download>Résumé (PDF)</a>
           </div>
         </div>
         <div class="c5 contact-box">

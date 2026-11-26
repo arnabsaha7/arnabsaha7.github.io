@@ -2,7 +2,6 @@
   'use strict';
 
   // Leave the résumé URL empty to hide the résumé links.
-  const RESUME_URL = '';
   const EMAIL = (() => {
     try {
       return atob('YXJuYWIud29yay43QHByb3Rvbm1haWwuY29t');
@@ -195,14 +194,6 @@
       }
     });
 
-    run('resume', () => {
-      if (!RESUME_URL) return;
-      $$('.resume-link').forEach(link => {
-        link.hidden = false;
-        link.href = RESUME_URL;
-      });
-    });
-
     run('about-entrance', () => {
       const about = $('#about');
       if (!about || REDUCED.matches || !('IntersectionObserver' in window)) return;
@@ -229,31 +220,39 @@
       let pullX = 0;
       let pullY = 0;
       let retractFrame;
+      const clamp = (value, min, max) => Math.max(min, Math.min(max, value));
 
       function moveBadge(x, y) {
-        pullX = x;
-        pullY = y;
-        hanger.style.setProperty('--about-offset', `${x}px ${y}px`);
-        hanger.style.setProperty('--about-pull', `calc(var(--about-rest) + ${-x * 0.12}deg)`);
+        pullX = clamp(x, -grab.width * 0.32, grab.width * 0.32);
+        pullY = clamp(y, -grab.width * 0.06, grab.width * 0.36);
+        hanger.style.setProperty('--about-offset', `${pullX}px ${pullY}px`);
+        hanger.style.setProperty('--about-pull', `calc(var(--about-rest) + ${-pullX * 0.12}deg)`);
 
         // The cord runs from (124, 63) to the hanger pivot 48 SVG units below.
         const svgUnits = 296 / grab.width;
-        const horizontal = x * svgUnits;
-        const vertical = 48 + y * svgUnits;
+        const horizontal = pullX * svgUnits;
+        const vertical = 48 + pullY * svgUnits;
         const angle = -Math.atan2(horizontal, vertical) * 180 / Math.PI;
         const stretch = Math.hypot(horizontal, vertical) / 48;
         cord.setAttribute('transform', `translate(124 63) rotate(${angle}) scale(1 ${stretch}) translate(-124 -63)`);
       }
 
-      function retract() {
+      function retract(event) {
+        if (grab?.pointerId !== event.pointerId) return;
+        grab.pointerId = null;
         if (!badge.classList.contains('about-dragging')) return;
         const releasedX = pullX;
         const releasedY = pullY;
         const releasedAt = performance.now();
+        const moving = event.type === 'pointerup' && releasedAt - grab.movedAt < 80;
+        const damping = 8;
+        const frequency = 14;
+        const impulseX = ((moving ? grab.velocityX : 0) + damping * releasedX) / frequency;
+        const impulseY = ((moving ? grab.velocityY : 0) + damping * releasedY) / frequency;
 
         function step(now) {
           const seconds = (now - releasedAt) / 1000;
-          if (seconds >= 0.8 || REDUCED.matches) {
+          if (seconds >= 1 || REDUCED.matches) {
             pullX = 0;
             pullY = 0;
             hanger.style.removeProperty('--about-offset');
@@ -262,8 +261,13 @@
             badge.classList.remove('about-dragging');
             return;
           }
-          const remaining = Math.exp(-7 * seconds) * Math.cos(10 * seconds);
-          moveBadge(releasedX * remaining, releasedY * remaining);
+          const decay = Math.exp(-damping * seconds);
+          const cosine = Math.cos(frequency * seconds);
+          const sine = Math.sin(frequency * seconds);
+          moveBadge(
+            decay * (releasedX * cosine + impulseX * sine),
+            decay * (releasedY * cosine + impulseY * sine)
+          );
           retractFrame = requestAnimationFrame(step);
         }
 
@@ -294,7 +298,16 @@
         if (pointerType !== 'mouse' || event.button !== 0 || REDUCED.matches || !card.setPointerCapture) return;
         cancelAnimationFrame(retractFrame);
         dragged = false;
-        grab = { x: event.clientX, y: event.clientY, pullX, pullY, width: badge.clientWidth };
+        grab = {
+          pointerId: event.pointerId,
+          x: event.clientX,
+          y: event.clientY,
+          pullX, pullY,
+          width: badge.clientWidth,
+          movedAt: performance.now(),
+          velocityX: 0,
+          velocityY: 0
+        };
         card.setPointerCapture(event.pointerId);
       });
 
@@ -305,28 +318,170 @@
         if (Math.hypot(dx, dy) < 4 && !dragged) return;
         dragged = true;
         badge.classList.add('about-dragging');
-        const horizontalLimit = grab.width * 0.32;
-        const verticalLimit = grab.width * 0.36;
-        const x = Math.max(-horizontalLimit, Math.min(horizontalLimit, grab.pullX + dx));
-        const y = Math.max(-grab.width * 0.06, Math.min(verticalLimit, grab.pullY + dy));
-        moveBadge(x, y);
+        const previousX = pullX;
+        const previousY = pullY;
+        moveBadge(grab.pullX + dx, grab.pullY + dy);
+        const now = performance.now();
+        const seconds = Math.max(0.008, (now - grab.movedAt) / 1000);
+        const maxSpeed = grab.width * 5;
+        grab.velocityX = clamp((pullX - previousX) / seconds, -maxSpeed, maxSpeed);
+        grab.velocityY = clamp((pullY - previousY) / seconds, -maxSpeed, maxSpeed);
+        grab.movedAt = now;
       });
 
+      card.addEventListener('pointerup', retract);
+      card.addEventListener('pointercancel', retract);
       card.addEventListener('lostpointercapture', retract);
     });
 
-    run('project-card-entrance', () => {
+    run('experience-entrance', () => {
+      const timeline = $('#experience .experience-timeline');
+      if (!timeline || !('IntersectionObserver' in window)) return;
+
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add('experience-revealed');
+          observer.unobserve(entry.target);
+        });
+      }, { rootMargin: '0px 0px 32px' });
+
+      [...timeline.children].forEach(item => observer.observe(item));
+      timeline.setAttribute('data-experience-reveal', '');
+    });
+
+    run('stack-card-entrance', () => {
       if (REDUCED.matches || !('IntersectionObserver' in window)) return;
 
       const observer = new IntersectionObserver((entries, observer) => {
         entries.forEach(entry => {
           if (!entry.isIntersecting) return;
-          entry.target.classList.add('pc--revealed');
+          entry.target.classList.add('card-revealed');
           observer.unobserve(entry.target);
         });
       }, { rootMargin: '0px 0px 32px' });
 
-      $$('.pcards > .pc').forEach(card => observer.observe(card));
+      $$('.stack > .stack-card').forEach(card => observer.observe(card));
+    });
+
+    run('project-card-drag', () => {
+      if (!('PointerEvent' in window)) return;
+
+      const cards = $$('#work .pc');
+      if (!cards.length) return;
+
+      cards.forEach(card => {
+        const visitButton = card.querySelector('.pc-actions > .btn');
+        let drag;
+        let frame = 0;
+        let x = 0;
+        let y = 0;
+        let suppressClick = false;
+
+        function move(nextX, nextY) {
+          x = nextX;
+          y = nextY;
+          card.style.setProperty('--pc-drag-x', x + 'px');
+          card.style.setProperty('--pc-drag-y', y + 'px');
+        }
+
+        function reset() {
+          frame = 0;
+          x = y = 0;
+          card.style.removeProperty('--pc-drag-x');
+          card.style.removeProperty('--pc-drag-y');
+          card.removeAttribute('data-project-dragging');
+        }
+
+        function release(event) {
+          if (!drag || event.pointerId !== drag.id) return;
+          const { minX, maxX, movedAt, velocityX, velocityY } = drag;
+          suppressClick = event.type === 'pointerup' && drag.moved;
+          drag = null;
+          if (REDUCED.matches || (!x && !y)) {
+            reset();
+            return;
+          }
+
+          const startX = x;
+          const startY = y;
+          const releasedAt = performance.now();
+          const moving = event.type === 'pointerup' && releasedAt - movedAt < 80;
+          const damping = 8;
+          const frequency = 18;
+          const amplitudeX = ((moving ? velocityX : 0) + damping * startX) / frequency;
+          const amplitudeY = ((moving ? velocityY : 0) + damping * startY) / frequency;
+
+          function spring(now) {
+            const seconds = (now - releasedAt) / 1000;
+            if (seconds >= 1 || REDUCED.matches) {
+              reset();
+              return;
+            }
+            const decay = Math.exp(-damping * seconds);
+            const cosine = Math.cos(frequency * seconds);
+            const sine = Math.sin(frequency * seconds);
+            const nextX = decay * (startX * cosine + amplitudeX * sine);
+            const nextY = decay * (startY * cosine + amplitudeY * sine);
+            move(Math.max(minX, Math.min(maxX, nextX)), nextY);
+            frame = requestAnimationFrame(spring);
+          }
+
+          frame = requestAnimationFrame(spring);
+        }
+
+        card.setAttribute('data-project-drag-handle', '');
+        card.addEventListener('pointerdown', event => {
+          if (drag || !event.isPrimary || event.button !== 0) return;
+          suppressClick = false;
+          if (visitButton?.contains(event.target)) return;
+          cancelAnimationFrame(frame);
+          card.setAttribute('data-project-dragging', '');
+          const bounds = card.getBoundingClientRect();
+          drag = {
+            id: event.pointerId,
+            offsetX: event.clientX - x,
+            offsetY: event.clientY - y,
+            minX: Math.min(0, x - bounds.left),
+            maxX: Math.max(0, x + document.documentElement.clientWidth - bounds.right),
+            moved: false,
+            movedAt: performance.now(),
+            velocityX: 0,
+            velocityY: 0
+          };
+          // Keep taps on the original target so the Stars link still works.
+          event.target.setPointerCapture(event.pointerId);
+        });
+
+        card.addEventListener('pointermove', event => {
+          if (!drag || event.pointerId !== drag.id) return;
+          const nextX = Math.max(drag.minX, Math.min(drag.maxX, event.clientX - drag.offsetX));
+          const nextY = event.clientY - drag.offsetY;
+          if (!drag.moved && Math.hypot(nextX - x, nextY - y) < 4) return;
+          drag.moved = true;
+          const now = performance.now();
+          const seconds = Math.max(0.008, (now - drag.movedAt) / 1000);
+          drag.velocityX = Math.max(-1800, Math.min(1800, (nextX - x) / seconds));
+          drag.velocityY = Math.max(-1800, Math.min(1800, (nextY - y) / seconds));
+          drag.movedAt = now;
+          move(nextX, nextY);
+        });
+
+        card.addEventListener('pointerup', release);
+        card.addEventListener('pointercancel', release);
+        card.addEventListener('lostpointercapture', release);
+        card.addEventListener('dragstart', event => {
+          if (!visitButton?.contains(event.target)) event.preventDefault();
+        });
+        card.addEventListener('click', event => {
+          if (!suppressClick || !event.detail) return;
+          suppressClick = false;
+          event.preventDefault();
+        }, true);
+      });
+
+      const hint = $('#work-drag-hint');
+      if (hint) hint.hidden = false;
     });
 
     run('work-principles', () => {
@@ -575,7 +730,18 @@
         const card = project.label.closest('.pc');
         const description = card.querySelector('.pc-description');
         if (typeof repository.description === 'string' && repository.description.trim()) {
-          description.textContent = repository.description;
+          const text = repository.description.trim().replace(/\s+/gu, ' ');
+          const characters = [...text];
+          const maxDescriptionLength = 120;
+          if (characters.length > maxDescriptionLength) {
+            const prefix = characters.slice(0, maxDescriptionLength - 1).join('');
+            const preview = characters[maxDescriptionLength - 1] === ' '
+              ? prefix
+              : prefix.replace(/ \S*$/u, '');
+            description.textContent = preview + '…';
+          } else {
+            description.textContent = text;
+          }
         }
 
         const count = repository.stargazers_count;
