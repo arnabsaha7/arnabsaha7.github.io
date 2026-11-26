@@ -123,7 +123,7 @@
       const U = 32; // grid cell in px; must match the background-size on .hero::after
       const mouse = { x: -1e4, y: -1e4 };
       const t0 = performance.now();
-      let w, h, chip, traces = [], rgb = '85,214,232', last = t0, raf = 0, visible = true;
+      let w, h, traces = [], rgb = '85,214,232', last = t0, raf = 0, visible = true;
 
       const rnd = (a, b) => a + Math.random() * (b - a);
       const cells = (a, b) => Math.round(rnd(a, b));
@@ -153,7 +153,7 @@
         cv.width = w * dpr; cv.height = h * dpr;
         ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
         const hr = hero.getBoundingClientRect(), tr = term && term.getBoundingClientRect();
-        chip = tr && tr.width > 0 ? { x: tr.left - hr.left, y: tr.top - hr.top, w: tr.width, h: tr.height } : null;
+        const chip = tr && tr.width > 0 ? { x: tr.left - hr.left, y: tr.top - hr.top, w: tr.width, h: tr.height } : null;
         const pins = [];
         if (chip) {
           const { x, y, w: cw, h: ch } = chip;
@@ -196,17 +196,6 @@
         ctx.clearRect(0, 0, w, h);
         ctx.lineCap = 'round';
         ctx.lineWidth = 1;
-
-        if (chip) { // keep-out outline, like the courtyard line around a chip on a PCB
-          const o = 14;
-          ctx.setLineDash([4, 6]);
-          ctx.strokeStyle = `rgba(${rgb},${0.22 * ease})`;
-          ctx.beginPath();
-          if (ctx.roundRect) ctx.roundRect(chip.x - o, chip.y - o, chip.w + o * 2, chip.h + o * 2, 12);
-          else ctx.rect(chip.x - o, chip.y - o, chip.w + o * 2, chip.h + o * 2);
-          ctx.stroke();
-          ctx.setLineDash([]);
-        }
 
         for (const t of traces) {
           const reach = t.total * ease;
@@ -492,6 +481,31 @@
       card.addEventListener('pointerup', release);
       card.addEventListener('pointercancel', release);
       card.addEventListener('lostpointercapture', release);
+    });
+
+    run('experience-duration', () => {
+      const tenure = $('#experience .experience-tenure');
+      const end = tenure?.querySelector('.experience-end');
+      if (!end) return;
+      const current = end.textContent.trim() === 'Present';
+      const now = new Date();
+      const [startYear, startMonth] = tenure.querySelector('time').dateTime.split('-').map(Number);
+      const [endYear, endMonth] = current
+        ? [now.getFullYear(), now.getMonth() + 1]
+        : (end.dateTime || '').split('-').map(Number);
+      const months = (endYear - startYear) * 12 + endMonth - startMonth;
+
+      $('#experience .experience-current').hidden = !current;
+      if (months >= 0) {
+        const years = Math.floor(months / 12);
+        const remainder = months % 12;
+        const duration = [
+          years ? `${years} yr${years === 1 ? '' : 's'}` : '',
+          remainder || !years ? `${remainder} mo${remainder === 1 ? '' : 's'}` : ''
+        ].filter(Boolean).join(' ');
+        tenure.querySelector('.experience-duration').textContent = ` · ${duration}`;
+      }
+
     });
 
     run('experience-entrance', () => {
