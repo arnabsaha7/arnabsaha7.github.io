@@ -629,8 +629,17 @@
 
         card.addEventListener('pointermove', event => {
           if (!drag || event.pointerId !== drag.id) return;
-          const nextX = Math.max(drag.minX, Math.min(drag.maxX, event.clientX - drag.offsetX));
-          const nextY = event.clientY - drag.offsetY;
+          const pointerX = event.clientX - drag.offsetX;
+          const pointerY = event.clientY - drag.offsetY;
+          const nextX = Math.max(drag.minX, Math.min(drag.maxX, pointerX));
+          let nextY = pointerY;
+          if (event.pointerType === 'touch') {
+            if (!drag.moved && Math.abs(pointerY - y) > Math.abs(pointerX - x)) {
+              if (Math.abs(pointerY - y) >= 4) release(event);
+              return;
+            }
+            nextY = y;
+          }
           if (!drag.moved && Math.hypot(nextX - x, nextY - y) < 4) return;
           drag.moved = true;
           const now = performance.now();

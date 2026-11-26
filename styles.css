@@ -858,7 +858,7 @@ html[data-theme=light] .term {
 
 .pc[data-project-drag-handle] {
   cursor: grab;
-  touch-action: none;
+  touch-action: pan-y pinch-zoom;
   -webkit-user-select: none;
   user-select: none;
 }
